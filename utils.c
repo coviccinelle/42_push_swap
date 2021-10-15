@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:48:26 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/13 11:48:37 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/14 11:26:35 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ int	ft_max(int a, int b)
 
 int			ft_atoi(const char *str)
 {
-	int						i;
-	unsigned long long		res;
-	int						neg;
+	int				i;
+	unsigned long	res;
+	int				neg;
 
 	res = 0;
 	neg = 1;
