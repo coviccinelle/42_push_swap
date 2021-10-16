@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:58:27 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/16 15:04:30 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/16 15:52:43 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,60 @@ int	ft_invalid_char(char *str)
 	return (0);
 }
 
+int	ft_atoi_1(char *str)
+{
+	int				i;
+	unsigned long	res;
+	int				neg;
+
+//	printf("str[i] = %s\n", str);
+	neg = 1;
+	res = 0;
+	i = 0;
+	if (!str)
+		return (0);
+	while (find_me(str[i], "\t\n\v\f\r "))
+		i++;
+	if (str[i] == '-')
+	{
+		if (str[i++] == '-')
+			neg = -1;
+	}
+	while (find_me(str[i], "0123456789"))
+		res = res * 10 + (str[i++] - '0');
+	return (res * neg);
+}
+
+int	ft_invalid_double(char *str)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (str[i])
+	{
+		if (str[i] == str[i + j])
+			return (1);
+		j++;
+	}
+	return (0);
+}
+
+
+
 int	main()
 {
 	char	*str;
 
-	str = "18    15     - 35    2   ";
+	str = "5 6 7  66 77 22";
+	if (ft_invalid_double(str))
+		printf("Error\nthere's a double int\n");
 	if (ft_invalid_char(str))
 		printf("Error\nthere's a outsider\n");
 	if (!ft_invalid_char(str))
 		printf("Green light! Please pass :>\n");
+	printf("n = ft_atoi_1(str) = %d\n", ft_atoi_1(str));
 	return (0);
 }
 
