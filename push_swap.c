@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/16 15:07:12 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/16 15:08:42 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	exit_error(char *str, t_list Stack)
 	}
 }
 */
+
 typedef struct	s_stack
 {
 	int		number;
