@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/15 16:05:40 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/16 15:07:12 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,16 +44,41 @@ int	find_me(char c, char *str)
 }
 
 
+int	ft_atoi_1(char *str)
+{
+	int				i;
+	unsigned long	res;
+	int				neg;
 
+	printf("str[i] = %s\n", str);
+	neg = 1;
+	res = 0;
+	i = 0;
+	if (!str)
+		return (0);
+	while (find_me(str[i], "\t\n\v\f\r "))
+		i++;
+	if (str[i] == '-')
+	{
+		if (str[i++] == '-')
+			neg = -1;
+	}
+	while (find_me(str[i], "0123456789"))
+		res = res * 10 + (str[i++] - '0');
+//	printf("i vaut %d\n", i);
+	return (res * neg);
+}
 
 int	ft_atoi(char *str, int *i)
 {
+//	int				i;
 	unsigned long	res;
 	int				neg;
 
 //	printf("str[i] = %s\n", str);
 	neg = 1;
 	res = 0;
+//	i = 0;
 	if (!str)
 		return (0);
 	while (find_me(str[*i], "\t\n\v\f\r "))
@@ -139,9 +164,29 @@ int		ft_display_stack(t_stack *Stack)
 
 
 
+int	ft_strlen(char *str)
+{
+	int	i;
 
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
 
+int	ft_invalid_char(char *str)
+{
+	int	i;
 
+	i = 0;
+	while (str[i])
+	{
+		if (!(find_me(str[i], "- 0123456789")))
+			return (1);
+		i++;
+	}
+	return (0);
+}
 
 
 int	ft_parsing_1(char *str)
@@ -152,17 +197,21 @@ int	ft_parsing_1(char *str)
 	i = 0;
 	
 	printf("i vaut %d\n", i);
-	if (!ft_int_exist(str))
+	if (!ft_int_exist(str) || ft_invalid_char(str))
+	{
+		printf("Error\nThere's an outsider : an invalid char inside\n");
 		return (0);
-	while (str[i])
+	}
+	while (str[i] && (i <= ft_strlen(str)))
 	{
 		printf("i vaut %d\n", i);
-		n = ft_atoi(str, &i);
+		n = ft_atoi_1(&str[i]);
+		printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
+		while (str[i] == ' ')
+			i++;
+		while (find_me(str[i], "0123456789"))
+			i++;
 		i++;
-		if (!str[i])
-			break ;
-		printf("atoi here : %d\n", n);
-//		printf("Where am I? %c\n", str[i]);
 	}
 	return (0);
 }
@@ -178,7 +227,7 @@ int	main(int ac, char **av)
 
 	str = "-28383";
 	printf("str\n");
-	printf("str = %d\n", ft_atoi(str, 0));
+	printf("str 1 = %d\n", ft_atoi_1(str));
 	if (ac > 1)
 	{
 		if (ac == 2)
