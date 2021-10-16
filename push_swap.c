@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/16 17:34:03 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/16 18:49:10 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,16 +93,6 @@ int	ft_atoi_1(char *str)
 	}
 	while (find_me(str[i], "0123456789"))
 		res = res * 10 + (str[i++] - '0');
-/*	if  (str[i] == ' '&& str[i + 1] == ' ' && !(ft_int_exist(&str[i + 1])))
-	{
-		res = -420;
-		i++;
-	}*/
-//	if (res == 0 && neg == 1 && str[i] == ' ' && !ft_int_exist(&str[i]))
-//	if (str[i] == ' ' && ft_all_blank(&str[i]))
-//		res = -42;
-			//	if ((res * neg) == 0)
-	//	printf("\ninvalid atoi int = 0\n");
 	return (res * neg);
 }
 
@@ -224,8 +214,6 @@ int	ft_parsing_1(char *str)
 	int	n;
 
 	i = 0;
-	
-//	printf("i vaut %d\n", i);
 	if (!ft_int_exist(str) || ft_invalid_char(str))
 	{
 		printf("Error\nThere's an outsider : an invalid char inside or a double int\n");
@@ -233,15 +221,12 @@ int	ft_parsing_1(char *str)
 	}
 	while (str[i] && (i <= ft_strlen(str)))
 	{
-	//	printf("i vaut %d\n", i);
 		n = ft_atoi_1(&str[i]);
 		printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
 		while (str[i] == ' ')
 			i++;
 		while (find_me(str[i], "-0123456789"))
 			i++;
-//		while (str[i] == ' ' && (find_me(str[i++], " ")))
-//			break ;
 		if (str[i] == ' ' && !ft_int_exist(&str[i]))
 			break ;
 		i++;
@@ -251,7 +236,6 @@ int	ft_parsing_1(char *str)
 
 int	ft_parsing_multi(char *av)
 {
-//	int		i;
 	int		n;
 
 //	i = 0;
@@ -261,7 +245,7 @@ int	ft_parsing_multi(char *av)
 		printf("Error\nWrong! Wrong! It's just wroooong!\n");
 		return (0);
 	}
-		n = ft_atoi_1(av);
+	n = ft_atoi_1(av);
 	printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
 	return (0);
 }
@@ -288,17 +272,21 @@ int	main(int ac, char **av)
 			printf("Oh oh there's more to come => Parsing for a lot at the same time\n");
 			while (i < ac)
 			{
-				ft_invalid_char(av[i]);
-					break ;
+	//			ft_invalid_char(av[i]);
+	//			{
+	//				printf("Error\nThere is an imposter (char) iciiiii\n");
+	//				break ;
+	//			}
+				ft_parsing_multi(av[i]);
 				i++;
+			//	return (0);
 			}
-			i = 0;
+		/*	i = 1;
 			while (i < ac)
 			{
 				ft_parsing_multi(av[i]);
 				i++;
-//				return (0);
-			}
+			}*/
 		}
 	}
 	return (0);
