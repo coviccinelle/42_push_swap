@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/19 18:23:28 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/19 18:51:36 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,7 +200,9 @@ int	ft_parsing_1(char *str)
 {
 	int	i;
 	int	n;
+	t_stack *Stack;
 
+	Stack = NULL;
 	i = 0;
 	if (!ft_int_exist(str) || ft_invalid_char(str))
 	{
@@ -210,6 +212,8 @@ int	ft_parsing_1(char *str)
 	while (str[i] && (i <= ft_strlen(str)))
 	{
 		n = ft_atoi_1(&str[i]);
+		ft_new_element(&Stack, n);
+		//ft_display_stack(Stack);
 		printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
 		while (str[i] == ' ')
 			i++;
@@ -218,7 +222,14 @@ int	ft_parsing_1(char *str)
 		if (str[i] == ' ' && !ft_int_exist(&str[i]))
 			return (0);
 		i++;
+	//	ft_display_stack(Stack);
+	//
+	
+	// It's not displaying the stack in here  //
+	// AHHHHHHH //
 	}
+	printf("HEllo?!");
+	ft_display_stack(Stack);
 	return (0);
 }
 
@@ -226,7 +237,9 @@ int	ft_parsing_multi_2(int ac, char **av)
 {
 	int		i;
 	int		n;
+	t_stack *Stack;
 
+	Stack = NULL;
 	i = 1;
 	while (i < ac)
 	{
@@ -238,10 +251,13 @@ int	ft_parsing_multi_2(int ac, char **av)
 		else
 		{
 			n = ft_atoi_1(av[i]);
+			ft_new_element(&Stack, n);
+		//	printf("n = %d\n", n);
 			printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
 		}
 		i++;
 	}
+	ft_display_stack(Stack);
 	return (0);
 }
 
@@ -263,14 +279,16 @@ int	main(int ac, char **av)
 		{
 			printf("All in one agrument => Parsing for only one\n");
 			ft_parsing_1(av[1]);
+//			ft_start_algo();
 			return (0);
 		}
 		if (ac > 2)
 		{
 			printf("Oh oh there's more to come => Parsing for a lot at the same time\n");
 			ft_parsing_multi_2(ac, &*av);
+//			ft_start_algo();
 		}
-	//	ft_start();
+//		ft_free_stack(a vs b);
 	}
 	return (0);
 }
