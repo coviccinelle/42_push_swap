@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/16 18:49:10 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/19 18:23:28 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,11 @@ typedef struct	s_stack
 {
 	int		number;
 	void	*next;
+	int		invalid_char;
 }				t_stack;
 
+
+// UTILS //
 int	find_me(char c, char *str)
 {
 	int	i;
@@ -82,8 +85,6 @@ int	ft_atoi_1(char *str)
 	neg = 1;
 	res = 0;
 	i = 0;
-	if (!str)
-		return (0);
 	while (find_me(str[i], "\t\n\v\f\r "))
 		i++;
 	if (str[i] == '-')
@@ -96,31 +97,47 @@ int	ft_atoi_1(char *str)
 	return (res * neg);
 }
 
-int	ft_atoi(char *str, int *i)
-{
-//	int				i;
-	unsigned long	res;
-	int				neg;
 
-	neg = 1;
-	res = 0;
-//	i = 0;
-	if (!str)
-		return (0);
-	while (find_me(str[*i], "\t\n\v\f\r "))
-		(*i)++;
-	if (str[*i] == '-')
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int	ft_invalid_char(char *str)
+{
+	int	i;
+
+	i = 0;
+	if (!str[i])
+		return (1);
+	while (str[i])
 	{
-		if (str[*i++] == '-')
-			neg = -1;
+		if (!(find_me(str[i], "- 0123456789")))
+			return (1);
+		i++;
 	}
-	while (find_me(str[*i], "0123456789"))
-		res = res * 10 + (str[*i++] - '0');
-	printf("i vaut %d\n", *i);
-	return (res * neg);
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == '-' && !(find_me(str[i + 1], "0123456789")))
+			return (1);
+		i++;
+	}
+	return (0);
 }
 
 
+
+// END OF UTILS //
+
+// LISTE CHAINEE starts here //
+//
+//
 void	ft_new_element(t_stack	**Stack, int n)
 {
 	t_stack	*tmp;
@@ -176,37 +193,8 @@ int		ft_display_stack(t_stack *Stack)
 }
 
 
+// PARSING PART //
 
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-int	ft_invalid_char(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-	{
-		if (!(find_me(str[i], "- 0123456789")))
-			return (1);
-		i++;
-	}
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '-' && !(find_me(str[i + 1], "0123456789")))
-			return (1);
-		i++;
-	}
-	return (0);
-}
 
 int	ft_parsing_1(char *str)
 {
@@ -216,7 +204,7 @@ int	ft_parsing_1(char *str)
 	i = 0;
 	if (!ft_int_exist(str) || ft_invalid_char(str))
 	{
-		printf("Error\nThere's an outsider : an invalid char inside or a double int\n");
+		printf("Error\nThere's an outsider : an invalid char inside\n");
 		return (0);
 	}
 	while (str[i] && (i <= ft_strlen(str)))
@@ -228,36 +216,47 @@ int	ft_parsing_1(char *str)
 		while (find_me(str[i], "-0123456789"))
 			i++;
 		if (str[i] == ' ' && !ft_int_exist(&str[i]))
-			break ;
+			return (0);
 		i++;
 	}
 	return (0);
 }
 
-int	ft_parsing_multi(char *av)
+int	ft_parsing_multi_2(int ac, char **av)
 {
+	int		i;
 	int		n;
 
-//	i = 0;
-//	printf("Not segfaut yet hehehe\n");
-	if (ft_invalid_char(av))
+	i = 1;
+	while (i < ac)
 	{
-		printf("Error\nWrong! Wrong! It's just wroooong!\n");
-		return (0);
+		if (ft_invalid_char(av[i]) || ft_all_blank(av[i]))
+		{
+			printf("Error\nWrong Wroong argruments\n");
+			return (0) ;
+		}
+		else
+		{
+			n = ft_atoi_1(av[i]);
+			printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
+		}
+		i++;
 	}
-	n = ft_atoi_1(av);
-	printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
 	return (0);
+}
+
+// NO NEED for now //
+void	init(t_stack *f)
+{
+	f->invalid_char = 0;
 }
 
 
 int	main(int ac, char **av)
 {
-//	t_stack *Stack;
-	char	*str;
-	int		i;
+	t_stack f;
 
-	str = "-28383";
+	init(&f);
 	if (ac > 1)
 	{
 		if (ac == 2)
@@ -268,26 +267,10 @@ int	main(int ac, char **av)
 		}
 		if (ac > 2)
 		{
-			i = 1;
 			printf("Oh oh there's more to come => Parsing for a lot at the same time\n");
-			while (i < ac)
-			{
-	//			ft_invalid_char(av[i]);
-	//			{
-	//				printf("Error\nThere is an imposter (char) iciiiii\n");
-	//				break ;
-	//			}
-				ft_parsing_multi(av[i]);
-				i++;
-			//	return (0);
-			}
-		/*	i = 1;
-			while (i < ac)
-			{
-				ft_parsing_multi(av[i]);
-				i++;
-			}*/
+			ft_parsing_multi_2(ac, &*av);
 		}
+	//	ft_start();
 	}
 	return (0);
 }
