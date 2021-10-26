@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/13 14:38:44 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/26 17:59:33 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,57 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-typedef struct	s_list
+typedef struct	s_stack
 {
-	void			*content;
-	struct s_list	*next;
-}				t_list;
+	int				number;
+	void			*next;
+}				t_stack;
+
+
+
+// UTILS //
+//
+int	find_me(char c, const char *str);
+int	ft_int_exist(char *str);
+int	ft_all_blank(char *str);
+int	ft_atoi_1(char *str);
+int	ft_strlen(char *str);
+int	ft_invalid_char(char *str);
+int	ft_min(int a, int b);
+int	ft_max(int a, int b);
+
+
+// PARSING PARTs //
+int	ft_parsing_1(char *str);
+int	ft_parsing_multi_2(int ac, char **av);
+
+void	ft_free_ck(t_stack **list_a);
+int		ft_check_double(t_stack **list_a);
+
+
+
+// LISTE CHAINEE starts here //
+//
+//
+void	ft_new_element(t_stack	**Stack, int n);
+int		ft_size_stack(t_stack **Stack);
+int		ft_display_stack(t_stack *Stack);
+
+
+
+//       -----  OPERATIONS FUNCTIONS -----       //
+//
+//
+void	ft_swap(t_stack **Stack, char c);
+int		ft_push(t_stack	**list_p, t_stack	**list_t, char c);
+int		ft_rotate(t_stack **list, char c);
+int		ft_reverse(t_stack **list, char c);
+int		ft_list_len(t_stack **list);
+
+void	ft_ss(t_stack **list_a, t_stack **list_b);
+void	ft_rr(t_stack **list_a, t_stack **list_b);
+void	ft_rrr(t_stack **list_a, t_stack **list_b);
+void	ft_r_rr(t_stack **list);
 
 
 #endif
