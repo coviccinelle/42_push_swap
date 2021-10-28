@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:38:27 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/28 16:23:11 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/28 18:11:10 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ int	ft_parsing_multi_2(int ac, char **av)
 	int		i;
 	int		n;
 	t_stack *Stack;
+	t_stack *Stack_b;
 
+	Stack_b = NULL;
 	Stack = NULL;
 	i = 1;
 	while (i < ac)
@@ -70,5 +72,11 @@ int	ft_parsing_multi_2(int ac, char **av)
 		i++;
 	}
 	ft_display_stack(Stack);
+	//ft_swap(Stack, 'a');
+	//ft_rotate_i(Stack, 'a');
+	printf("\n-------\n");
+	ft_push(Stack, Stack_b, 'a');
+//	ft_display_stack(Stack);
+//	ft_display_stack(Stack_b);
 	return (0);
 }

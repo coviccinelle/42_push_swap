@@ -6,13 +6,13 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 18:00:38 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/26 18:08:32 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/28 16:35:59 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_swap(t_stack **Stack, char c)
+void	ft_swap_1(t_stack **Stack, char c)
 {
 	t_stack	*tmp1;
 	t_stack	*tmp2;

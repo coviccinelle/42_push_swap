@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/28 16:23:00 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/28 17:57:16 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,9 +59,9 @@ int		ft_display_stack(t_stack *Stack);
 //       -----  OPERATIONS FUNCTIONS -----       //
 //
 //
-void	ft_swap(t_stack **Stack, char c);
-int		ft_push(t_stack	**list_p, t_stack	**list_t, char c);
-int		ft_rotate(t_stack **list, char c);
+void	ft_swap(t_stack *Stack, char c);
+int		ft_push(t_stack	*st_t, t_stack	*st_r, char c);
+void		ft_rotate_i(t_stack *Stack, char c);
 int		ft_reverse(t_stack **list, char c);
 int		ft_list_len(t_stack **list);
 

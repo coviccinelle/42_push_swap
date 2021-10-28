@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/26 17:57:44 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/28 18:11:42 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,70 @@ int		ft_display_stack(t_stack *Stack)
 //       -----  OPERATIONS FUNCTIONS -----       //
 //
 //
-/*void	ft_swap(t_stack **Stack, char c)
+void	ft_swap(t_stack *Stack, char c)
 {
-	t_stack *tmp;
+	t_stack *tmp1;
 	t_stack	*tmp2;
 
-	if (
+	if (ft_size_stack(&Stack) >= 2)
+	{
+		tmp1 = Stack;
+		tmp2 = Stack->next;
+		tmp2 = tmp2->next;
+		Stack = Stack->next;
+		Stack->next = tmp1;
+		tmp1->next = tmp2;
+	}
+	printf("\n -----s%c-----\n", c);
+	ft_display_stack(Stack);
 }
-*/
 
 
+void	ft_rotate_i(t_stack *Stack, char c)
+{
+	t_stack	*tmp1;
+	t_stack	*tmp_curs;
+
+	if (ft_size_stack(&Stack) >= 2)
+	{
+		tmp1 = Stack;
+		tmp_curs = Stack;
+		Stack = Stack->next;
+		while (tmp_curs->next)
+			tmp_curs = tmp_curs->next;
+		tmp_curs->next = tmp1;
+		tmp1->next = NULL;
+	}
+	printf("\n -----r%c-----\n", c);
+	ft_display_stack(Stack);
+}
+
+//St_t = Stack take;
+//St_r = Stack receive;
+int	ft_push(t_stack *st_t, t_stack *st_r, char c)
+{
+	t_stack	*tmp1;
+	t_stack	*tmp2;
+
+	printf("\n -----ft_stack_a avant = %c-----\n", c);
+	ft_display_stack(st_t);
+	if (!st_t)
+		return (0);
+	else
+	{
+		tmp1 = st_t;//list_a
+		tmp2 = st_r;//list_b
+		st_t = st_t->next;
+		//st_t = st_t->next;
+		st_r = tmp1;
+		tmp1->next = tmp2;
+	}
+	printf("\n -----Satck  b   %c-----\n", c);
+	ft_display_stack(st_t);
+	printf("\n -----p%c-----\n", c);
+	ft_display_stack(st_r);
+	return (0);
+}
 
 // PARSING PART //
 
