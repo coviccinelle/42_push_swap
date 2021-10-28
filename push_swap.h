@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/26 17:59:33 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/28 16:23:00 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	ft_strlen(char *str);
 int	ft_invalid_char(char *str);
 int	ft_min(int a, int b);
 int	ft_max(int a, int b);
-
+int	ft_2nb_stick(char *str);
 
 // PARSING PARTs //
 int	ft_parsing_1(char *str);

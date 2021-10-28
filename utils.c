@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:48:26 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/26 16:38:13 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/28 16:22:43 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,25 @@ int	ft_invalid_char(char *str)
 	return (0);
 }
 
+
+int	ft_2nb_stick(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		while (find_me(str[i], "- 0123456789"))
+		{
+			if (find_me(str[i], "0123456789") && str[i + 1] == ' '
+						&& ft_int_exist(&str[i + 1]))
+				return (1);
+			i++;
+		}
+		i++;
+	}
+	return (0);
+}
 
 int	ft_min(int a, int b)
 {
