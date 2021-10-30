@@ -6,7 +6,7 @@
 #    By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:09:08 by thi-phng          #+#    #+#              #
-#    Updated: 2021/10/26 17:26:06 by thi-phng         ###   ########.fr        #
+#    Updated: 2021/10/30 16:14:54 by thi-phng         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS		=	-Wall -Wextra -Werror
 
 RM			=	rm -rf
 
-CC			=	gcc
+CC			=	clang
 
 SRCS		=	push_swap.c \
 				parsing.c \

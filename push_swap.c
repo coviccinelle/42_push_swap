@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/28 18:11:42 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/30 18:02:58 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,13 +92,45 @@ void	ft_swap(t_stack *Stack, char c)
 	ft_display_stack(Stack);
 }
 
+void	ft_ss(t_stack *Stack_a, t_stack *Stack_b)
+{
+	t_stack	*tmp1;
+	t_stack	*tmp2;
 
-void	ft_rotate_i(t_stack *Stack, char c)
+	if (ft_size_stack(&Stack_a) >= 2)
+	{
+		tmp1 = Stack_a;
+		tmp2 = Stack_a->next;
+		tmp2 = tmp2->next;
+		Stack_a = Stack_a->next;
+		Stack_a->next = tmp1;
+		tmp1->next = tmp2;
+	}
+	if (ft_size_stack(&Stack_b) >= 2)
+	{
+		tmp1 = Stack_b;
+		tmp2 = Stack_b->next;
+		tmp2 = tmp2->next;
+		Stack_b = Stack_b->next;
+		Stack_b->next = tmp1;
+		tmp1->next = tmp2;
+	}
+	printf("ss\n");
+	printf("Stack_a swaped\n");
+	ft_display_stack(Stack_a);
+	printf("Stack_b swaped\n");
+	ft_display_stack(Stack_b);
+}
+
+
+int	ft_rotate(t_stack *Stack, char c)
 {
 	t_stack	*tmp1;
 	t_stack	*tmp_curs;
 
-	if (ft_size_stack(&Stack) >= 2)
+	if (!Stack)
+		return (0);
+	else
 	{
 		tmp1 = Stack;
 		tmp_curs = Stack;
@@ -110,6 +142,98 @@ void	ft_rotate_i(t_stack *Stack, char c)
 	}
 	printf("\n -----r%c-----\n", c);
 	ft_display_stack(Stack);
+	return (1);
+}
+
+int	ft_rr(t_stack *Stack_a, t_stack *Stack_b)
+{
+	t_stack	*tmp1;
+	t_stack	*tmp_curs;
+
+	if (Stack_a)
+	{
+		tmp1 = Stack_a;
+		tmp_curs = Stack_a;
+		Stack_a = Stack_a->next;
+		while (tmp_curs->next)
+			tmp_curs = tmp_curs->next;
+		tmp_curs->next = tmp1;
+		tmp1->next = NULL;
+	}
+	if (Stack_b)
+	{
+		tmp1 = Stack_b;
+		tmp_curs = Stack_b;
+		Stack_b = Stack_b->next;
+		while (tmp_curs->next)
+			tmp_curs = tmp_curs->next;
+		tmp_curs->next = tmp1;
+		tmp1->next = NULL;
+	}
+	printf("-----rr-----\nStack_a rotated =\n");
+	ft_display_stack(Stack_a);
+	printf("\nStack_b rotated =\n");
+	ft_display_stack(Stack_b);
+	return (1);
+}
+
+
+int	ft_reverse_rotate(t_stack *Stack, char c)
+{
+	t_stack	*tmp1;
+	t_stack	*tmp_run;
+
+	if (!Stack)
+		return (0);
+	else
+	{
+		tmp1 = Stack;
+		while (Stack->next)
+		{
+			tmp_run = Stack;
+			Stack = Stack->next;
+		}
+		tmp_run->next = NULL;
+		Stack->next = tmp1;
+	}
+	printf("rr%c\n", c);
+	ft_display_stack(Stack);
+	return (1);
+}
+
+
+int	ft_rr_ro(t_stack *Stack)
+{
+	t_stack	*tmp1;
+	t_stack	*tmp_run;
+
+	if (!Stack)
+		return (0);
+	else
+//	if (Stack)
+	{
+		tmp1 = Stack;
+		while (Stack->next)
+		{
+			tmp_run = Stack;
+			Stack = Stack->next;
+		}
+		tmp_run->next = NULL;
+		Stack->next = tmp1;
+	}
+	printf("stack reverse rotatedi = \n");
+	ft_display_stack(Stack);
+	return (1);
+}
+
+
+void	ft_rrr(t_stack *Stack_a, t_stack *Stack_b)
+{
+	if (Stack_a)
+		ft_rr_ro(Stack_a);
+	if (Stack_b)
+		ft_rr_ro(Stack_b);
+	printf("rrr\n");
 }
 
 //St_t = Stack take;
@@ -128,7 +252,6 @@ int	ft_push(t_stack *st_t, t_stack *st_r, char c)
 		tmp1 = st_t;//list_a
 		tmp2 = st_r;//list_b
 		st_t = st_t->next;
-		//st_t = st_t->next;
 		st_r = tmp1;
 		tmp1->next = tmp2;
 	}
@@ -138,6 +261,45 @@ int	ft_push(t_stack *st_t, t_stack *st_r, char c)
 	ft_display_stack(st_r);
 	return (0);
 }
+
+
+// DOUBLONS PART //
+//
+//
+int	ft_doublons(t_stack *Stack)
+{
+	t_stack	*tmp1;
+	t_stack	*tmp2;
+
+	tmp1 = Stack;
+//	if (ft_size_stack(Stack) < 2 || !Stack || !tmp1 || !tmp2)
+	if (!Stack || !tmp1 || !tmp1->next)
+		return (0);
+	tmp2 = tmp1->next;
+//	while (tmp1->next)
+	while (tmp1)
+	{
+	//	while(tmp2->next)
+		while (tmp2)
+		{
+			if (tmp1->number == tmp2->number)
+			{
+				printf("Error\nDouble number\n");
+				return (0);
+			}
+			tmp2 = tmp2->next;
+		}
+		tmp1 = tmp1->next;
+		if (tmp1->next == NULL) // ???
+			break;
+		tmp2 = tmp1->next;
+	}
+	return (0);
+}
+
+
+
+
 
 // PARSING PART //
 

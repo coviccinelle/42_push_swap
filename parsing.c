@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:38:27 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/28 18:11:10 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/30 18:01:42 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,16 +67,26 @@ int	ft_parsing_multi_2(int ac, char **av)
 		{
 			n = ft_atoi_1(av[i]);
 			ft_new_element(&Stack, n);
+			ft_new_element(&Stack_b, n);
 			printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
 		}
 		i++;
 	}
+	printf("Stack_a\n");
 	ft_display_stack(Stack);
+	printf("Stack_b\n");
+	ft_display_stack(Stack_b);
 	//ft_swap(Stack, 'a');
-	//ft_rotate_i(Stack, 'a');
+//	ft_rotate_i(Stack, 'a');
 	printf("\n-------\n");
-	ft_push(Stack, Stack_b, 'a');
+//	ft_ss(Stack, Stack_b);
+//	ft_reverse_rotate(Stack, 'a');
+//	ft_rr_ro(Stack);
+	ft_rrr(Stack, Stack_b);
+//	ft_push(Stack, Stack_b, 'a');
+//	printf("Stack_a ---- after\n");
 //	ft_display_stack(Stack);
+//	printf("Stack_b ---- after\n");
 //	ft_display_stack(Stack_b);
 	return (0);
 }

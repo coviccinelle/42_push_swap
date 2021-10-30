@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/28 17:57:16 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/10/30 17:34:45 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,16 @@ int		ft_display_stack(t_stack *Stack);
 //
 void	ft_swap(t_stack *Stack, char c);
 int		ft_push(t_stack	*st_t, t_stack	*st_r, char c);
-void		ft_rotate_i(t_stack *Stack, char c);
-int		ft_reverse(t_stack **list, char c);
+int		ft_rotate(t_stack *Stack, char c);
+int		ft_reverse_rotate(t_stack *Stack, char c);
 int		ft_list_len(t_stack **list);
 
-void	ft_ss(t_stack **list_a, t_stack **list_b);
-void	ft_rr(t_stack **list_a, t_stack **list_b);
-void	ft_rrr(t_stack **list_a, t_stack **list_b);
-void	ft_r_rr(t_stack **list);
-
+void	ft_ss(t_stack *Stack_a, t_stack *Stack_b);
+// Swap a and b
+int		ft_rr(t_stack *Stack_a, t_stack *Stack_b);
+// Rotate a and b
+int		ft_rr_ro(t_stack *Stack);
+void	ft_rrr(t_stack *Stack_a, t_stack *Stack_b);
+// Reverse Rotate a and b
 
 #endif
