@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/30 18:02:58 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/01 16:25:32 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -285,7 +285,7 @@ int	ft_doublons(t_stack *Stack)
 			if (tmp1->number == tmp2->number)
 			{
 				printf("Error\nDouble number\n");
-				return (0);
+				return (1);
 			}
 			tmp2 = tmp2->next;
 		}

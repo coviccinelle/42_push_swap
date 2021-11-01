@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/30 17:34:45 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/01 16:21:49 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		ft_check_double(t_stack **list_a);
 void	ft_new_element(t_stack	**Stack, int n);
 int		ft_size_stack(t_stack **Stack);
 int		ft_display_stack(t_stack *Stack);
+int		ft_doublons(t_stack *Stack);
 
 
 

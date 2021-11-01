@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:38:27 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/30 18:01:42 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/01 16:26:42 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,10 @@ int	ft_parsing_1(char *str)
 		i++;
 	}
 	printf("Size of Stack = %d\n", ft_size_stack(&Stack));
-	ft_display_stack(Stack);
+	if (ft_doublons(Stack))
+		return (0);
+	else
+		ft_display_stack(Stack);
 	return (0);
 }
 
@@ -72,21 +75,26 @@ int	ft_parsing_multi_2(int ac, char **av)
 		}
 		i++;
 	}
-	printf("Stack_a\n");
-	ft_display_stack(Stack);
-	printf("Stack_b\n");
-	ft_display_stack(Stack_b);
-	//ft_swap(Stack, 'a');
-//	ft_rotate_i(Stack, 'a');
-	printf("\n-------\n");
-//	ft_ss(Stack, Stack_b);
-//	ft_reverse_rotate(Stack, 'a');
-//	ft_rr_ro(Stack);
-	ft_rrr(Stack, Stack_b);
-//	ft_push(Stack, Stack_b, 'a');
-//	printf("Stack_a ---- after\n");
-//	ft_display_stack(Stack);
-//	printf("Stack_b ---- after\n");
-//	ft_display_stack(Stack_b);
+	if (ft_doublons(Stack))
+		return (0);
+	else
+	{
+		printf("Stack_a\n");
+		ft_display_stack(Stack);
+		printf("Stack_b\n");
+		ft_display_stack(Stack_b);
+	//	ft_swap(Stack, 'a');
+//		ft_rotate_i(Stack, 'a');
+		printf("\n-------\n");
+//		ft_ss(Stack, Stack_b);
+//		ft_reverse_rotate(Stack, 'a');
+//		ft_rr_ro(Stack);
+		ft_rrr(Stack, Stack_b);
+//		ft_push(Stack, Stack_b, 'a');
+//		printf("Stack_a ---- after\n");
+//		ft_display_stack(Stack);
+//		printf("Stack_b ---- after\n");
+//		ft_display_stack(Stack_b);
+	}
 	return (0);
 }
