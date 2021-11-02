@@ -6,7 +6,7 @@
 #    By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:09:08 by thi-phng          #+#    #+#              #
-#    Updated: 2021/10/30 16:14:54 by thi-phng         ###   ########.fr        #
+#    Updated: 2021/11/01 17:09:55 by thi-phng         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,30 @@ SRCS		=	push_swap.c \
 
 OBJS		=	$(SRCS:.c=.o)
 
+
+.SILENT:
+CRED 	= \033[0;31m
+CORANGE	= \033[0;33m
+CYELLOW	= \033[1;33m
+CGREEN 	= \033[0;32m
+CCYAN 	= \033[1;36m
+CBLUE 	= \033[0;34m
+CPURPLE	= \033[0;35m
+
+all:			TITLE $(NAME)
+				printf "${CYELLOW} \n"
+				@echo Clumsy Push Swap is on the way!
+				printf "${CPURPLE} \n"
+
+TITLE:
+	printf "${CRED}  _   ${CORANGE} _     ${CYELLOW}_  ${CGREEN}    ${CCYAN}       ${CBLUE} _     ${CPURPLE}     ${CRED}      \n"
+	printf "${CRED} | |_ ${CORANGE}| |_  ${CYELLOW}(_)${CGREEN} ___ ${CCYAN} _ __  ${CBLUE}| |_   ${CPURPLE}_ _  ${CRED} __ _ \n"
+	printf "${CRED} |  _|${CORANGE}| ' \\ ${CYELLOW}| |${CGREEN}|___|${CCYAN}| '_ \\ ${CBLUE}| ' \\ ${CPURPLE}| ' \\ ${CRED}/ _\` |\n"
+	printf "${CRED}  \__|${CORANGE}|_||_|${CYELLOW}|_|${CGREEN}     ${CCYAN}| .__/ ${CBLUE}|_||_|${CPURPLE}|_||_|${CRED}\\__, |\n"
+	printf "${CRED}      ${CORANGE}      ${CYELLOW}   ${CGREEN}     ${CCYAN}|_|     ${CBLUE}     ${CPURPLE}      ${CRED}|___/ \n"
+	printf "${CYELLOW} \n"
+
+
 %.o : %.c
 				$(CC) -c $(CFLAGS) -o $@ $<
 
@@ -44,6 +68,6 @@ clean:
 fclean:			clean
 						$(RM) $(NAME)
 
-re:				fclean $(NAME)
+re:				fclean all
 
 .PHONY:			all clean fclean re
