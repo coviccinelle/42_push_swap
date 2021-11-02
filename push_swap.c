@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/01 16:25:32 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/02 13:49:01 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void	ft_swap(t_stack *Stack, char c)
 	if (ft_size_stack(&Stack) >= 2)
 	{
 		tmp1 = Stack;
-		tmp2 = Stack->next;
-		tmp2 = tmp2->next;
+		tmp2 = Stack->next->next;
+//		tmp2 = tmp2->next;
 		Stack = Stack->next;
 		Stack->next = tmp1;
 		tmp1->next = tmp2;
@@ -302,27 +302,32 @@ int	ft_doublons(t_stack *Stack)
 
 
 // PARSING PART //
-
+void	init(t_env *f)
+{
+	f->Stack_a = NULL;
+	f->Stack_b = NULL;
+}
 
 
 int	main(int ac, char **av)
 {
-//	t_stack f;
+	t_env f;
 
-//	init(&f);
+	init(&f);
 	if (ac > 1)
 	{
 		if (ac == 2)
 		{
 			printf("All in one agrument => Parsing for only one\n");
-			ft_parsing_1(av[1]);
+			if (ft_parsing_1(av[1]);
 //			ft_start_algo();
 			return (0);
 		}
 		if (ac > 2)
 		{
 			printf("Oh oh there's more to come => Parsing for a lot at the same time\n");
-			ft_parsing_multi_2(ac, &*av);
+			if (ft_parsing_multi_2(ac, &*av))
+				ft_algo(f.Stack_a, f.Stack_b);
 //			ft_start_algo();
 		}
 //		ft_free_stack(a vs b);

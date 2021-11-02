@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/01 16:21:49 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/02 13:43:16 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,19 @@
 typedef struct	s_stack
 {
 	int				number;
-	void			*next;
+	struct s_stack	*next;
+	int				index;
+	int				diff;
+	int				in_order;
+	int				la;
 }				t_stack;
 
 
+typedef struct	s_env
+{
+	t_stack		*Stack_a;
+	t_stack		*Stack_b;
+}				t_env;
 
 // UTILS //
 //
