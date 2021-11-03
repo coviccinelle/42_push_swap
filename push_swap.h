@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/02 13:43:16 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/03 11:40:12 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,16 @@ int		ft_rr(t_stack *Stack_a, t_stack *Stack_b);
 int		ft_rr_ro(t_stack *Stack);
 void	ft_rrr(t_stack *Stack_a, t_stack *Stack_b);
 // Reverse Rotate a and b
+
+
+//       -----  ALGORYTHME FUNCTIONS -----       //
+//
+//
+
+void	ft_algo(t_stack *Stack_a, t_stack *Stack_b);
+void	ft_algo_3(t_stack *Stack);
+void	ft_algo_5(t_stack *Stack);
+void	ft_algo_big(t_stack *Stack_a, t_stack *Stack_b);
+
 
 #endif
