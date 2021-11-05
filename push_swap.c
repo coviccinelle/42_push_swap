@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/03 11:45:27 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/05 09:43:09 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -320,14 +320,16 @@ int	main(int ac, char **av)
 		{
 			printf("All in one agrument => Parsing for only one\n");
 			if (ft_parsing_1(av[1]))
-				ft_algo(f.Stack_a, f.Stack_b);
-			return (0);
+				printf("It's okay parsing only one, you can go out now\n");
+	//			ft_algo(f.Stack_a, f.Stack_b);
+	//		return (0);
 		}
 		if (ac > 2)
 		{
 			printf("Oh oh there's more to come => Parsing for a lot at the same time\n");
 			if (ft_parsing_multi_2(ac, &*av))
-				ft_algo(f.Stack_a, f.Stack_b);
+				printf("It's okay parsing multi, you can go out now\n");
+	//			ft_algo(f.Stack_a, f.Stack_b);
 		}
 //		ft_free_stack(a vs b);
 	}

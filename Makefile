@@ -6,7 +6,7 @@
 #    By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:09:08 by thi-phng          #+#    #+#              #
-#    Updated: 2021/11/03 11:40:42 by thi-phng         ###   ########.fr        #
+#    Updated: 2021/11/05 09:41:39 by thi-phng         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,6 @@ CC			=	clang
 SRCS		=	push_swap.c \
 				parsing.c \
 				utils.c \
-				algo_3.c \
-				algo_principale \
 
 
 
