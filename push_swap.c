@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/05 15:38:42 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/05 18:28:47 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,11 @@ void	ft_swap(t_stack *Stack, char c)
 	{
 		tmp1 = Stack;
 		tmp2 = Stack->next->next;
-//		tmp2 = tmp2->next;
 		Stack = Stack->next;
 		Stack->next = tmp1;
 		tmp1->next = tmp2;
 	}
-	printf("\n -----s%c-----\n", c);
+	printf(" -----s%c-----\n", c);
 	ft_display_stack(Stack);
 }
 
@@ -171,9 +170,9 @@ int	ft_rr(t_stack *Stack_a, t_stack *Stack_b)
 		tmp1->next = NULL;
 	}
 	printf("-----rr-----\nStack_a rotated =\n");
-	ft_display_stack(Stack_a);
+//	ft_display_stack(Stack_a);
 	printf("\nStack_b rotated =\n");
-	ft_display_stack(Stack_b);
+//	ft_display_stack(Stack_b);
 	return (1);
 }
 
@@ -183,10 +182,13 @@ int	ft_reverse_rotate(t_stack *Stack, char c)
 	t_stack	*tmp1;
 	t_stack	*tmp_run;
 
+	ft_display_stack(Stack);
 	if (!Stack)
 		return (0);
 	else
 	{
+		ft_display_stack(Stack);
+		printf("-----rr-----\nStack_a will be reserve_rotate =\n");
 		tmp1 = Stack;
 		while (Stack->next)
 		{
