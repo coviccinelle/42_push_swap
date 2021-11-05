@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/05 09:43:09 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/05 15:38:42 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -322,14 +322,14 @@ int	main(int ac, char **av)
 			if (ft_parsing_1(av[1]))
 				printf("It's okay parsing only one, you can go out now\n");
 	//			ft_algo(f.Stack_a, f.Stack_b);
-	//		return (0);
+			return (0);
 		}
 		if (ac > 2)
 		{
 			printf("Oh oh there's more to come => Parsing for a lot at the same time\n");
 			if (ft_parsing_multi_2(ac, &*av))
 				printf("It's okay parsing multi, you can go out now\n");
-	//			ft_algo(f.Stack_a, f.Stack_b);
+		//		ft_algo(f.Stack_a, f.Stack_b);
 		}
 //		ft_free_stack(a vs b);
 	}

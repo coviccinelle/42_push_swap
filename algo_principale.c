@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:29:13 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/03 11:44:25 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/05 15:43:50 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 void	ft_algo(t_stack *Stack_a, t_stack *Stack_b)
 {
+	if (ft_size_stack(&Stack_a) == 1)
+		return ;
+	if (ft_size_stack(&Stack_a) == 2)
+		ft_algo_2(Stack_a);
 	if (ft_size_stack(&Stack_a) == 3)
 		ft_algo_3(Stack_a);
 	if (ft_size_stack(&Stack_a) == 5)
