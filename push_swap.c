@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/05 18:28:47 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/06 18:30:06 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_new_element(t_stack	**Stack, int n)
 	t_stack	*tmp;
 	t_stack	*new;
 
-	tmp = (*Stack);
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
 		return ;
 	//Free tout si jamais il arrive pas a allouer tout //
@@ -34,6 +33,7 @@ void	ft_new_element(t_stack	**Stack, int n)
 	}
 	else
 	{
+		tmp = *Stack;
 		while(tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
@@ -82,13 +82,17 @@ void	ft_swap(t_stack *Stack, char c)
 	if (ft_size_stack(&Stack) >= 2)
 	{
 		tmp1 = Stack;
+		printf("tmp1 = %d\n", tmp1->number);
 		tmp2 = Stack->next->next;
+		printf("tmp2 = %d\n", tmp2->number);
 		Stack = Stack->next;
+		printf("Stack = %d\n", Stack->number);
 		Stack->next = tmp1;
 		tmp1->next = tmp2;
 	}
 	printf(" -----s%c-----\n", c);
 	ft_display_stack(Stack);
+	printf(" --- Done ---s%c-----\n", c);
 }
 
 void	ft_ss(t_stack *Stack_a, t_stack *Stack_b)
@@ -99,8 +103,7 @@ void	ft_ss(t_stack *Stack_a, t_stack *Stack_b)
 	if (ft_size_stack(&Stack_a) >= 2)
 	{
 		tmp1 = Stack_a;
-		tmp2 = Stack_a->next;
-		tmp2 = tmp2->next;
+		tmp2 = Stack_a->next->next;
 		Stack_a = Stack_a->next;
 		Stack_a->next = tmp1;
 		tmp1->next = tmp2;
@@ -108,17 +111,16 @@ void	ft_ss(t_stack *Stack_a, t_stack *Stack_b)
 	if (ft_size_stack(&Stack_b) >= 2)
 	{
 		tmp1 = Stack_b;
-		tmp2 = Stack_b->next;
-		tmp2 = tmp2->next;
+		tmp2 = Stack_b->next->next;
 		Stack_b = Stack_b->next;
 		Stack_b->next = tmp1;
 		tmp1->next = tmp2;
 	}
 	printf("ss\n");
 	printf("Stack_a swaped\n");
-	ft_display_stack(Stack_a);
+	//ft_display_stack(Stack_a);
 	printf("Stack_b swaped\n");
-	ft_display_stack(Stack_b);
+	//ft_display_stack(Stack_b);
 }
 
 
@@ -140,7 +142,7 @@ int	ft_rotate(t_stack *Stack, char c)
 		tmp1->next = NULL;
 	}
 	printf("\n -----r%c-----\n", c);
-	ft_display_stack(Stack);
+//	ft_display_stack(Stack);
 	return (1);
 }
 
@@ -199,7 +201,7 @@ int	ft_reverse_rotate(t_stack *Stack, char c)
 		Stack->next = tmp1;
 	}
 	printf("rr%c\n", c);
-	ft_display_stack(Stack);
+//	ft_display_stack(Stack);
 	return (1);
 }
 
@@ -224,7 +226,7 @@ int	ft_rr_ro(t_stack *Stack)
 		Stack->next = tmp1;
 	}
 	printf("stack reverse rotatedi = \n");
-	ft_display_stack(Stack);
+//	ft_display_stack(Stack);
 	return (1);
 }
 
@@ -258,9 +260,9 @@ int	ft_push(t_stack *st_t, t_stack *st_r, char c)
 		tmp1->next = tmp2;
 	}
 	printf("\n -----Satck  b   %c-----\n", c);
-	ft_display_stack(st_t);
+//	ft_display_stack(st_t);
 	printf("\n -----p%c-----\n", c);
-	ft_display_stack(st_r);
+//	ft_display_stack(st_r);
 	return (0);
 }
 

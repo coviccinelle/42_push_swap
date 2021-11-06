@@ -6,7 +6,7 @@
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:38:27 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/05 18:29:10 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/06 18:31:04 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int	ft_parsing_multi_2(int ac, char **av)
 		printf("Stack_a\n");
 		ft_display_stack(Stack);
 		printf("-------\n");
-		printf("-------\n");
+		printf("---Starting algo----\n");
 		ft_algo(Stack);
 		printf("\n----done algo---\n");
 		/*printf("Stack_a\n");
