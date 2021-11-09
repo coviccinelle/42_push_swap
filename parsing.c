@@ -82,7 +82,6 @@ int	ft_parsing_multi_2(int ac, char **av)
 		}
 		else
 		{	
-			printf("coucou dans else \n");
 			n = ft_atoi_1(av[i]);
 			printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
 			ft_new_element(stack, n);
