@@ -24,6 +24,7 @@ void	ft_new_element(t_stack	**stack, int n)
 
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
 		return ;
+	printf("coucou\n");
 	//Free tout si jamais il arrive pas a allouer tout //
 	if (*stack == NULL)
 	{
@@ -227,7 +228,7 @@ int	ft_rr_ro(t_stack **stack)
 		(*stack)->next = tmp1;
 	}
 	printf("stack reverse rotatedi = \n");
-//	ft_display_stack(Stack);
+	ft_display_stack(*stack);
 	return (1);
 }
 
@@ -281,10 +282,8 @@ int	ft_doublons(t_stack *Stack)
 	if (!Stack || !tmp1 || !tmp1->next)
 		return (0);
 	tmp2 = tmp1->next;
-//	while (tmp1->next)
 	while (tmp1)
 	{
-	//	while(tmp2->next)
 		while (tmp2)
 		{
 			if (tmp1->number == tmp2->number)
@@ -326,7 +325,6 @@ int	main(int ac, char **av)
 			printf("All in one agrument => Parsing for only one\n");
 			if (ft_parsing_1(av[1]))
 				printf("It's okay parsing only one, you can go out now\n");
-	//			ft_algo(f.Stack_a, f.Stack_b);
 			return (0);
 		}
 		if (ac > 2)
@@ -334,7 +332,6 @@ int	main(int ac, char **av)
 			printf("Oh oh there's more to come => Parsing for a lot at the same time\n");
 			if (ft_parsing_multi_2(ac, &*av))
 				printf("It's okay parsing multi, you can go out now\n");
-		//		ft_algo(f.Stack_a, f.Stack_b);
 		}
 //		ft_free_stack(a vs b);
 	}
