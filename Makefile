@@ -83,7 +83,4 @@ javel:
 
 re:				fclean all
 
-go:				javel fclean all clean
-				./$(NAME) 3 2 1
-
 .PHONY:			all clean fclean re
