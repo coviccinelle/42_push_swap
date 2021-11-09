@@ -19,11 +19,11 @@ int	ft_parsing_1(char *str)
 {
 	int	i;
 	int	n;
-	t_stack *Stack;
-	//t_stack *Stack_b;
+	t_stack **stack = NULL;
+	t_stack **stack_b = NULL;
 
-	Stack = NULL;
-	//Stack_b = NULL;
+	*stack = NULL;
+	*stack_b = NULL;
 	i = 0;
 	if (!ft_int_exist(str) || ft_invalid_char(str))
 	{
@@ -33,7 +33,7 @@ int	ft_parsing_1(char *str)
 	while (str[i] &&(i <= ft_strlen(str)))
 	{
 		n = ft_atoi_1(&str[i]);
-		ft_new_element(&Stack, n);
+		ft_new_element(stack, n);
 		printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
 		while (str[i] == ' ')
 			i++;
@@ -43,15 +43,15 @@ int	ft_parsing_1(char *str)
 			break ;
 		i++;
 	}
-	printf("Size of Stack = %d\n", ft_size_stack(&Stack));
-	if (ft_doublons(Stack))
+	printf("Size of Stack = %d\n", ft_size_stack(stack));
+	if (ft_doublons(*stack))
 		return (0);
 	else
 	{
 		printf("Display Stack_a\n");
-		ft_display_stack(Stack);
+		ft_display_stack(*stack);
 		printf("\n-------\n");
-		ft_algo(Stack);
+		ft_algo(stack, stack_b);
 		printf("\n-------\n");
 	}
 	return (0);
@@ -61,37 +61,44 @@ int	ft_parsing_multi_2(int ac, char **av)
 {
 	int		i;
 	int		n;
-	t_stack *Stack;
-	//t_stack *Stack_b;
+	t_stack **stack = NULL;
+	t_stack **stack_b = NULL;
 
-	//Stack_b = NULL;
-	Stack = NULL;
+//	*stack_b = NULL;
+//	*stack = NULL;
+	printf("hello allo allo inside parsing_multi\n");
 	i = 1;
+	printf("ac = %d\n", ac);
 	while (i < ac)
 	{
+		printf("hello allo allo dans boucles \n");
+		printf("ft_invalid_char = %i\n", ft_invalid_char(av[1]));
+		printf("ft_all_blank = %i\n", ft_all_blank(av[1]));
+		printf("ft_2nb_stick = %i\n", ft_2nb_stick(av[1]));
 		if (ft_invalid_char(av[i]) || ft_all_blank(av[i]) || ft_2nb_stick(av[i]))
 		{
 			printf("Error\nWrong Wroong argruments\n");
 			return (0) ;
 		}
 		else
-		{
+		{	
+			printf("coucou dans else \n");
 			n = ft_atoi_1(av[i]);
-			ft_new_element(&Stack, n);
-	//		ft_new_element(&Stack_b, n);
+			printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
+			ft_new_element(stack, n);
 			printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
 		}
 		i++;
 	}
-	if (ft_doublons(Stack))
+	if (ft_doublons(*stack))
 		return (0);
 	else
 	{
 		printf("Stack_a\n");
-		ft_display_stack(Stack);
+		ft_display_stack(*stack);
 		printf("-------\n");
 		printf("---Starting algo----\n");
-		ft_algo(Stack);
+		ft_algo(stack, stack_b);
 		printf("\n----done algo---\n");
 		/*printf("Stack_a\n");
 		ft_display_stack(Stack);
