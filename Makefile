@@ -18,7 +18,8 @@ RM			=	rm -rf
 
 CC			=	clang
 
-FILES 		= 	push_swap.c \
+FILES 		= 	main.c \
+				push_swap.c \
 				parsing.c \
 				utils.c \
 				algo_principale.c \
@@ -62,18 +63,27 @@ $(OBJDIR)/%.o : $(SRCDIR)/%.c
 all:			$(NAME)
 
 $(NAME) :		build $(OBJS)
-						$(CC) $(CLAGS) $(OBJS) -o $(NAME)
+				make -C libft/
+						$(CC) $(CLAGS) $(OBJS) -L libft/ -lft -o $(NAME)
 
 build:			
 				mkdir -p $(OBJDIR)
 
 clean:			
+				make -C libft/ clean
 				rm -rf $(OBJDIR)
 				$(RM) $(OBJS)
 
 fclean:			clean
+				make -C libft/ fclean
 						$(RM) $(NAME)
 
+javel:		
+				clear
+
 re:				fclean all
+
+go:				javel fclean all clean
+				./$(NAME) 3 2 1
 
 .PHONY:			all clean fclean re

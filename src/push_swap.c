@@ -44,7 +44,7 @@ int		ft_size_stack(t_stack **stack)
 	return (i);
 }
 
-int		ft_display_stack(t_stack *stack)
+void		ft_display_stack(t_stack *stack)
 {
 	t_stack		*tmp;
 
@@ -54,12 +54,9 @@ int		ft_display_stack(t_stack *stack)
 		printf("%d\n", tmp->number);
 		tmp = tmp->next;
 	}
-	return (0);
 }
 
 //       -----  OPERATIONS FUNCTIONS -----       //
-//
-//
 void	ft_swap(t_stack **stack, char c)
 {
 	t_stack *tmp1;
@@ -108,7 +105,6 @@ void	ft_ss(t_stack **stack_a, t_stack **stack_b)
 	printf("stack_b swaped\n");
 	//ft_display_stack(stack_b);
 }
-
 
 int	ft_rotate(t_stack **stack, char c)
 {
@@ -164,7 +160,6 @@ int	ft_rr(t_stack **stack_a, t_stack **stack_b)
 	return (1);
 }
 
-
 int	ft_reverse_rotate(t_stack **stack, char c)
 {
 	t_stack	*tmp1;
@@ -191,7 +186,6 @@ int	ft_reverse_rotate(t_stack **stack, char c)
 	return (1);
 }
 
-
 int	ft_rr_ro(t_stack **stack)
 {
 	t_stack	*tmp1;
@@ -215,7 +209,6 @@ int	ft_rr_ro(t_stack **stack)
 	ft_display_stack(*stack);
 	return (1);
 }
-
 
 void	ft_rrr(t_stack **stack_a, t_stack **stack_b)
 {
@@ -254,8 +247,6 @@ int	ft_push(t_stack **st_t, t_stack **st_r, char c)
 
 
 // DOUBLONS PART //
-//
-//
 int	ft_doublons(t_stack *stack)
 {
 	t_stack	*tmp1;
@@ -280,43 +271,6 @@ int	ft_doublons(t_stack *stack)
 		if (tmp1->next == NULL) // ???
 			break;
 		tmp2 = tmp1->next;
-	}
-	return (0);
-}
-
-
-
-
-
-// PARSING PART //
-void	init(t_env *f)
-{
-	f->stack_a = NULL;
-	f->stack_b = NULL;
-}
-
-
-int	main(int ac, char **av)
-{
-	t_env f;
-
-	init(&f);
-	if (ac > 1)
-	{
-		if (ac == 2)
-		{
-			printf("All in one agrument => Parsing for only one\n");
-			if (ft_parsing_1(av[1]))
-				printf("It's okay parsing only one, you can go out now\n");
-			return (0);
-		}
-		if (ac > 2)
-		{
-			printf("Oh oh there's more to come => Parsing for a lot at the same time\n");
-			if (ft_parsing_multi_2(ac, &*av))
-				printf("It's okay parsing multi, you can go out now\n");
-		}
-//		ft_free_stack(a vs b);
 	}
 	return (0);
 }

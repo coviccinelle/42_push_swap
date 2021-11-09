@@ -12,21 +12,11 @@
 
 #include "push_swap.h"
 
-// PARSING PART //
-
-
-int	ft_parsing_1(char *str)
-{
-	// TODO: better way
-	printf("%s", str);
-	return (0);
-}
-
-int	ft_parsing_multi_2(int ac, char **av)
+t_stack	*ft_parsing(int ac, char **av)
 {
 	int		i;
 	int		n;
-	t_stack **start_stack_a = NULL;
+	t_stack *start_stack_a = NULL;
 	t_stack *current_stack_a = NULL;
 
 	i = 1;
@@ -42,7 +32,7 @@ int	ft_parsing_multi_2(int ac, char **av)
 			n = ft_atoi_1(av[i]);
 			if (i == 1) { // first element
 				current_stack_a = ft_new_element(n);
-				start_stack_a = &current_stack_a;
+				start_stack_a = current_stack_a;
 			} else {
 				current_stack_a->next = ft_new_element(n);
 				current_stack_a = current_stack_a->next;
@@ -50,16 +40,7 @@ int	ft_parsing_multi_2(int ac, char **av)
 		}
 		i++;
 	}
-	if (ft_doublons(*start_stack_a))
-		return (0);
-	else
-	{
-		printf("stack_a\n");
-		ft_display_stack(*start_stack_a);
-		printf("-------\n");
-		printf("---Starting algo----\n");
-		ft_algo(start_stack_a);
-		printf("\n----done algo---\n");
-	}
-	return (0);
+	if (ft_doublons(start_stack_a))
+		return NULL;
+	return start_stack_a;
 }

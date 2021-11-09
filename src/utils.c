@@ -76,17 +76,6 @@ int	ft_atoi_1(char *str)
 	return (res * neg);
 }
 
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
 int	ft_invalid_char(char *str)
 {
 	int	i;

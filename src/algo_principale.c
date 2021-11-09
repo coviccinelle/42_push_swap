@@ -96,8 +96,6 @@ void	ft_algo_5(t_stack **stack_a)
 }
 
 
-
-
 void	ft_algo_big(t_stack **stack_a)
 {
 	*stack_a = NULL;
