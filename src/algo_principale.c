@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-void	ft_algo(t_stack **stack_a, t_stack **stack_b)
+void	ft_algo(t_stack **stack_a)
 {
 	if (ft_size_stack(stack_a) == 1)
 		return ;
@@ -31,9 +31,9 @@ void	ft_algo(t_stack **stack_a, t_stack **stack_b)
 	if (ft_size_stack(stack_a) == 4)
 		ft_algo_4(stack_a);
 	if (ft_size_stack(stack_a) == 5)
-		ft_algo_5(stack_a, stack_b);
+		ft_algo_5(stack_a);
 	else if (ft_size_stack(stack_a) > 5)
-		ft_algo_big(stack_a, stack_b);
+		ft_algo_big(stack_a);
 }
 
 
@@ -89,19 +89,17 @@ void	ft_algo_4(t_stack **stack_a)
 }
 
 
-void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
+void	ft_algo_5(t_stack **stack_a)
 {
 	*stack_a = NULL;
-	*stack_b = NULL;
 	printf("ft_algo_5 is in construction hihi\n");
 }
 
 
 
 
-void	ft_algo_big(t_stack **stack_a, t_stack **stack_b)
+void	ft_algo_big(t_stack **stack_a)
 {
 	*stack_a = NULL;
-	*stack_b = NULL;
 	printf("ft_algo_big is in construction\nPlease come back later\n");
 }

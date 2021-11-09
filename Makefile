@@ -18,15 +18,20 @@ RM			=	rm -rf
 
 CC			=	clang
 
-SRCS		=	push_swap.c \
+FILES 		= 	push_swap.c \
 				parsing.c \
 				utils.c \
 				algo_principale.c \
 
+OBJFILES    =   $(FILES:.c=.o)
 
+SRCDIR		= 	src
+OBJDIR      =   objects
 
+SRCS		=	$(addprefix $(SRCDIR)/,$(FILES))
 
-OBJS		=	$(SRCS:.c=.o)
+OBJS		=	$(addprefix $(OBJDIR)/,$(OBJFILES))
+
 
 
 .SILENT:
@@ -51,19 +56,19 @@ TITLE:
 	printf "${CRED}      ${CORANGE}      ${CYELLOW}   ${CGREEN}     ${CCYAN}|_|     ${CBLUE}     ${CPURPLE}      ${CRED}|___/ \n"
 	printf "${CYELLOW} \n"
 
-
-%.o : %.c
+$(OBJDIR)/%.o : $(SRCDIR)/%.c
 				$(CC) -c $(CFLAGS) -o $@ $<
 
 all:			$(NAME)
 
-$(NAME) :		$(OBJS)
+$(NAME) :		build $(OBJS)
 						$(CC) $(CLAGS) $(OBJS) -o $(NAME)
 
-test:
-				$(CC) $(CFLAGS) push_swap.c && ./a.out
+build:			
+				mkdir -p $(OBJDIR)
 
-clean:
+clean:			
+				rm -rf $(OBJDIR)
 				$(RM) $(OBJS)
 
 fclean:			clean

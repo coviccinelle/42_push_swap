@@ -59,7 +59,7 @@ int		ft_check_double(t_stack **list_a);
 // LISTE CHAINEE starts here //
 //
 //
-void	ft_new_element(t_stack	**stack, int n);
+t_stack	*ft_new_element(int n);
 int		ft_size_stack(t_stack **stack);
 int		ft_display_stack(t_stack *stack);
 int		ft_doublons(t_stack *stack);
@@ -88,12 +88,12 @@ void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
 //
 //
 
-void	ft_algo(t_stack **stack_a, t_stack **stack_b);
+void	ft_algo(t_stack **stack_a);
 void	ft_algo_2(t_stack **stack);
 void	ft_algo_3(t_stack **stack);
 void	ft_algo_4(t_stack **stack_a);
-void	ft_algo_5(t_stack **stack_a, t_stack **stack_b);
-void	ft_algo_big(t_stack **stack_a, t_stack **stack_b);
+void	ft_algo_5(t_stack **stack_a);
+void	ft_algo_big(t_stack **stack_a);
 
 
 #endif

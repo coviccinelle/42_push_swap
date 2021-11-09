@@ -14,37 +14,21 @@
 
 
 
-// LISTE CHAINEE starts here //
-//
-//
-void	ft_new_element(t_stack	**stack, int n)
+// Create an new stack element and link it as next.
+t_stack		*ft_new_element(int n)
 {
-	t_stack	*tmp;
 	t_stack	*new;
 
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
-		return ;
-	printf("coucou\n");
-	//Free tout si jamais il arrive pas a allouer tout //
-	if (*stack == NULL)
-	{
-		*stack = new;
-		new->next = NULL;
-		new->number = n;
-	}
-	else
-	{
-		tmp = *stack;
-		while(tmp->next)
-			tmp = tmp->next;
-		tmp->next = new;
-		new->next = NULL;
-		new->number = n;
-	}
-	printf("done ft_new_element\n");
+		return NULL;
+
+	new->next = NULL;
+	new->number = n;
+	
+	return new;
 }
 
-
+// return the size of a stack
 int		ft_size_stack(t_stack **stack)
 {
 	t_stack	*tmp;
@@ -278,8 +262,7 @@ int	ft_doublons(t_stack *stack)
 	t_stack	*tmp2;
 
 	tmp1 = stack;
-//	if (ft_size_stack(stack) < 2 || !stack || !tmp1 || !tmp2)
-	if (!stack || !tmp1 || !tmp1->next)
+	if (!stack || !tmp1->next)
 		return (0);
 	tmp2 = tmp1->next;
 	while (tmp1)
