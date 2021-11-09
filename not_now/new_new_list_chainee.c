@@ -9,17 +9,17 @@ typedef struct	s_stack
 }				t_stack;
 
 
-void	ft_new_element(t_stack	**Stack, int n)
+void	ft_new_element(t_stack	**stack, int n)
 {
 	t_stack	*tmp;
 	t_stack	*new;
 
-	tmp = (*Stack);
+	tmp = (*stack);
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
 		return ;
-	if (*Stack == NULL)
+	if (*stack == NULL)
 	{
-		*Stack = new;
+		*stack = new;
 		new->next = NULL;
 		new->number = n;
 	}
@@ -33,12 +33,12 @@ void	ft_new_element(t_stack	**Stack, int n)
 	}
 }
 
-int		ft_size_stack(t_stack *Stack)
+int		ft_size_stack(t_stack *stack)
 {
 	t_stack	*tmp;
 	int		i;
 
-	tmp = Stack;
+	tmp = stack;
 	i = 0;
 	while (tmp)
 	{
@@ -49,11 +49,11 @@ int		ft_size_stack(t_stack *Stack)
 }
 
 
-int		ft_display_stack(t_stack *Stack)
+int		ft_display_stack(t_stack *stack)
 {
 	t_stack		*tmp;
 
-	tmp = Stack;
+	tmp = stack;
 	while (tmp)
 	{
 		printf("%d\n", tmp->number);
@@ -65,14 +65,14 @@ int		ft_display_stack(t_stack *Stack)
 
 int main ()
 {
-	t_stack *Stack;
+	t_stack *stack;
 
-	Stack = NULL;
-	ft_new_element(&Stack, 12);
-	ft_new_element(&Stack, 15);
-	ft_new_element(&Stack, 17);
+	stack = NULL;
+	ft_new_element(&stack, 12);
+	ft_new_element(&stack, 15);
+	ft_new_element(&stack, 17);
 	
-	printf("size Stack =  %d\n", ft_size_stack(Stack));
-	ft_display_stack(Stack);
+	printf("size stack =  %d\n", ft_size_stack(stack));
+	ft_display_stack(stack);
 	return (0);
 }

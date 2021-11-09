@@ -45,12 +45,12 @@ void	ft_new_element(t_stack	**stack, int n)
 }
 
 
-int		ft_size_stack(t_stack **Stack)
+int		ft_size_stack(t_stack **stack)
 {
 	t_stack	*tmp;
 	int		i;
 
-	tmp = *Stack;
+	tmp = *stack;
 	i = 0;
 	while (tmp)
 	{
@@ -60,11 +60,11 @@ int		ft_size_stack(t_stack **Stack)
 	return (i);
 }
 
-int		ft_display_stack(t_stack *Stack)
+int		ft_display_stack(t_stack *stack)
 {
 	t_stack		*tmp;
 
-	tmp = Stack;
+	tmp = stack;
 	while (tmp)
 	{
 		printf("%d\n", tmp->number);
@@ -88,7 +88,7 @@ void	ft_swap(t_stack **stack, char c)
 		tmp2 = (*stack)->next->next;
 		printf("tmp2 = %d\n", tmp2->number);
 		*stack = (*stack)->next;
-		printf("Stack = %d\n", (*stack)->number);
+		printf("stack = %d\n", (*stack)->number);
 		(*stack)->next = tmp1;
 		tmp1->next = tmp2;
 	}
@@ -119,10 +119,10 @@ void	ft_ss(t_stack **stack_a, t_stack **stack_b)
 		tmp1->next = tmp2;
 	}
 	printf("ss\n");
-	printf("Stack_a swaped\n");
-	//ft_display_stack(Stack_a);
-	printf("Stack_b swaped\n");
-	//ft_display_stack(Stack_b);
+	printf("stack_a swaped\n");
+	//ft_display_stack(stack_a);
+	printf("stack_b swaped\n");
+	//ft_display_stack(stack_b);
 }
 
 
@@ -144,7 +144,7 @@ int	ft_rotate(t_stack **stack, char c)
 		tmp1->next = NULL;
 	}
 	printf("\n -----r%c-----\n", c);
-//	ft_display_stack(Stack);
+//	ft_display_stack(stack);
 	return (1);
 }
 
@@ -173,10 +173,10 @@ int	ft_rr(t_stack **stack_a, t_stack **stack_b)
 		tmp_curs->next = tmp1;
 		tmp1->next = NULL;
 	}
-	printf("-----rr-----\nStack_a rotated =\n");
-//	ft_display_stack(Stack_a);
-	printf("\nStack_b rotated =\n");
-//	ft_display_stack(Stack_b);
+	printf("-----rr-----\nstack_a rotated =\n");
+//	ft_display_stack(stack_a);
+	printf("\nstack_b rotated =\n");
+//	ft_display_stack(stack_b);
 	return (1);
 }
 
@@ -192,7 +192,7 @@ int	ft_reverse_rotate(t_stack **stack, char c)
 	else
 	{
 		ft_display_stack(*stack);
-		printf("-----rr-----\nStack_a will be reserve_rotate =\n");
+		printf("-----rr-----\nstack_a will be reserve_rotate =\n");
 		tmp1 = *stack;
 		while ((*stack)->next)
 		{
@@ -203,7 +203,7 @@ int	ft_reverse_rotate(t_stack **stack, char c)
 		(*stack)->next = tmp1;
 	}
 	printf("rr%c\n", c);
-//	ft_display_stack(Stack);
+//	ft_display_stack(stack);
 	return (1);
 }
 
@@ -216,7 +216,7 @@ int	ft_rr_ro(t_stack **stack)
 	if (!(*stack))
 		return (0);
 	else
-//	if (Stack)
+//	if (stack)
 	{
 		tmp1 = *stack;
 		while ((*stack)->next)
@@ -242,8 +242,8 @@ void	ft_rrr(t_stack **stack_a, t_stack **stack_b)
 	printf("rrr\n");
 }
 
-//St_t = Stack take;
-//St_r = Stack receive;
+//St_t = stack take;
+//St_r = stack receive;
 int	ft_push(t_stack **st_t, t_stack **st_r, char c)
 {
 	t_stack	*tmp1;
@@ -272,14 +272,14 @@ int	ft_push(t_stack **st_t, t_stack **st_r, char c)
 // DOUBLONS PART //
 //
 //
-int	ft_doublons(t_stack *Stack)
+int	ft_doublons(t_stack *stack)
 {
 	t_stack	*tmp1;
 	t_stack	*tmp2;
 
-	tmp1 = Stack;
-//	if (ft_size_stack(Stack) < 2 || !Stack || !tmp1 || !tmp2)
-	if (!Stack || !tmp1 || !tmp1->next)
+	tmp1 = stack;
+//	if (ft_size_stack(stack) < 2 || !stack || !tmp1 || !tmp2)
+	if (!stack || !tmp1 || !tmp1->next)
 		return (0);
 	tmp2 = tmp1->next;
 	while (tmp1)
@@ -308,8 +308,8 @@ int	ft_doublons(t_stack *Stack)
 // PARSING PART //
 void	init(t_env *f)
 {
-	f->Stack_a = NULL;
-	f->Stack_b = NULL;
+	f->stack_a = NULL;
+	f->stack_b = NULL;
 }
 
 

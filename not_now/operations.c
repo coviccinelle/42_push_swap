@@ -12,17 +12,17 @@
 
 #include "push_swap.h"
 
-void	ft_swap_1(t_stack **Stack, char c)
+void	ft_swap_1(t_stack **stack, char c)
 {
 	t_stack	*tmp1;
 	t_stack	*tmp2;
 
-	if (ft_size_stack(Stack) >= 2)
+	if (ft_size_stack(stack) >= 2)
 	{
-		tmp1 = *Stack;
-		tmp2 = (*Stack)->next->next;
-		*Stack = (*Stack)->next;
-		(*Stack)->next = tmp1;
+		tmp1 = *stack;
+		tmp2 = (*stack)->next->next;
+		*stack = (*stack)->next;
+		(*stack)->next = tmp1;
 		tmp1->next = tmp2;
 	}
 	printf("s%c\n", c);

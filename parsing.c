@@ -43,12 +43,12 @@ int	ft_parsing_1(char *str)
 			break ;
 		i++;
 	}
-	printf("Size of Stack = %d\n", ft_size_stack(stack));
+	printf("Size of stack = %d\n", ft_size_stack(stack));
 	if (ft_doublons(*stack))
 		return (0);
 	else
 	{
-		printf("Display Stack_a\n");
+		printf("Display stack_a\n");
 		ft_display_stack(*stack);
 		printf("\n-------\n");
 		ft_algo(stack, stack_b);
@@ -93,17 +93,17 @@ int	ft_parsing_multi_2(int ac, char **av)
 		return (0);
 	else
 	{
-		printf("Stack_a\n");
+		printf("stack_a\n");
 		ft_display_stack(*stack);
 		printf("-------\n");
 		printf("---Starting algo----\n");
 		ft_algo(stack, stack_b);
 		printf("\n----done algo---\n");
-		/*printf("Stack_a\n");
-		ft_display_stack(Stack);
-		printf("Stack_b\n");
-		ft_display_stack(Stack_b);
-		ft_swap(Stack, 'a');
+		/*printf("stack_a\n");
+		ft_display_stack(stack);
+		printf("stack_b\n");
+		ft_display_stack(stack_b);
+		ft_swap(stack, 'a');
 		printf("\n-------\n");*/
 	}
 	return (0);

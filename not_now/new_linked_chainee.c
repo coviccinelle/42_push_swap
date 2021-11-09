@@ -21,17 +21,17 @@ typedef struct	s_stack
 }				t_stack;
 
 
-void	ft_new_element(t_stack	**Stack, int n)
+void	ft_new_element(t_stack	**stack, int n)
 {
 	t_stack	*tmp;
 	t_stack	*new;
 
-	tmp = (*Stack);
+	tmp = (*stack);
 	if (!(new = (t_stack *)malloc(sizeof(t_stack))))
 		return ;
-	if (*Stack == NULL)
+	if (*stack == NULL)
 	{
-		*Stack = new;
+		*stack = new;
 		new->next = NULL;
 		new->number = n;
 	}
@@ -45,12 +45,12 @@ void	ft_new_element(t_stack	**Stack, int n)
 	}
 }
 
-int		ft_size_stack(t_stack *Stack)
+int		ft_size_stack(t_stack *stack)
 {
 	t_stack	*tmp;
 	int		i;
 
-//	Stack = NULL;
+//	stack = NULL;
 	tmp = NULL;
 	i = 0;
 	while (tmp)
@@ -62,13 +62,13 @@ int		ft_size_stack(t_stack *Stack)
 }
 
 
-int		ft_display_stack(t_stack *Stack)
+int		ft_display_stack(t_stack *stack)
 {
-	//t_stack		*Stack;
+	//t_stack		*stack;
 	t_stack		*tmp;
 
 //	tmp = NULL;
-	Stack = NULL;
+	stack = NULL;
 	while (tmp)
 	{
 		printf("%d\n", tmp->number);
@@ -81,25 +81,25 @@ int		ft_display_stack(t_stack *Stack)
 int main ()
 {
 //		display
-	t_stack *Stack;
+	t_stack *stack;
 	//t_stack *temp;
 
-	//Stack = NULL;
+	//stack = NULL;
 	//temp = Pile;
-	ft_new_element(&Stack, 12);
-	ft_new_element(&Stack, 15);
-	ft_new_element(&Stack, 17);
+	ft_new_element(&stack, 12);
+	ft_new_element(&stack, 15);
+	ft_new_element(&stack, 17);
 	
-	//temp = Stack;
+	//temp = stack;
 	printf("Pass here\n");
 	
-	printf("%d\n", ft_size_stack(Stack));
-	ft_display_stack(Stack);
+	printf("%d\n", ft_size_stack(stack));
+	ft_display_stack(stack);
 	/*while (temp)
 	{
 		printf("%d\n", temp->number);
 		temp = temp->next;
 	}*/
-	//printf("%d\n", ft_size_stack(&Stack));
+	//printf("%d\n", ft_size_stack(&stack));
 	return (0);
 }

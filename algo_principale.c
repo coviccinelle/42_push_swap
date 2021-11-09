@@ -19,13 +19,13 @@ void	ft_algo(t_stack **stack_a, t_stack **stack_b)
 	if (ft_size_stack(stack_a) == 2)
 	{
 		ft_algo_2(stack_a);
-	//	ft_display_stack(Stack_a);
+	//	ft_display_stack(stack_a);
 		printf("Done algo _2\n");
 	}
 	if (ft_size_stack(stack_a) == 3)
 	{
 		ft_algo_3(stack_a);
-	//	ft_display_stack(Stack_a);
+	//	ft_display_stack(stack_a);
 		printf("Done algo _3\n");
 	}
 	if (ft_size_stack(stack_a) == 4)
