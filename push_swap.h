@@ -69,18 +69,18 @@ int		ft_doublons(t_stack *Stack);
 //       -----  OPERATIONS FUNCTIONS -----       //
 //
 //
-void	ft_swap(t_stack *Stack, char c);
-int		ft_push(t_stack	*st_t, t_stack	*st_r, char c);
-int		ft_rotate(t_stack *Stack, char c);
-int		ft_reverse_rotate(t_stack *Stack, char c);
-int		ft_list_len(t_stack **list);
+void	ft_swap(t_stack **stack, char c);
+int		ft_push(t_stack	**st_t, t_stack	**st_r, char c);
+int		ft_rotate(t_stack **stack, char c);
+int		ft_reverse_rotate(t_stack **stack, char c);
+//int		ft_list_len(t_stack **list);
 
-void	ft_ss(t_stack *Stack_a, t_stack *Stack_b);
+void	ft_ss(t_stack **stack_a, t_stack **stack_b);
 // Swap a and b
-int		ft_rr(t_stack *Stack_a, t_stack *Stack_b);
+int		ft_rr(t_stack **stack_a, t_stack **stack_b);
 // Rotate a and b
-int		ft_rr_ro(t_stack *Stack);
-void	ft_rrr(t_stack *Stack_a, t_stack *Stack_b);
+int		ft_rr_ro(t_stack **stack);
+void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
 // Reverse Rotate a and b
 
 
@@ -88,12 +88,12 @@ void	ft_rrr(t_stack *Stack_a, t_stack *Stack_b);
 //
 //
 
-void	ft_algo(t_stack *Stack_a);
-void	ft_algo_2(t_stack *Stack);
-void	ft_algo_3(t_stack *Stack);
-void	ft_algo_4(t_stack *Stack_a);
-void	ft_algo_5(t_stack *Stack_a, t_stack *Stack_b);
-void	ft_algo_big(t_stack *Stack_a, t_stack *Stack_b);
+void	ft_algo(t_stack **stack_a, t_stack **stack_b);
+void	ft_algo_2(t_stack **stack);
+void	ft_algo_3(t_stack **stack);
+void	ft_algo_4(t_stack **stack_a);
+void	ft_algo_5(t_stack **stack_a, t_stack **stack_b);
+void	ft_algo_big(t_stack **stack_a, t_stack **stack_b);
 
 
 #endif
