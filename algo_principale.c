@@ -95,6 +95,12 @@ void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 
 void	ft_algo_big(t_stack **stack_a, t_stack **stack_b)
 {
-	
+	// ft_diff(stack_a); // find "ecart" -> the diff
+	// ft_find_pivot(stack_a); //Find the biggest ecart to be the reference
+	// ft_not_sorted(stack_a); // Find numbers to push in stack_b
+	// ft_index(stack_a); // define index for elements -> reference = 0, under len/2 = -index
+	// ft_adap_index(stack_a); // change index, for under len/2, after reference = - index...
+	// ft_push_in_b(stack_a, stack_b); // push not_sorted in stack_b
+	// ft_reset_index(stack_a); // reset index in stack_a
 	printf("ft_algo_big is in construction\nPlease come back later\n");
 }
