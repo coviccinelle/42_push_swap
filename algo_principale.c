@@ -96,9 +96,6 @@ void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 	printf("ft_algo_5 is in construction hihi\n");
 }
 
-
-
-
 void	ft_algo_big(t_stack **stack_a, t_stack **stack_b)
 {
 	*stack_a = NULL;

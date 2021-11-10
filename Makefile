@@ -41,7 +41,7 @@ CPURPLE	= \033[0;35m
 all:			TITLE $(NAME)
 				printf "${CYELLOW} \n"
 				@echo Clumsy Push Swap is on the way!
-				printf "${CPURPLE} \n"
+				printf "${CGREEN} \n"
 
 TITLE:
 	printf "${CRED}  _   ${CORANGE} _     ${CYELLOW}_  ${CGREEN}    ${CCYAN}       ${CBLUE} _     ${CPURPLE}     ${CRED}      \n"
