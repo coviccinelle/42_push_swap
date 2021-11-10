@@ -61,20 +61,16 @@ int	ft_parsing_multi_2(int ac, char **av)
 {
 	int		i;
 	int		n;
-	t_stack **stack = NULL;
-	t_stack **stack_b = NULL;
+	
+	t_stack *stack = NULL;
+	t_stack *stack_b = NULL;
 
+	
 //	*stack_b = NULL;
 //	*stack = NULL;
-	printf("hello allo allo inside parsing_multi\n");
 	i = 1;
-	printf("ac = %d\n", ac);
 	while (i < ac)
 	{
-		printf("hello allo allo dans boucles \n");
-		printf("ft_invalid_char = %i\n", ft_invalid_char(av[1]));
-		printf("ft_all_blank = %i\n", ft_all_blank(av[1]));
-		printf("ft_2nb_stick = %i\n", ft_2nb_stick(av[1]));
 		if (ft_invalid_char(av[i]) || ft_all_blank(av[i]) || ft_2nb_stick(av[i]))
 		{
 			printf("Error\nWrong Wroong argruments\n");
@@ -83,28 +79,21 @@ int	ft_parsing_multi_2(int ac, char **av)
 		else
 		{	
 			n = ft_atoi_1(av[i]);
-			printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
-			ft_new_element(stack, n);
-			printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
+			ft_new_element(&stack, n);
 		}
 		i++;
 	}
-	if (ft_doublons(*stack))
+	if (ft_doublons(&(*stack)))
 		return (0);
 	else
 	{
 		printf("Stack_a\n");
-		ft_display_stack(*stack);
+		ft_display_stack(&(*stack));
 		printf("-------\n");
 		printf("---Starting algo----\n");
-		ft_algo(stack, stack_b);
+		ft_algo(&stack, &stack_b);
 		printf("\n----done algo---\n");
-		/*printf("Stack_a\n");
-		ft_display_stack(Stack);
-		printf("Stack_b\n");
-		ft_display_stack(Stack_b);
-		ft_swap(Stack, 'a');
-		printf("\n-------\n");*/
+
 	}
 	return (0);
 }
