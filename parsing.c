@@ -15,16 +15,13 @@
 // PARSING PART //
 
 
-int	ft_parsing_1(char *str)
+int	ft_parsing_1(char *str, t_stack **stack_a)
 {
 	int	i;
 	int	n;
-	t_stack **stack = NULL;
-	t_stack **stack_b = NULL;
 
-	*stack = NULL;
-	*stack_b = NULL;
 	i = 0;
+	printf("LOCATION : Inside parsing_1_agr\nstack_a = \n");
 	if (!ft_int_exist(str) || ft_invalid_char(str))
 	{
 		printf("Error\nThere's an outsider : an invalid char inside\n");
@@ -33,8 +30,7 @@ int	ft_parsing_1(char *str)
 	while (str[i] &&(i <= ft_strlen(str)))
 	{
 		n = ft_atoi_1(&str[i]);
-		ft_new_element(stack, n);
-		printf("n = ft_atoi_1(&str[i]) =  %d\n", n);
+		ft_new_element(stack_a, n);
 		while (str[i] == ' ')
 			i++;
 		while (find_me(str[i], "-0123456789"))
@@ -43,31 +39,17 @@ int	ft_parsing_1(char *str)
 			break ;
 		i++;
 	}
-	printf("Size of Stack = %d\n", ft_size_stack(stack));
-	if (ft_doublons(*stack))
+	if (ft_doublons(*stack_a))
 		return (0);
-	else
-	{
-		printf("Display Stack_a\n");
-		ft_display_stack(*stack);
-		printf("\n-------\n");
-		ft_algo(stack, stack_b);
-		printf("\n-------\n");
-	}
-	return (0);
+	return (1);
 }
 
-int	ft_parsing_multi_2(int ac, char **av)
+int	ft_parsing_multi_2(int ac, char **av, t_stack **stack_a)
 {
 	int		i;
 	int		n;
-	
-	t_stack *stack = NULL;
-	t_stack *stack_b = NULL;
 
-	
-//	*stack_b = NULL;
-//	*stack = NULL;
+	printf("LOCATION : Inside parsing_multi_agr\n-----stack_a = \n");
 	i = 1;
 	while (i < ac)
 	{
@@ -79,21 +61,11 @@ int	ft_parsing_multi_2(int ac, char **av)
 		else
 		{	
 			n = ft_atoi_1(av[i]);
-			ft_new_element(&stack, n);
+			ft_new_element(stack_a, n);
 		}
 		i++;
 	}
-	if (ft_doublons(&(*stack)))
+	if (ft_doublons(*stack_a))
 		return (0);
-	else
-	{
-		printf("Stack_a\n");
-		ft_display_stack(&(*stack));
-		printf("-------\n");
-		printf("---Starting algo----\n");
-		ft_algo(&stack, &stack_b);
-		printf("\n----done algo---\n");
-
-	}
-	return (0);
+	return (1);
 }

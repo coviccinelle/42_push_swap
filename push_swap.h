@@ -48,8 +48,8 @@ int	ft_max(int a, int b);
 int	ft_2nb_stick(char *str);
 
 // PARSING PARTs //
-int	ft_parsing_1(char *str);
-int	ft_parsing_multi_2(int ac, char **av);
+int	ft_parsing_1(char *str, t_stack **stack_a);
+int	ft_parsing_multi_2(int ac, char **av, t_stack **stack_a);
 
 void	ft_free_ck(t_stack **list_a);
 int		ft_check_double(t_stack **list_a);
@@ -67,8 +67,6 @@ int		ft_doublons(t_stack *stack);
 
 
 //       -----  OPERATIONS FUNCTIONS -----       //
-//
-//
 void	ft_swap(t_stack **stack, char c);
 int		ft_push(t_stack	**st_t, t_stack	**st_r, char c);
 int		ft_rotate(t_stack **stack, char c);
@@ -85,9 +83,6 @@ void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
 
 
 //       -----  ALGORYTHME FUNCTIONS -----       //
-//
-//
-
 void	ft_algo(t_stack **stack_a, t_stack **stack_b);
 void	ft_algo_2(t_stack **stack);
 void	ft_algo_3(t_stack **stack);

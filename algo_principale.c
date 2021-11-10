@@ -14,6 +14,7 @@
 
 void	ft_algo(t_stack **stack_a, t_stack **stack_b)
 {
+	ft_display_stack(*stack_a);
 	if (ft_size_stack(stack_a) == 1)
 		return ;
 	if (ft_size_stack(stack_a) == 2)
@@ -57,7 +58,7 @@ void	ft_algo_3(t_stack	**stack)
 	st = (*stack)->number;
 	nd = (*stack)->next->number;
 	rd = (*stack)->next->next->number;
-	printf("Im over here inside algo_3\n");
+	printf("\nIm over here inside algo_3\n");
 	// 3 2 5
 	if (st > nd && nd < rd && rd > st)
 		ft_swap(stack, 'a');

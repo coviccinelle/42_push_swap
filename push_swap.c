@@ -82,17 +82,13 @@ void	ft_swap(t_stack **stack, char c)
 	if (ft_size_stack(stack) >= 2)
 	{
 		tmp1 = *stack;
-		printf("tmp1 = %d\n", tmp1->number);
 		tmp2 = (*stack)->next->next;
-		printf("tmp2 = %d\n", tmp2->number);
 		*stack = (*stack)->next;
-		printf("stack = %d\n", (*stack)->number);
 		(*stack)->next = tmp1;
 		tmp1->next = tmp2;
 	}
 	printf(" -----s%c-----\n", c);
 	ft_display_stack(*stack);
-	printf(" --- Done ---s%c-----\n", c);
 }
 
 void	ft_ss(t_stack **stack_a, t_stack **stack_b)
@@ -118,9 +114,9 @@ void	ft_ss(t_stack **stack_a, t_stack **stack_b)
 	}
 	printf("ss\n");
 	printf("stack_a swaped\n");
-	//ft_display_stack(stack_a);
+	ft_display_stack(*stack_a);
 	printf("stack_b swaped\n");
-	//ft_display_stack(stack_b);
+	ft_display_stack(*stack_b);
 }
 
 
@@ -142,7 +138,7 @@ int	ft_rotate(t_stack **stack, char c)
 		tmp1->next = NULL;
 	}
 	printf("\n -----r%c-----\n", c);
-//	ft_display_stack(stack);
+	ft_display_stack(*stack);
 	return (1);
 }
 
@@ -184,13 +180,13 @@ int	ft_reverse_rotate(t_stack **stack, char c)
 	t_stack	*tmp1;
 	t_stack	*tmp_run;
 
-	ft_display_stack(*stack);
+	// ft_display_stack(*stack);
 	if (!(*stack))
 		return (0);
 	else
 	{
-		ft_display_stack(*stack);
-		printf("-----rr-----\nstack_a will be reserve_rotate =\n");
+		// ft_display_stack(*stack);
+		// printf("-----rr-----\nstack_a will be reserve_rotate =\n");
 		tmp1 = *stack;
 		while ((*stack)->next)
 		{
@@ -201,7 +197,7 @@ int	ft_reverse_rotate(t_stack **stack, char c)
 		(*stack)->next = tmp1;
 	}
 	printf("rr%c\n", c);
-//	ft_display_stack(stack);
+	ft_display_stack(*stack);
 	return (1);
 }
 
@@ -320,15 +316,15 @@ int	main(int ac, char **av)
 	{
 		if (ac == 2)
 		{
-			printf("All in one agrument => Parsing for only one\n");
-			if (ft_parsing_1(av[1]))
-				return (0);
+			// printf("All in one agrument => Parsing for only one\n");
+			if (ft_parsing_1(av[1], &(f.stack_a)))
+				ft_algo(&(f.stack_a), &(f.stack_b));
 		}
 		if (ac > 2)
 		{
-			printf("Oh oh there's more to come => Parsing for a lot at the same time\n");
-			if (ft_parsing_multi_2(ac, &*av))
-				return(0);
+			// printf("Oh oh there's more to come => Parsing for a lot at the same time\n");
+			if (ft_parsing_multi_2(ac, &*av, &(f.stack_a)))
+				ft_algo(&(f.stack_a), &(f.stack_b));
 		}
 //		ft_free_stack(a vs b);
 	}
