@@ -20,7 +20,6 @@ void	ft_algo(t_stack **stack_a, t_stack **stack_b)
 	if (ft_size_stack(stack_a) == 2)
 	{
 		ft_algo_2(stack_a);
-	//	ft_display_stack(Stack_a);
 		printf("Done algo _2\n");
 	}
 	if (ft_size_stack(stack_a) == 3)
@@ -45,7 +44,6 @@ void	ft_algo_2(t_stack **stack_a)
 	tmp = (*stack_a);
 	if (tmp->number > tmp->next->number)
 		ft_swap(stack_a, 'a');
-	ft_display_stack(*stack_a);
 }
 
 
@@ -58,7 +56,6 @@ void	ft_algo_3(t_stack	**stack)
 	st = (*stack)->number;
 	nd = (*stack)->next->number;
 	rd = (*stack)->next->next->number;
-	printf("\nIm over here inside algo_3\n");
 	// 3 2 5
 	if (st > nd && nd < rd && rd > st)
 		ft_swap(stack, 'a');
@@ -98,7 +95,6 @@ void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 
 void	ft_algo_big(t_stack **stack_a, t_stack **stack_b)
 {
-	*stack_a = NULL;
-	*stack_b = NULL;
+	
 	printf("ft_algo_big is in construction\nPlease come back later\n");
 }
