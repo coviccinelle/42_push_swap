@@ -28,7 +28,7 @@ void	ft_algo(t_stack **stack_a, t_stack **stack_b)
 		printf("Done algo _3\n");
 	}
 	if (ft_size_stack(stack_a) == 4)
-		ft_algo_4(stack_a);
+		ft_algo_4(stack_a, stack_b);
 	if (ft_size_stack(stack_a) == 5)
 		ft_algo_5(stack_a, stack_b);
 	else if (ft_size_stack(stack_a) > 5)
@@ -79,22 +79,62 @@ void	ft_algo_3(t_stack	**stack)
 		ft_reverse_rotate(stack, 'a');
 }
 
-void	ft_algo_4(t_stack **stack_a)
+void	ft_algo_4(t_stack **stack_a, t_stack **stack_b)
 {
-	(*stack_a) = NULL;
+	ft_push(stack_a, stack_b, 'b');
+	ft_algo_3(stack_a);
 	printf("ft_algo_4 is in construction hihi\n");
 }
 
 
 void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 {
-	*stack_a = NULL;
-	*stack_b = NULL;
+	int		st_b;
+	int		st_a;
+	int		st_aa;
+	int		st_a_e;
+	int		st_a_ee;
+
+
+	ft_push(stack_a, stack_b, 'b');
+	ft_push(stack_a, stack_b, 'b');//push 2 first in b
+	ft_algo_3(stack_a); // sort in a
+	st_b = (*stack_b)->number;
+	st_a = (*stack_a)->number;
+	st_aa = (*stack_a)->next->number;
+	if (st_a < st_b && st_b < st_aa) // 2 4 vs 3
+	{
+		ft_rotate(stack_a, 'a');
+		ft_push(stack_b, stack_a, 'a');
+		ft_reverse_rotate(stack_a, 'a');
+	}
+	if (st_b < st_a && st_a < st_aa)
+		ft_push(stack_b, stack_a, 'a');
+	// ft_rotate(stack_a, 'a');
+	// ft_push(stack_b, stack_a, 'a');
+	// ft_rotate(stack_a, 'a');
+	ft_push(stack_b, stack_a, 'a');
+	st_a = (*stack_a)->number;
+	st_a_e = (*stack_a)->next->next->next->number;
+	st_a_ee = (*stack_a)->next->next->next->next->number;
+	printf("st_a top of stack _ a =  %d\n", st_a);
+	if (st_a > st_a_e && st_a < st_a_ee)
+	{
+		ft_reverse_rotate(stack_a, 'a');
+		ft_swap(stack_a, 'a');
+		ft_rotate(stack_a, 'a');
+		ft_rotate(stack_a, 'a');
+	}
+	if (st_a_e < st_a_ee && st_a_ee < st_a)
+		ft_rotate(stack_a, 'a');
+	//segfaut in 6 8 4 2 7
 	printf("ft_algo_5 is in construction hihi\n");
 }
 
 void	ft_algo_big(t_stack **stack_a, t_stack **stack_b)
 {
+	*stack_a = NULL;
+	*stack_b = NULL;
 	// ft_diff(stack_a); // find "ecart" -> the diff
 	// ft_find_pivot(stack_a); //Find the biggest ecart to be the reference
 	// ft_not_sorted(stack_a); // Find numbers to push in stack_b

@@ -168,9 +168,9 @@ int	ft_rr(t_stack **stack_a, t_stack **stack_b)
 		tmp1->next = NULL;
 	}
 	printf("-----rr-----\nstack_a rotated =\n");
-//	ft_display_stack(stack_a);
+	ft_display_stack(*stack_a);
 	printf("\nstack_b rotated =\n");
-//	ft_display_stack(stack_b);
+	ft_display_stack(*stack_b);
 	return (1);
 }
 
@@ -221,7 +221,7 @@ int	ft_rr_ro(t_stack **stack)
 		tmp_run->next = NULL;
 		(*stack)->next = tmp1;
 	}
-	printf("stack reverse rotatedi = \n");
+	printf("stack reverse rotated = \n");
 	ft_display_stack(*stack);
 	return (1);
 }
@@ -243,8 +243,9 @@ int	ft_push(t_stack **st_t, t_stack **st_r, char c)
 	t_stack	*tmp1;
 	t_stack	*tmp2;
 
-	printf("\n -----ft_stack_a avant = %c-----\n", c);
-	ft_display_stack(*st_t);
+	printf("number_of_operations ++ -> Start ft_push \n");
+	//printf("\n -----ft_stack_a avant = push in %c-----\n", c);
+	//ft_display_stack(*st_t);
 	if (!(*st_t))
 		return (0);
 	else
@@ -255,10 +256,11 @@ int	ft_push(t_stack **st_t, t_stack **st_r, char c)
 		*st_r = tmp1;
 		tmp1->next = tmp2;
 	}
-	printf("\n -----Satck  b   %c-----\n", c);
-//	ft_display_stack(st_t);
-	printf("\n -----p%c-----\n", c);
-//	ft_display_stack(st_r);
+	printf("\n -----Stack take (a) -----\n");
+	ft_display_stack(*st_t);
+	printf("\n --stack receive ---p%c-----\n", c);
+	ft_display_stack(*st_r);
+	printf(" \nhihi done ft_push\n");
 	return (0);
 }
 

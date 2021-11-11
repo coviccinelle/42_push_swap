@@ -86,7 +86,7 @@ void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
 void	ft_algo(t_stack **stack_a, t_stack **stack_b);
 void	ft_algo_2(t_stack **stack);
 void	ft_algo_3(t_stack **stack);
-void	ft_algo_4(t_stack **stack_a);
+void	ft_algo_4(t_stack **stack_a, t_stack **stack_b);
 void	ft_algo_5(t_stack **stack_a, t_stack **stack_b);
 void	ft_algo_big(t_stack **stack_a, t_stack **stack_b);
 
