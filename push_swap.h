@@ -62,7 +62,7 @@ int		ft_display_stack(t_stack *stack);
 int		ft_doublons(t_stack *stack);
 
 // tools in algo
-int		ft_index(t_stack **stack_a);
+void	ft_index(t_stack *stack_a);
 
 
 
