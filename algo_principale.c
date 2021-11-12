@@ -87,14 +87,24 @@ void	ft_algo_4(t_stack **stack_a, t_stack **stack_b)
 }
 
 
+void		ft_index(t_stack *stack_a)
+{
+	int	i;
+
+	i = 0;
+	while (stack_a)
+	{
+		stack_a->index = i;
+		stack_a = stack_a->next;
+		i++;
+	}
+}
+
 void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 {
 	int		st_b;
 	int		st_a;
 	int		st_aa;
-	int		st_a_e;
-	int		st_a_ee;
-
 
 	ft_push(stack_a, stack_b, 'b');
 	ft_push(stack_a, stack_b, 'b');//push 2 first in b
@@ -102,32 +112,7 @@ void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 	st_b = (*stack_b)->number;
 	st_a = (*stack_a)->number;
 	st_aa = (*stack_a)->next->number;
-	if (st_a < st_b && st_b < st_aa) // 2 4 vs 3
-	{
-		ft_rotate(stack_a, 'a');
-		ft_push(stack_b, stack_a, 'a');
-		ft_reverse_rotate(stack_a, 'a');
-	}
-	if (st_b < st_a && st_a < st_aa)
-		ft_push(stack_b, stack_a, 'a');
-	// ft_rotate(stack_a, 'a');
-	// ft_push(stack_b, stack_a, 'a');
-	// ft_rotate(stack_a, 'a');
-	ft_push(stack_b, stack_a, 'a');
-	st_a = (*stack_a)->number;
-	st_a_e = (*stack_a)->next->next->next->number;
-	st_a_ee = (*stack_a)->next->next->next->next->number;
-	printf("st_a top of stack _ a =  %d\n", st_a);
-	if (st_a > st_a_e && st_a < st_a_ee)
-	{
-		ft_reverse_rotate(stack_a, 'a');
-		ft_swap(stack_a, 'a');
-		ft_rotate(stack_a, 'a');
-		ft_rotate(stack_a, 'a');
-	}
-	if (st_a_e < st_a_ee && st_a_ee < st_a)
-		ft_rotate(stack_a, 'a');
-	//segfaut in 6 8 4 2 7
+
 	printf("ft_algo_5 is in construction hihi\n");
 }
 

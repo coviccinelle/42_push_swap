@@ -36,7 +36,6 @@ typedef struct	s_env
 }				t_env;
 
 // UTILS //
-//
 int	find_me(char c, const char *str);
 int	ft_int_exist(char *str);
 int	ft_all_blank(char *str);
@@ -57,12 +56,13 @@ int		ft_check_double(t_stack **list_a);
 
 
 // LISTE CHAINEE starts here //
-//
-//
 void	ft_new_element(t_stack	**stack, int n);
 int		ft_size_stack(t_stack **stack);
 int		ft_display_stack(t_stack *stack);
 int		ft_doublons(t_stack *stack);
+
+// tools in algo
+int		ft_index(t_stack **stack_a);
 
 
 
