@@ -58,7 +58,7 @@ int		ft_size_stack(t_stack **stack)
 	return (i);
 }
 
-int		ft_display_stack(t_stack *stack)
+void		ft_display_stack(t_stack *stack)
 {
 	t_stack		*tmp;
 
@@ -68,8 +68,35 @@ int		ft_display_stack(t_stack *stack)
 		printf("%d\n", tmp->number);
 		tmp = tmp->next;
 	}
-	return (0);
 }
+
+void	ft_display_2_stacks(t_stack *stack_a, t_stack *stack_b)
+{
+	t_stack		*tmp_a;
+	t_stack		*tmp_b;
+
+	tmp_a = stack_a;
+	if (stack_a && !stack_b)
+	{
+		while (tmp_a)
+		{
+			tmp_b = NULL;
+			printf("%d\n", tmp_a->number);
+			tmp_a = tmp_a->next;
+		}
+	}
+	else if (stack_a && stack_b)
+	{
+		tmp_b = stack_b;
+		while ((tmp_a && tmp_b))
+		{
+			printf("%d    %d\n", tmp_a->number, tmp_b->number);
+			tmp_a = tmp_a->next;
+			tmp_b = tmp_b->next;
+		}
+	}
+}
+
 
 //       -----  OPERATIONS FUNCTIONS -----       //
 //
@@ -113,10 +140,7 @@ void	ft_ss(t_stack **stack_a, t_stack **stack_b)
 		tmp1->next = tmp2;
 	}
 	printf("ss\n");
-	printf("stack_a swaped\n");
-	ft_display_stack(*stack_a);
-	printf("stack_b swaped\n");
-	ft_display_stack(*stack_b);
+	// ft_display_2_stacks(*stack_a, *stack_b);
 }
 
 
@@ -167,10 +191,8 @@ int	ft_rr(t_stack **stack_a, t_stack **stack_b)
 		tmp_curs->next = tmp1;
 		tmp1->next = NULL;
 	}
-	printf("-----rr-----\nstack_a rotated =\n");
-	ft_display_stack(*stack_a);
-	printf("\nstack_b rotated =\n");
-	ft_display_stack(*stack_b);
+	printf("-----rr---- \n");
+	ft_display_2_stacks(*stack_a, *stack_b);
 	return (1);
 }
 
@@ -180,13 +202,10 @@ int	ft_reverse_rotate(t_stack **stack, char c)
 	t_stack	*tmp1;
 	t_stack	*tmp_run;
 
-	// ft_display_stack(*stack);
 	if (!(*stack))
 		return (0);
 	else
 	{
-		// ft_display_stack(*stack);
-		// printf("-----rr-----\nstack_a will be reserve_rotate =\n");
 		tmp1 = *stack;
 		while ((*stack)->next)
 		{
@@ -243,9 +262,7 @@ int	ft_push(t_stack **st_t, t_stack **st_r, char c)
 	t_stack	*tmp1;
 	t_stack	*tmp2;
 
-	printf("number_of_operations ++ -> Start ft_push \n");
-	//printf("\n -----ft_stack_a avant = push in %c-----\n", c);
-	//ft_display_stack(*st_t);
+
 	if (!(*st_t))
 		return (0);
 	else
@@ -256,11 +273,8 @@ int	ft_push(t_stack **st_t, t_stack **st_r, char c)
 		*st_r = tmp1;
 		tmp1->next = tmp2;
 	}
-	printf("\n -----Stack take (a) -----\n");
-	ft_display_stack(*st_t);
-	printf("\n --stack receive ---p%c-----\n", c);
-	ft_display_stack(*st_r);
-	printf(" \nhihi done ft_push\n");
+	printf("\n -----p%c -----\n", c);
+	ft_display_2_stacks(*st_t, *st_r);
 	return (0);
 }
 

@@ -25,7 +25,7 @@ typedef struct	s_stack
 	int				index;
 	int				diff;
 	int				in_order;
-	int				la;
+	int				done;
 }				t_stack;
 
 
@@ -58,7 +58,8 @@ int		ft_check_double(t_stack **list_a);
 // LISTE CHAINEE starts here //
 void	ft_new_element(t_stack	**stack, int n);
 int		ft_size_stack(t_stack **stack);
-int		ft_display_stack(t_stack *stack);
+void	ft_display_stack(t_stack *stack);
+void	ft_display_2_stacks(t_stack *stack_a, t_stack *stack_b);
 int		ft_doublons(t_stack *stack);
 
 // tools in algo
