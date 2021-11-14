@@ -180,6 +180,7 @@ void	ft_algo_big(t_stack **stack_a, t_stack **stack_b)
 	printf("minn_element in stack_a is %d\n", min->number);
 	printf("maxx_element in stack_a is %d\n", max->number);
 
+
 	// if (ft_sorted(stack_a) == 1)
 	// 	printf("Sorted hihi 11 11 \n");
 	// else
