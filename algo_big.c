@@ -108,12 +108,10 @@ t_stack		*ft_max(t_stack *stack)
 {
 	t_stack	*tmp;
 	t_stack	*max;
-	// int		max_num;
-
 	
 	tmp = (stack);
-	// max_num = tmp->number;
-	while (tmp->next)
+	max = tmp;
+	while (tmp)
 	{
 		if (tmp->number > max->number)
 			max = tmp;
@@ -128,12 +126,11 @@ t_stack	*ft_min(t_stack *stack)
 	t_stack	*min;
 
 	tmp = stack;
-	while (tmp->next)
+	min = tmp;
+	while (tmp)
 	{
-		printf("min->number = %d\n", min->number);
 		if (tmp->number < min->number)
 		{
-			printf("min->number = %d\n", min->number);
 			min = tmp;
 		}
 		tmp = tmp->next;
@@ -153,27 +150,6 @@ int		ft_min_steps(t_stack *stack, int index)
 	return (step);
 }
 
-// int		get_i_max(t_stack *stack, int max)
-// {
-// 	t_stack *tmp;
-// 	int		i;
-
-// 	i = 0;
-// 	tmp = stack;
-// 	while (tmp)
-// 	{
-// 		if (tmp->number == max)
-// 			return (i);
-// 		else
-// 		{
-// 			stack->index = i;
-// 			stack = stack->next;
-// 			i++;
-// 		}
-// 		// stack = stack->next;
-// 	}
-// 	return (i);
-// }
 
 int	ft_absolute(int n)
 {

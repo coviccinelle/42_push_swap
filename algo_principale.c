@@ -46,40 +46,36 @@ void	ft_algo_2(t_stack **stack_a)
 }
 
 
-void	ft_algo_3(t_stack	**stack)
+void	ft_algo_3(t_stack	**st)
 {
-	int		st;
 	int		nd;
 	int		rd;
 
-	st = (*stack)->number;
-	nd = (*stack)->next->number;
-	rd = (*stack)->next->next->number;
-	if (ft_sorted(stack) == 1)
-		printf("Sorted hihi 11 11 \n");
-	else
+	nd = (*st)->next->number;
+	rd = (*st)->next->next->number;
+	if (!ft_sorted(st))
 	{
 	// 3 2 5
-		if (st > nd && nd < rd && rd > st)
-			ft_swap(stack, 'a');
+		if ((*st)->number > nd && nd < rd && rd > (*st)->number)
+			ft_swap(st, 'a');
 	// 5 3 2
-		else if (st > nd && nd > rd && rd < st)
+		else if ((*st)->number > nd && nd > rd && rd < (*st)->number)
 		{
-			ft_swap(stack, 'a');//-> 3 5 2
-			ft_reverse_rotate(stack, 'a');
+			ft_swap(st, 'a');//-> 3 5 2
+			ft_reverse_rotate(st, 'a');
 		}
 	// 5 2 3
-		else if (st > nd && nd < rd && rd < st)
-			ft_rotate(stack, 'a');
+		else if ((*st)->number > nd && nd < rd && rd < (*st)->number)
+			ft_rotate(st, 'a');
 	// 2 5 3
-		else if (st < nd && nd > rd && rd > st)
+		else if ((*st)->number < nd && nd > rd && rd > (*st)->number)
 		{
-			ft_swap(stack, 'a');
-			ft_rotate(stack, 'a');
+			ft_swap(st, 'a');
+			ft_rotate(st, 'a');
 		}
 	// 3 5 2
-		else if (st < nd && nd > rd && rd < st)
-			ft_reverse_rotate(stack, 'a');
+		else if ((*st)->number < nd && nd > rd && rd < (*st)->number)
+			ft_reverse_rotate(st, 'a');
 	}
 }
 
@@ -91,7 +87,6 @@ void	ft_algo_3(t_stack	**stack)
 
 void	ft_algo_4(t_stack **stack_a, t_stack **stack_b)
 {
-	// t_stack		*tmp_a;
 	t_stack		*min;
 	int 		min_steps;
 
@@ -99,15 +94,8 @@ void	ft_algo_4(t_stack **stack_a, t_stack **stack_b)
 	{
 		min = ft_min(*stack_a);
 		ft_index(*stack_a);
-		printf("min->number stack _a = %d\n", min->number);
-		printf("index_min stack _a = %d\n", min->index);
 		min_steps = ft_min_steps(*stack_a, min->index);
-		printf("min step to move max on top = %d\n", min_steps);
-		printf("----\n");
-
-
 		get_num_on_top(stack_a, min->index, min_steps);
-
 		ft_push(stack_a, stack_b, 'b');
 		ft_algo_3(stack_a);
 		ft_push(stack_b, stack_a, 'b');
@@ -116,8 +104,6 @@ void	ft_algo_4(t_stack **stack_a, t_stack **stack_b)
 	ft_display_stack(*stack_a);
 	printf("---stack_b-- \n");
 	ft_display_stack(*stack_b);
-
-	printf("ft_algo_4 is in construction hihi\n");
 }
 
 
@@ -128,8 +114,8 @@ int	get_num_on_top(t_stack **stack_a, int index, int min_steps)
 	i = min_steps;
 	if (index > i)
 	{
-		printf("max->index = %d\n", index);
-		while (i <= 0)
+		printf(" ---- max or min->index = %d\n", index);
+		while (i > 0)
 		{
 			ft_reverse_rotate(stack_a, 'a');
 			i--;
@@ -143,56 +129,56 @@ int	get_num_on_top(t_stack **stack_a, int index, int min_steps)
 			i--;
 		}
 	}
-	ft_display_stack(*stack_a);
-	printf("done get_maxx_on_top\n");
+	// ft_display_stack(*stack_a);
+	printf("done get_num_on_top\n");
 	return (0);
 }
 
 
 void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 {
-	t_stack		*max;
-	// t_stack		*min;
+	t_stack		*min;
+	t_stack		*min_2;
+	t_stack		*tmp;
 	int 		min_steps;
 
 	if (!ft_sorted(stack_a))
 	{
-		max = ft_max(*stack_a);
+		min = ft_min(*stack_a);
 		ft_index(*stack_a);
-		printf("max stack _a = %d\n", max->number);
-		printf("index_max stack _a = %d\n", max->index);
-		min_steps = ft_min_steps(*stack_a, max->index);
-		printf("min step to move max on top = %d\n", min_steps);
-		printf("----\n");
-
-
-		get_num_on_top(stack_a, max->index, min_steps);
-		
+		min_steps = ft_min_steps(*stack_a, min->index);
+		get_num_on_top(stack_a, min->index, min_steps);
 		ft_push(stack_a, stack_b, 'b');
-		// ft_algo_3(stack_a);
-
-	
+		min_2 = ft_min(*stack_a);
+		ft_index(*stack_a);
+		tmp = (*stack_a);
+		min_steps = ft_min_steps(*stack_a, min_2->index);
+		get_num_on_top(stack_a, min_2->index, min_steps);
+		ft_push(stack_a, stack_b, 'b');
+		ft_algo_3(stack_a);
+		ft_push(stack_b, stack_a, 'a');
+		ft_push(stack_b, stack_a, 'a');
 	}
 	printf("------ final algo _5 -----\n");
-	// ft_display_2_stacks(*stack_a, *stack_b);
-	printf("ft_algo_5 is in construction hihi\n");
+	ft_display_stack(*stack_a);
 }
 
 void	ft_algo_big(t_stack **stack_a, t_stack **stack_b)
 {
 	// *stack_a = NULL;
 	*stack_b = NULL;
-	// t_stack *max;
+	t_stack *max;
 	t_stack *min;
 	t_stack *last;
 
-	// max = ft_max(*stack_a);
+	max = ft_max(*stack_a);
 	last = get_last(*stack_a);
 	printf("last_element in stack_a is %d\n", last->number);
-	// printf("maxx_element in stack_a is %d\n", max->number);
+	printf("maxx_element in stack_a is %d\n", max->number);
 	ft_display_stack(*stack_a);
 	min = ft_min(*stack_a);
 	printf("minn_element in stack_a is %d\n", min->number);
+	printf("maxx_element in stack_a is %d\n", max->number);
 
 	// if (ft_sorted(stack_a) == 1)
 	// 	printf("Sorted hihi 11 11 \n");
