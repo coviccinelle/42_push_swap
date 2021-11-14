@@ -274,9 +274,27 @@ int	ft_push(t_stack **st_t, t_stack **st_r, char c)
 		tmp1->next = tmp2;
 	}
 	printf("\n -----p%c -----\n", c);
-	ft_display_2_stacks(*st_t, *st_r);
+	ft_display_stack(*st_t);
+	printf("\n ----------\n");
+	ft_display_stack(*st_r);
+	// ft_display_2_stacks(*st_t, *st_r);
 	return (0);
 }
+
+
+
+t_stack		*get_last(t_stack *last)
+{
+	if (last == NULL)
+		return (NULL);
+	while (last->next)
+		last = last->next;
+	return (last);
+}
+
+
+
+
 
 
 // DOUBLONS PART //

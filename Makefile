@@ -22,6 +22,7 @@ SRCS		=	push_swap.c \
 				parsing.c \
 				utils.c \
 				algo_principale.c \
+				algo_big.c \
 
 
 
