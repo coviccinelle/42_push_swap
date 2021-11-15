@@ -165,21 +165,19 @@ void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 
 void	ft_algo_big(t_stack **stack_a, t_stack **stack_b)
 {
-	// *stack_a = NULL;
 	*stack_b = NULL;
 	t_stack *max;
 	t_stack *min;
 	t_stack *last;
 
-	max = ft_max(*stack_a);
-	last = get_last(*stack_a);
-	printf("last_element in stack_a is %d\n", last->number);
-	printf("maxx_element in stack_a is %d\n", max->number);
-	ft_display_stack(*stack_a);
-	min = ft_min(*stack_a);
-	printf("minn_element in stack_a is %d\n", min->number);
-	printf("maxx_element in stack_a is %d\n", max->number);
-
+	if (!ft_sorted(stack_a))
+	{
+		max = ft_max(*stack_a);
+		last = get_last(*stack_a);
+		printf("last_element in stack_a is %d\n", last->number);
+		printf("maxx_element in stack_a is %d\n", max->number);
+		min = ft_min(*stack_a);
+		printf("minn_element in stack_a is %d\n", min->number);
 
 	// if (ft_sorted(stack_a) == 1)
 	// 	printf("Sorted hihi 11 11 \n");
@@ -192,6 +190,7 @@ void	ft_algo_big(t_stack **stack_a, t_stack **stack_b)
 	// // ft_adap_index(stack_a); // change index, for under len/2, after reference = - index...
 	// // ft_push_in_b(stack_a, stack_b); // push not_sorted in stack_b
 	// // ft_reset_index(stack_a); // reset index in stack_a
-	// }
+	// 
+	}
 	printf("ft_algo_big is in construction\nPlease come back later\n");
 }

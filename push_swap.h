@@ -24,7 +24,7 @@ typedef struct	s_stack
 	struct s_stack	*next;
 	int				index;
 	int				diff;
-	int				in_order;
+	int				stay;
 	int				max_sorted;
 }				t_stack;
 
@@ -64,7 +64,7 @@ int		ft_doublons(t_stack *stack);
 
 // tools in algo
 void	ft_index(t_stack *stack_a);
-t_stack		*get_last(t_stack *last);
+t_stack	*get_last(t_stack *last);
 int		get_max_sorted_list(t_stack *stack, t_stack *start);
 t_stack	*ft_max(t_stack *stack);
 t_stack	*ft_min(t_stack *stack);
@@ -72,6 +72,11 @@ int		ft_sorted(t_stack **stack_a);
 int		get_i_max(t_stack *stack, int max);
 int		ft_min_steps(t_stack *stack, int index);
 int		get_num_on_top(t_stack **stack_a, int index, int min_steps);
+
+int		get_max_sorted(t_stack *first, int trig);
+int		loop_stack(t_stack *stack, t_stack *start, int trig);
+int		swapable(t_stack *stack);
+
 
 //       -----  OPERATIONS FUNCTIONS -----       //
 void	ft_swap(t_stack **stack, char c);
