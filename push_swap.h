@@ -23,9 +23,9 @@ typedef struct	s_stack
 	int				number;
 	struct s_stack	*next;
 	int				index;
-	int				diff;
 	int				stay;
-	int				max_sorted;
+	int				nb_team;
+	int				size;
 }				t_stack;
 
 
@@ -33,6 +33,7 @@ typedef struct	s_env
 {
 	t_stack		*stack_a;
 	t_stack		*stack_b;
+
 }				t_env;
 
 // UTILS //
@@ -76,6 +77,8 @@ int		get_num_on_top(t_stack **stack_a, int index, int min_steps);
 int		get_max_sorted(t_stack *first, int trig);
 int		loop_stack(t_stack *stack, t_stack *start, int trig);
 int		swapable(t_stack *stack);
+
+void	sorter(t_stack **st_a, t_stack **st_b);
 
 
 //       -----  OPERATIONS FUNCTIONS -----       //

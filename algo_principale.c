@@ -46,7 +46,7 @@ void	ft_algo_2(t_stack **stack_a)
 }
 
 
-void	ft_algo_3(t_stack	**st)
+void	ft_algo_3(t_stack **st)
 {
 	int		nd;
 	int		rd;
@@ -163,21 +163,21 @@ void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 	ft_display_stack(*stack_a);
 }
 
-void	ft_algo_big(t_stack **stack_a, t_stack **stack_b)
+void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 {
-	*stack_b = NULL;
 	t_stack *max;
 	t_stack *min;
 	t_stack *last;
 
-	if (!ft_sorted(stack_a))
+	if (!ft_sorted(st_a))
 	{
-		max = ft_max(*stack_a);
-		last = get_last(*stack_a);
+		max = ft_max(*st_a);
+		last = get_last(*st_a);
 		printf("last_element in stack_a is %d\n", last->number);
 		printf("maxx_element in stack_a is %d\n", max->number);
-		min = ft_min(*stack_a);
+		min = ft_min(*st_a);
 		printf("minn_element in stack_a is %d\n", min->number);
+		sorter(st_a, st_b);
 
 	// if (ft_sorted(stack_a) == 1)
 	// 	printf("Sorted hihi 11 11 \n");

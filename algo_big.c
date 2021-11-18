@@ -57,75 +57,75 @@ void		ft_index(t_stack *stack_a)
 	}
 }
 
-// int		loop_stack(t_stack *stack, t_stack *start, int trig)
-// {
-// 	t_stack		*loop;
-// 	int 		max_val;
-// 	int			count;
+int		loop_stack(t_stack *stack, t_stack *start, int trig)
+{
+	t_stack		*loop;
+	int 		max_val;
+	int			count;
 
-// 	count = 0;
-// 	max_i = -1;
-// 	loop = start;
-// 	while (loop)
-// 	{
-// 		if (trig)
-// 			loop->stay = 0;
-// 		if (loop->index > max_val)
-// 		{
-// 			max_val = loop->index;
-// 			count++;
-// 		}
-// 		loop = loop->next;
-// 		if (loop == NULL)
-// 			loop = stack;
-// 		if (loop = stack)
-// 			break ;
-// 	}
-// 	return (count);
-// }
+	count = 0;
+	max_val = -1;
+	loop = start;
+	while (loop)
+	{
+		if (trig)
+			loop->stay = 0;
+		if (loop->index > max_val)
+		{
+			max_val = loop->index;
+			count++;
+		}
+		loop = loop->next;
+		if (loop == NULL)
+			loop = stack;
+		if (loop == stack)
+			break ;
+	}
+	return (count);
+}
 
 
-// int		get_max_sorted(t_stack *first, int trig)
-// {
-// 	t_stack	*tmp;
-// 	t_stack	*stay;
-// 	int		max;
-// 	int		count;
+int		get_max_sorted(t_stack *first, int trig)
+{
+	t_stack	*tmp;
+	t_stack	*stay;
+	int		max;
+	int		count;
 
-// 	count = 0;
-// 	tmp = start;
-// 	while (tmp)
-// 	{
-// 		count = loop_stack(first, tmp, 0);
-// 		if (count > max)
-// 		{
-// 			max = count;
-// 			stay = tmp;
-// 		}
-// 		tmp = tmp->next;		
-// 	}
-// 	if (trig)
-// 		loop_stack(first, stay, 1);
-// 	return (max);
-// }
+	count = 0;
+	tmp = first;
+	while (tmp)
+	{
+		count = loop_stack(first, tmp, 0);
+		if (count > max)
+		{
+			max = count;
+			stay = tmp;
+		}
+		tmp = tmp->next;		
+	}
+	if (trig)
+		loop_stack(first, stay, 1);
+	return (max);
+}
 
-// int		swapable(t_stack *stack)
-// {
-// 	int		w1_i;
-// 	int		w2_i;
-// 	t_stack	*w;
-// 	t_stack	*w2;
+int		swapable(t_stack *stack)
+{
+	int		w1_i;
+	int		w2_i;
+	t_stack	w1;
+	t_stack	w2;
 
-// 	w1.next = &w2;
-// 	w1.index = stack->next->index;
-// 	w2.next = stack->next->next;
-// 	w2.index = stack->index;
-// 	w1_i = get_max_sorted(stack, 0);
-// 	w2_i = get_max_sorted(&w1, 0);
-// 	if (w2_i > w1)
-// 		return (1);
-// 	return (0);
-// }
+	w1.next = &w2;
+	w1.index = stack->next->index;
+	w2.next = stack->next->next;
+	w2.index = stack->index;
+	w1_i = get_max_sorted(stack, 0);
+	w2_i = get_max_sorted(&w1, 0);
+	if (w2_i > w1_i)
+		return (1);
+	return (0);
+}
 
 t_stack		*ft_max(t_stack *stack)
 {
@@ -177,4 +177,39 @@ int	ft_absolute(int n)
 	if (n < 0)
 		n = -n;
 	return (n);
+}
+
+
+void	init_sorter(t_stack *st_a)
+{
+	st_a->nb_team = get_max_sorted(st_a, 1);
+	st_a->size = ft_size_stack(&st_a);
+}
+
+
+
+void	sorter(t_stack **st_a, t_stack **st_b)
+{
+	int		gap;
+
+	init_sorter(*st_a);
+	while ((*st_a)->size > (*st_a)->nb_team)
+	{
+		gap = ft_min_steps((*st_a), (*st_a)->index);
+		if ((*st_a) && swapable((*st_a)))
+		{
+			ft_swap(&(*st_a), 'a');
+			(*st_a)->nb_team = get_max_sorted((*st_a), 1);
+		}
+		else if ((*st_a) && !(*st_a)->stay && gap == 0)
+		{
+			ft_push(st_a, st_b, 'b');
+			((*st_a)->size)--;
+		}
+		// else
+		// {
+		// 	// ft_rotate(st, )
+		// }
+	}
+	// popuate_b(st);
 }
