@@ -18,7 +18,7 @@ int	ft_parsing_1(char *str, t_stack **stack_a)
 	int	n;
 
 	i = 0;
-	printf("Note : parsing_1_agr\n");
+	// printf("Note : parsing_1_agr\n");
 	if (!ft_int_exist(str) || ft_invalid_char(str))
 	{
 		printf("Error\nThere's an outsider : an invalid char inside\n");
@@ -46,7 +46,7 @@ int	ft_parsing_multi_2(int ac, char **av, t_stack **stack_a)
 	int		i;
 	int		n;
 
-	printf("Note: parsing_multi_agr\n");
+	// printf("Note: parsing_multi_agr\n");
 	i = 1;
 	while (i < ac)
 	{
