@@ -122,6 +122,7 @@ int		swapable(t_stack *stack)
 	w2.index = stack->index;
 	w1_i = get_max_sorted(stack, 0);
 	w2_i = get_max_sorted(&w1, 0);
+	printf("w1_i = %d\n, w2_i = %d\n", w1_i, w2_i);
 	if (w2_i > w1_i)
 		return (1);
 	return (0);
@@ -195,6 +196,7 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 	init_sorter(*st_a);
 	while ((*st_a)->size > (*st_a)->nb_team)
 	{
+		printf("Number now is = %d, and nb_team max sorted number is = %d\n", (*st_a)->number, (*st_a)->nb_team);
 		gap = ft_min_steps((*st_a), (*st_a)->index);
 		if ((*st_a) && swapable((*st_a)))
 		{
