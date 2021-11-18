@@ -57,76 +57,111 @@ void		ft_index(t_stack *stack_a)
 	}
 }
 
-int		loop_stack(t_stack *stack, t_stack *start, int trig)
-{
-	t_stack		*loop;
-	int 		max_val;
-	int			count;
+// int		loop_stack(t_stack *st, t_stack *start, int tri)
+// {
+// 	t_stack		*loop;
+// 	int 		max_count;
+// 	int			count;
 
-	count = 0;
-	max_val = -1;
-	loop = start;
-	while (loop)
-	{
-		if (trig)
-			loop->stay = 0;
-		if (loop->index > max_val)
-		{
-			max_val = loop->index;
-			count++;
-		}
-		loop = loop->next;
-		if (loop == NULL)
-			loop = stack;
-		if (loop == stack)
-			break ;
-	}
-	return (count);
-}
+// 	count = 1;
+// 	max_count = -1;
+// 	loop = start;
+// 	while (loop)
+// 	{
+// 		if (tri)
+// 			loop->stay = 0;
+// 		if (loop->index > max_count)
+// 		{
+// 			max_count = loop->index;
+// 			count++;
+// 			if (tri)
+// 				loop->stay = 1;
+// 		}
+// 		loop = loop->next;
+// 		if (loop == NULL)
+// 			loop = st;
+// 		if (loop == start)
+// 			break ;
+// 		// printf("count inside loop_loop = %d\n", count);
+// 	}
+// 	// printf("count inside loop_loop = %d\n", count);
+// 	return (count);
+// }
 
 
-int		get_max_sorted(t_stack *first, int trig)
+// int		get_max_sorted(t_stack *first, int trig)
+// {
+// 	t_stack	*tmp;
+// 	t_stack	*stay;
+// 	int		max;
+// 	int		count;
+
+// 	max = 0;
+// 	tmp = first;
+// 	while (tmp)
+// 	{
+// 		count = loop_stack(first, tmp, 0);
+// 		if (count > max)
+// 		{
+// 			max = count;
+// 			stay = tmp;
+// 		}
+// 		tmp = tmp->next;	
+// 	}
+// 	if (trig)
+// 		loop_stack(first, stay, 1);
+// 	return (max);
+// }
+
+int		get_max_sorted(t_stack **first)
 {
 	t_stack	*tmp;
-	t_stack	*stay;
-	int		max;
-	int		count;
+	t_stack	*tmp2;
+	int		n;
 
-	count = 0;
-	tmp = first;
+	tmp = (*first);
 	while (tmp)
 	{
-		count = loop_stack(first, tmp, 0);
-		if (count > max)
+		tmp->nb_team = 1;
+		tmp2 = tmp->next;
+		n = tmp->number;
+		if (!tmp2)
+			tmp2 = (*first);
+		while (tmp2->number != tmp->number)
 		{
-			max = count;
-			stay = tmp;
+			if (n < tmp2->number)
+			{
+				tmp->nb_team++;
+				printf("number = %d, tmp2->number = %d, NB_TEAM = %d\n", tmp->number, tmp2->number, tmp->nb_team);
+				n = tmp2->number;
+			}
+			tmp2 = tmp2->next;
+			if (!tmp2)
+				tmp2 = (*first);
 		}
-		tmp = tmp->next;		
+		tmp = tmp->next;
 	}
-	if (trig)
-		loop_stack(first, stay, 1);
-	return (max);
-}
-
-int		swapable(t_stack *stack)
-{
-	int		w1_i;
-	int		w2_i;
-	t_stack	w1;
-	t_stack	w2;
-
-	w1.next = &w2;
-	w1.index = stack->next->index;
-	w2.next = stack->next->next;
-	w2.index = stack->index;
-	w1_i = get_max_sorted(stack, 0);
-	w2_i = get_max_sorted(&w1, 0);
-	printf("w1_i = %d\n, w2_i = %d\n", w1_i, w2_i);
-	if (w2_i > w1_i)
-		return (1);
 	return (0);
 }
+
+// int		swapable(t_stack *stack)
+// {
+// 	int		w1_i;
+// 	int		w2_i;
+// 	t_stack	w1;
+// 	t_stack	w2;
+
+// 	w1.next = &w2;
+// 	w1.index = stack->next->index;
+// 	w2.next = stack->next->next;
+// 	w2.index = stack->index;
+// 	w1_i = get_max_sorted(&stack);
+// 	w2_i = get_max_sorted(&(w1));
+// 	// printf("w1_i = %d\n, w2_i = %d\n", w1_i, w2_i);
+// 	if (w2_i > w1_i)
+// 		return (1);
+// 	return (0);
+// }
 
 t_stack		*ft_max(t_stack *stack)
 {
@@ -181,37 +216,47 @@ int	ft_absolute(int n)
 }
 
 
-void	init_sorter(t_stack *st_a)
+void	init_sorter(t_stack **st_a)
 {
-	st_a->nb_team = get_max_sorted(st_a, 1);
-	st_a->size = ft_size_stack(&st_a);
+	// printf("here inside sorter123\n");
+	(*st_a)->nb_team = get_max_sorted(st_a);
+	printf("max_number_team ecart here %d\n", (*st_a)->nb_team);
+	(*st_a)->size = ft_size_stack(st_a);
+	printf("size stack here %d\n", (*st_a)->size);
 }
 
-
+// Just to clear my mind : 
+// do a loop inside a loop -> big loop go through the whole stack until it meets itself
+// little loop 
 
 void	sorter(t_stack **st_a, t_stack **st_b)
 {
 	int		gap;
-
-	init_sorter(*st_a);
+	
+	init_sorter(st_a);
+	printf("nb_team = %d\n", (*st_a)->nb_team);
 	while ((*st_a)->size > (*st_a)->nb_team)
 	{
 		printf("Number now is = %d, and nb_team max sorted number is = %d\n", (*st_a)->number, (*st_a)->nb_team);
 		gap = ft_min_steps((*st_a), (*st_a)->index);
-		if ((*st_a) && swapable((*st_a)))
-		{
-			ft_swap(&(*st_a), 'a');
-			(*st_a)->nb_team = get_max_sorted((*st_a), 1);
-		}
-		else if ((*st_a) && !(*st_a)->stay && gap == 0)
+		// if ((*st_a) && swapable((*st_a)))
+		// {
+		// 	ft_swap(&(*st_a), 'a');
+		// 	(*st_a)->nb_team = get_max_sorted(st_a);
+		// }
+		// else 
+		if ((*st_a) && !(*st_a)->stay && gap == 0)
 		{
 			ft_push(st_a, st_b, 'b');
 			((*st_a)->size)--;
 		}
+		else
+			break ;
 		// else
 		// {
 		// 	// ft_rotate(st, )
 		// }
 	}
+	printf("Now push back numbers in stack_b back instack_a\n");
 	// popuate_b(st);
 }
