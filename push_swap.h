@@ -74,7 +74,7 @@ int		get_i_max(t_stack *stack, int max);
 int		ft_min_steps(t_stack *stack, int index);
 int		get_num_on_top(t_stack **stack_a, int index, int min_steps);
 
-int		get_max_sorted(t_stack **first);
+t_stack		*get_max_sorted(t_stack **first);
 int		loop_stack(t_stack *stack, t_stack *start, int trig);
 int		swapable(t_stack *stack);
 

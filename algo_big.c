@@ -113,7 +113,7 @@ void		ft_index(t_stack *stack_a)
 // 	return (max);
 // }
 
-int		get_max_sorted(t_stack **first)
+t_stack		*get_max_sorted(t_stack **first)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
@@ -141,7 +141,8 @@ int		get_max_sorted(t_stack **first)
 		}
 		tmp = tmp->next;
 	}
-	return (0);
+// 	printf("\n\n\ntmp->number = %d\n", tmp->number);
+	return (tmp);
 }
 
 // int		swapable(t_stack *stack)
@@ -216,10 +217,11 @@ int	ft_absolute(int n)
 }
 
 
+
+
 void	init_sorter(t_stack **st_a)
 {
-	// printf("here inside sorter123\n");
-	(*st_a)->nb_team = get_max_sorted(st_a);
+	get_max_sorted(st_a);
 	printf("max_number_team ecart here %d\n", (*st_a)->nb_team);
 	(*st_a)->size = ft_size_stack(st_a);
 	printf("size stack here %d\n", (*st_a)->size);
@@ -258,5 +260,5 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 		// }
 	}
 	printf("Now push back numbers in stack_b back instack_a\n");
-	// popuate_b(st);
+	// caculate_b(st_a,);
 }
