@@ -113,7 +113,7 @@ void		ft_index(t_stack *stack_a)
 // 	return (max);
 // }
 
-t_stack		*get_max_sorted(t_stack **first)
+int	init_max_sorted(t_stack **first)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
@@ -142,8 +142,124 @@ t_stack		*get_max_sorted(t_stack **first)
 		tmp = tmp->next;
 	}
 // 	printf("\n\n\ntmp->number = %d\n", tmp->number);
-	return (tmp);
+	return (0);
 }
+
+
+int	get_max_nb_team(t_stack **stack)
+{
+	t_stack		*tmp;
+	int			max;
+
+	tmp = (*stack);
+	max = 0;
+	while (tmp)
+	{
+		if (tmp->nb_team > max)
+			max = tmp->nb_team;
+		tmp = tmp->next;
+	}
+	return (max);
+}
+
+t_stack	*get_head_stay(t_stack **st_a)
+{
+	int			max;
+	t_stack		*tmp;
+
+	tmp = (*st_a);
+	max = get_max_nb_team(st_a);
+	while (tmp)
+	{
+		if ((tmp->nb_team) == max)
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
+// void	get_stay(t_stack *head)
+// {
+// 	t_stack	*tmp;
+// 	t_stack	*tmp2;
+// 	int		n;
+
+// 	tmp = head;
+// 	while (tmp)
+// 	{
+// 		tmp->stay = 0;
+// 		tmp2 = tmp->next;
+// 		n = tmp->number;
+// 		if (!tmp2)
+// 			tmp2 = tmp;
+// 		while (tmp2->number != tmp->number)
+// 		{
+// 			if (n < tmp2->number)
+// 			{
+// 				tmp->stay = 1;
+// 				n = tmp2->number;
+// 			}
+// 			tmp2 = tmp2->next;
+// 			if (!tmp2)
+// 				tmp2 = head;
+// 		}
+// 		tmp = tmp->next;
+// 	}
+// 	printf("show stay %d\n", tmp->stay);
+// }
+
+
+void	init_stay(t_stack **st)
+{
+	t_stack	*tmp;
+
+	tmp = (*st);
+	while (tmp)
+	{
+		tmp->stay = 0;
+		tmp = tmp->next;
+	}
+}
+
+int	get_stay(t_stack **first)
+{
+	t_stack	*tmp;
+	t_stack	*tmp2;
+	int		n;
+
+	tmp = (*first);
+	while (tmp)
+	{
+		tmp->stay = 0;
+		tmp2 = tmp->next;
+		n = tmp->number;
+		if (!tmp2)
+			tmp2 = (*first);
+		while (tmp2->number != tmp->number)
+		{
+			if (n < tmp2->number)
+			{
+				tmp->stay = 1;
+				// printf("tmp->stay = %d\n", tmp->stay);
+				n = tmp2->number;
+			}
+			tmp2 = tmp2->next;
+			
+			if (!tmp2)
+				tmp2 = (*first);
+			printf("tmp->number = %d, tmp2->number = %d, tmp->stay = %d\n", tmp->number, tmp2->number, tmp->stay);
+		}
+		
+		// tmp = tmp->next;
+		// if (!tmp)
+		// 	tmp = (*first);
+	}
+
+// 	printf("\n\n\ntmp->number = %d\n", tmp->number);
+	return (0);
+}
+
+
 
 // int		swapable(t_stack *stack)
 // {
@@ -221,8 +337,14 @@ int	ft_absolute(int n)
 
 void	init_sorter(t_stack **st_a)
 {
-	get_max_sorted(st_a);
-	printf("max_number_team ecart here %d\n", (*st_a)->nb_team);
+	t_stack	*tmp;
+
+	init_max_sorted(st_a);
+	printf("max_number_team ecart here %d\n", get_max_nb_team(st_a));
+	tmp = get_head_stay(st_a);
+	printf("Head of list stay is = %d\n", tmp->number);
+	get_stay(&tmp);
+	// printf("show stay %d\n", tmp->stay);
 	(*st_a)->size = ft_size_stack(st_a);
 	printf("size stack here %d\n", (*st_a)->size);
 }
@@ -244,7 +366,7 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 		// if ((*st_a) && swapable((*st_a)))
 		// {
 		// 	ft_swap(&(*st_a), 'a');
-		// 	(*st_a)->nb_team = get_max_sorted(st_a);
+		// 	(*st_a)->nb_team = init_max_sorted(st_a);
 		// }
 		// else 
 		if ((*st_a) && !(*st_a)->stay && gap == 0)
