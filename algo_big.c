@@ -131,6 +131,7 @@ int	init_max_sorted(t_stack **first)
 			if (n < tmp2->number)
 			{
 				tmp->nb_team++;
+				// tmp->stay = 1;
 				printf("number = %d, tmp2->number = %d, NB_TEAM = %d\n", tmp->number, tmp2->number, tmp->nb_team);
 				n = tmp2->number;
 			}
