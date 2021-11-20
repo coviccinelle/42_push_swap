@@ -12,11 +12,7 @@
 
 #include "push_swap.h"
 
-
-
 // LISTE CHAINEE starts here //
-//
-//
 void	ft_new_element(t_stack	**stack, int n)
 {
 	t_stack	*tmp;
@@ -41,7 +37,6 @@ void	ft_new_element(t_stack	**stack, int n)
 		new->number = n;
 	}
 }
-
 
 int		ft_size_stack(t_stack **stack)
 {
@@ -97,7 +92,6 @@ void	ft_display_2_stacks(t_stack *stack_a, t_stack *stack_b)
 	}
 }
 
-
 //       -----  OPERATIONS FUNCTIONS -----       //
 //
 //
@@ -142,7 +136,6 @@ void	ft_ss(t_stack **stack_a, t_stack **stack_b)
 	printf("ss\n");
 	// ft_display_2_stacks(*stack_a, *stack_b);
 }
-
 
 int	ft_rotate(t_stack **stack, char c)
 {
@@ -196,7 +189,6 @@ int	ft_rr(t_stack **stack_a, t_stack **stack_b)
 	return (1);
 }
 
-
 int	ft_reverse_rotate(t_stack **stack, char c)
 {
 	t_stack	*tmp1;
@@ -219,7 +211,6 @@ int	ft_reverse_rotate(t_stack **stack, char c)
 	// ft_display_stack(*stack);
 	return (1);
 }
-
 
 int	ft_rr_ro(t_stack **stack)
 {
@@ -244,7 +235,6 @@ int	ft_rr_ro(t_stack **stack)
 	ft_display_stack(*stack);
 	return (1);
 }
-
 
 void	ft_rrr(t_stack **stack_a, t_stack **stack_b)
 {
@@ -281,8 +271,6 @@ int	ft_push(t_stack **st_t, t_stack **st_r, char c)
 	return (0);
 }
 
-
-
 t_stack		*get_last(t_stack *last)
 {
 	if (last == NULL)
@@ -291,8 +279,6 @@ t_stack		*get_last(t_stack *last)
 		last = last->next;
 	return (last);
 }
-
-
 
 // DOUBLONS PART //
 //
@@ -326,17 +312,12 @@ int	ft_doublons(t_stack *stack)
 	return (0);
 }
 
-
-
-
-
 // PARSING PART //
 void	ft_init(t_env *f)
 {
 	f->stack_a = NULL;
 	f->stack_b = NULL;
 }
-
 
 int	main(int ac, char **av)
 {
@@ -361,7 +342,6 @@ int	main(int ac, char **av)
 	}
 	return (0);
 }
-
 
 // int	main(int ac, char **av)
 // {

@@ -28,7 +28,6 @@ typedef struct	s_stack
 	int				size;
 }				t_stack;
 
-
 typedef struct	s_env
 {
 	t_stack		*stack_a;
@@ -53,7 +52,6 @@ int	ft_parsing_multi_2(int ac, char **av, t_stack **stack_a);
 
 void	ft_free_ck(t_stack **list_a);
 int		ft_check_double(t_stack **list_a);
-
 
 
 // LISTE CHAINEE starts here //

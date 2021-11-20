@@ -35,7 +35,6 @@ void	ft_algo(t_stack **stack_a, t_stack **stack_b)
 		ft_algo_big(stack_a, stack_b);
 }
 
-
 void	ft_algo_2(t_stack **stack_a)
 {
 	t_stack		*tmp;
@@ -44,7 +43,6 @@ void	ft_algo_2(t_stack **stack_a)
 	if (tmp->number > tmp->next->number)
 		ft_swap(stack_a, 'a');
 }
-
 
 void	ft_algo_3(t_stack **st)
 {
@@ -106,7 +104,6 @@ void	ft_algo_4(t_stack **stack_a, t_stack **stack_b)
 	ft_display_stack(*stack_b);
 }
 
-
 int	get_num_on_top(t_stack **stack_a, int index, int min_steps)
 {
 	int i;
@@ -133,7 +130,6 @@ int	get_num_on_top(t_stack **stack_a, int index, int min_steps)
 	printf("done get_num_on_top\n");
 	return (0);
 }
-
 
 void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 {

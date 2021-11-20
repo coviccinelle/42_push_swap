@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   algo_big.c                                         :+:      :+:    :+:   */
+/*   algo_big_copy.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -177,17 +177,6 @@ t_stack	*get_head_stay(t_stack **st_a)
 	return (NULL);
 }
 
-void	show_stay(t_stack **st)
-{
-	t_stack	*tmp;
-
-	tmp = (*st);
-	while (tmp)
-	{
-		printf("tmp->number = %d, tmp->stay = %d\n", tmp->number, tmp->stay);
-		tmp = tmp->next;
-	}
-}
 
 void	get_stay(t_stack **st, t_stack *first)
 {
@@ -217,7 +206,6 @@ void	get_stay(t_stack **st, t_stack *first)
 		}
 		tmp = tmp->next;
 	}
-	show_stay(st);
 }
 
 void	init_stay(t_stack **st)
@@ -303,6 +291,17 @@ int	ft_absolute(int n)
 	return (n);
 }
 
+void	show_stay(t_stack **st)
+{
+	t_stack	*tmp;
+
+	tmp = (*st);
+	while (tmp)
+	{
+		printf("tmp->number = %d, tmp->stay = %d\n", tmp->number, tmp->stay);
+		tmp = tmp->next;
+	}
+}
 
 void	init_sorter(t_stack **st_a)
 {
@@ -313,7 +312,7 @@ void	init_sorter(t_stack **st_a)
 	tmp = get_head_stay(st_a);
 	printf("Head of list stay is = %d\n", tmp->number);
 	get_stay(&(*st_a), tmp);
-	// show_stay(st_a);
+	show_stay(st_a);
 	(*st_a)->size = ft_size_stack(st_a);
 	printf("size stack here %d\n", (*st_a)->size);
 }
@@ -327,12 +326,18 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 	int		gap;
 	
 	init_sorter(st_a);
+	printf("nb_team = %d\n", (*st_a)->nb_team);
 	while ((*st_a)->size > (*st_a)->nb_team)
 	{
 		printf("Number now is = %d, and nb_team max sorted number is = %d\n",
 		 (*st_a)->number, (*st_a)->nb_team);
 		gap = ft_min_steps((*st_a), (*st_a)->index);
-	 
+		// if ((*st_a) && swapable((*st_a)))
+		// {
+		// 	ft_swap(&(*st_a), 'a');
+		// 	(*st_a)->nb_team = init_max_sorted(st_a);
+		// }
+		// else 
 		if ((*st_a) && !(*st_a)->stay && gap == 0)
 		{
 			ft_push(st_a, st_b, 'b');
@@ -340,8 +345,11 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 		}
 		else
 			break ;
-
+		// else
+		// {
+		// 	// ft_rotate(st, )
+		// }
 	}
 	printf("Now push back numbers in stack_b back instack_a\n");
-	// push numbers from b back to a, in a most optimited way =>caculate_b(st_a,); 
+	// caculate_b(st_a,);
 }
