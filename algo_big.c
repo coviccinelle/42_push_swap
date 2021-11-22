@@ -289,7 +289,7 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 	while (tmp->size > tmp->nb_team)
 	{
 		gap = ft_min_steps((tmp), tmp->index);
-		ft_index(*st_a);
+		
 		if (tmp && !tmp->stay && gap == 0)
 		{
 			ft_push(st_a, st_b, 'b');
@@ -300,6 +300,7 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 			get_num_on_top(&tmp, tmp->index, gap);
 			ft_push(st_a, st_b, 'b');
 			(tmp->size)--;
+			ft_index(*st_a);
 		}
 		// tmp = tmp->next;
 	}
