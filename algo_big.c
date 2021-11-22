@@ -258,7 +258,7 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 	init_sorter(st_a);
 	while ((*st_a)->size > (*st_a)->nb_team)
 	{
-		printf("Number now is = %d, and nb_team max sorted number is = %d\n",
+		Go though the stack, if tmptmp->stay = 0 => get_num_on_top(tmptmp) =>push
 		 (*st_a)->number, (*st_a)->nb_team);
 		gap = ft_min_steps((*st_a), (*st_a)->index);
 	 
@@ -274,3 +274,12 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 	printf("Now push back numbers in stack_b back instack_a\n");
 	// push numbers from b back to a, in a most optimited way =>caculate_b(st_a,); 
 }
+
+
+// // to  bring him on top and push every time ->reset index and min_step
+
+// 		ft_index(*stack_a);
+// 		tmp = (*stack_a);
+// 		min_steps = ft_min_steps(*stack_a, min_2->index);
+// 		get_num_on_top(stack_a, min_2->index, min_steps);
+// 		ft_push(stack_a, stack_b, 'b');
