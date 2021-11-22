@@ -288,22 +288,19 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 	init_sorter(st_a);
 	while (tmp->size > tmp->nb_team)
 	{
-		// while (tmp->size > tmp->nb_team)
-		// {
-			gap = ft_min_steps((tmp), tmp->index);
-	 
-			if (tmp && !tmp->stay && gap == 0)
-			{
-				ft_push(st_a, st_b, 'b');
-				(tmp->size)--;
-			}
-			else if (tmp && tmp->stay && gap == 0)
-				ft_rotate(st_a, 'a');
-			else
-				break ;
-			// else if (tmp && tmp->stay && gap == 0)
-			// 	ft_rotate(st_a, 'a');
-		// }
+		gap = ft_min_steps((tmp), tmp->index);
+		ft_index(*st_a);
+		if (tmp && !tmp->stay && gap == 0)
+		{
+			ft_push(st_a, st_b, 'b');
+			(tmp->size)--;
+		}
+		else if (tmp && tmp->stay && gap == 0)
+		{
+			get_num_on_top(&tmp, tmp->index, gap);
+			ft_push(st_a, st_b, 'b');
+			(tmp->size)--;
+		}
 		// tmp = tmp->next;
 	}
 	printf("Now push back numbers in stack_b back instack_a\n");
