@@ -57,61 +57,6 @@ void		ft_index(t_stack *stack_a)
 	}
 }
 
-// int		loop_stack(t_stack *st, t_stack *start, int tri)
-// {
-// 	t_stack		*loop;
-// 	int 		max_count;
-// 	int			count;
-
-// 	count = 1;
-// 	max_count = -1;
-// 	loop = start;
-// 	while (loop)
-// 	{
-// 		if (tri)
-// 			loop->stay = 0;
-// 		if (loop->index > max_count)
-// 		{
-// 			max_count = loop->index;
-// 			count++;
-// 			if (tri)
-// 				loop->stay = 1;
-// 		}
-// 		loop = loop->next;
-// 		if (loop == NULL)
-// 			loop = st;
-// 		if (loop == start)
-// 			break ;
-// 		// printf("count inside loop_loop = %d\n", count);
-// 	}
-// 	// printf("count inside loop_loop = %d\n", count);
-// 	return (count);
-// }
-
-// int		get_max_sorted(t_stack *first, int trig)
-// {
-// 	t_stack	*tmp;
-// 	t_stack	*stay;
-// 	int		max;
-// 	int		count;
-
-// 	max = 0;
-// 	tmp = first;
-// 	while (tmp)
-// 	{
-// 		count = loop_stack(first, tmp, 0);
-// 		if (count > max)
-// 		{
-// 			max = count;
-// 			stay = tmp;
-// 		}
-// 		tmp = tmp->next;	
-// 	}
-// 	if (trig)
-// 		loop_stack(first, stay, 1);
-// 	return (max);
-// }
-
 int	init_max_sorted(t_stack **first)
 {
 	t_stack	*tmp;
@@ -172,7 +117,10 @@ t_stack	*get_head_stay(t_stack **st_a)
 	while (tmp)
 	{
 		if ((tmp->nb_team) == max)
+		{
+			tmp->stay = 1;
 			return (tmp);
+		}
 		tmp = tmp->next;
 	}
 	return (NULL);
@@ -208,7 +156,7 @@ void	get_stay(t_stack **st, t_stack *first)
 		{
 			if (n < tmp2->number)
 			{
-				tmp->stay = 1;
+				tmp2->stay = 1;
 				printf("tmp->number = %d, tmp2->number = %d, tmp->stay = %d\n\n", tmp->number, tmp2->number, tmp->stay);
 				n = tmp2->number;
 			}
@@ -218,7 +166,6 @@ void	get_stay(t_stack **st, t_stack *first)
 		}
 		tmp = tmp->next;
 	}
-	show_stay(st);
 }
 
 void	init_stay(t_stack **st)
@@ -232,25 +179,6 @@ void	init_stay(t_stack **st)
 		tmp = tmp->next;
 	}
 }
-
-// int		swapable(t_stack *stack)
-// {
-// 	int		w1_i;
-// 	int		w2_i;
-// 	t_stack	w1;
-// 	t_stack	w2;
-
-// 	w1.next = &w2;
-// 	w1.index = stack->next->index;
-// 	w2.next = stack->next->next;
-// 	w2.index = stack->index;
-// 	w1_i = get_max_sorted(&stack);
-// 	w2_i = get_max_sorted(&(w1));
-// 	// printf("w1_i = %d\n, w2_i = %d\n", w1_i, w2_i);
-// 	if (w2_i > w1_i)
-// 		return (1);
-// 	return (0);
-// }
 
 t_stack		*ft_max(t_stack *stack)
 {
@@ -314,7 +242,7 @@ void	init_sorter(t_stack **st_a)
 	tmp = get_head_stay(st_a);
 	printf("Head of list stay is = %d\n", tmp->number);
 	get_stay(&(*st_a), tmp);
-	// show_stay(st_a);
+	show_stay(st_a);
 	(*st_a)->size = ft_size_stack(st_a);
 	printf("size stack here %d\n", (*st_a)->size);
 }
