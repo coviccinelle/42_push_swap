@@ -126,10 +126,46 @@ int	get_num_on_top(t_stack **stack_a, int index, int min_steps)
 			i--;
 		}
 	}
-	// ft_display_stack(*stack_a);
+	ft_display_stack(*stack_a);
 	printf("done get_num_on_top\n");
 	return (0);
 }
+
+// void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
+// {
+// 	t_stack		*min;
+// 	t_stack		*min_2;
+// 	t_stack		*tmp;
+// 	int 		min_steps;
+
+// 	if (!ft_sorted(stack_a))
+// 	{
+// 		min = ft_min(*stack_a);
+// 		ft_index(*stack_a);
+// 		min_steps = ft_min_steps(*stack_a, min->index);
+// 		get_num_on_top(stack_a, min->index, min_steps);
+// 		ft_push(stack_a, stack_b, 'b');
+// 		min_2 = ft_min(*stack_a);
+// 		ft_index(*stack_a);
+// 		tmp = (*stack_a);
+// 		min_steps = ft_min_steps(*stack_a, min_2->index);
+// 		get_num_on_top(stack_a, min_2->index, min_steps);
+// 		ft_push(stack_a, stack_b, 'b');
+// 		ft_algo_3(stack_a);
+// 		ft_push(stack_b, stack_a, 'a');
+// 		ft_push(stack_b, stack_a, 'a');
+// 	}
+// 	printf("------ final algo _5 -----\n");
+// 	ft_display_stack(*stack_a);
+// }
+
+
+
+// void	reset_index(t_stack **st_a, int	gap)
+// {
+// 	ft_index(*st_a);
+// 	gap = 
+// }
 
 void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 {
