@@ -146,7 +146,6 @@ void	get_stay(t_stack **st, t_stack *first)
 	tmp = first;
 	while (tmp == first)
 	{
-		// tmp.stay = 0;
 		tmp2 = tmp->next;
 		n = tmp->number;
 		if (!tmp2)
@@ -288,19 +287,23 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 	init_sorter(st_a);
 	while (tmp->size > tmp->nb_team)
 	{
-		gap = ft_min_steps((tmp), tmp->index);
-		
-		if (tmp && !tmp->stay && gap == 0)
+		while (tmp->size > tmp->nb_team)
 		{
-			ft_push(st_a, st_b, 'b');
-			(tmp->size)--;
-		}
-		else if (tmp && tmp->stay && gap == 0)
-		{
-			get_num_on_top(&tmp, tmp->index, gap);
-			ft_push(st_a, st_b, 'b');
-			(tmp->size)--;
-			ft_index(*st_a);
+			ft_index(tmp);
+			gap = ft_min_steps((tmp), tmp->index);
+			if (tmp && !tmp->stay && gap == 0)
+			{
+				ft_push(st_a, st_b, 'b');
+				(tmp->size)--;
+			}
+			// else if (tmp && tmp->stay && gap == 0)
+			// 	tmp = tmp->next;
+			else if (tmp && tmp->stay && gap == 0)
+			{
+				get_num_on_top(&tmp, tmp->index, gap);
+				ft_push(st_a, st_b, 'b');
+				(tmp->size)--;
+			}
 		}
 		// tmp = tmp->next;
 	}
