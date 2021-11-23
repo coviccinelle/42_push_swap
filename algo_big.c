@@ -76,7 +76,7 @@ int	init_max_sorted(t_stack **first)
 			if (n < tmp2->number)
 			{
 				tmp->nb_team++;
-				printf("number = %d, tmp2->number = %d, NB_TEAM = %d\n", tmp->number, tmp2->number, tmp->nb_team);
+				// printf("number = %d, tmp2->number = %d, NB_TEAM = %d\n", tmp->number, tmp2->number, tmp->nb_team);
 				n = tmp2->number;
 			}
 			tmp2 = tmp2->next;
@@ -132,7 +132,7 @@ void	show_stay(t_stack **st)
 	tmp = (*st);
 	while (tmp)
 	{
-		printf("tmp->number = %d, tmp->stay = %d\n", tmp->number, tmp->stay);
+		printf("Show stay : tmp->number = %d, tmp->index = %d, tmp->stay = %d\n", tmp->number, tmp->index, tmp->stay);
 		tmp = tmp->next;
 	}
 }
@@ -155,7 +155,7 @@ void	get_stay(t_stack **st, t_stack *first)
 			if (n < tmp2->number)
 			{
 				tmp2->stay = 1;
-				printf("tmp->number = %d, tmp2->number = %d, tmp->stay = %d\n\n", tmp->number, tmp2->number, tmp->stay);
+				printf("Get_stay : tmp->number = %d, tmp2->number = %d, tmp->stay = %d\n\n", tmp->number, tmp2->number, tmp->stay);
 				n = tmp2->number;
 			}
 			tmp2 = tmp2->next;
@@ -275,41 +275,106 @@ void	init_sorter(t_stack **st_a)
 	get_stay(&(*st_a), tmp);
 	show_stay(st_a);
 	(*st_a)->size = ft_size_stack(st_a);
+	ft_index(*st_a);
 	printf("size stack here %d\n\n\n", (*st_a)->size);
+}
+
+int		done_push_in_b(t_stack *st)
+{
+	t_stack	*tmp;
+
+	tmp = st;
+	while (tmp)
+	{
+		if (tmp->stay == 0)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
 }
 
 void	sorter(t_stack **st_a, t_stack **st_b)
 {
-	t_stack		*tmp;
-	int			gap;
+	t_stack	*tmp;
+	int		gap;
 
-	tmp = (*st_a);	
-	init_sorter(st_a);
-	while (tmp->size > tmp->nb_team)
+	
+	
+	tmp = (*st_a);
+	init_sorter(&tmp);
+	while (tmp)
 	{
-		while (tmp->size > tmp->nb_team)
+		while (tmp->number)
 		{
-			ft_index(tmp);
-			gap = ft_min_steps((tmp), tmp->index);
-			if (tmp && !tmp->stay && gap == 0)
+			gap = ft_min_steps(tmp, tmp->index);
+			if (tmp->stay == 0)
 			{
-				ft_push(st_a, st_b, 'b');
-				(tmp->size)--;
+				
+				ft_push(&tmp, st_b, 'b');
+				tmp->size--;
+				ft_index(tmp);
+				printf("Sorter 1 : tmp->number = %d, tmp->stay = %d\n\n", tmp->number, tmp->stay);
+				break ;
 			}
-			// else if (tmp && tmp->stay && gap == 0)
-			// 	tmp = tmp->next;
-			else if (tmp && tmp->stay && gap == 0)
+			else if (tmp->stay == 1)
 			{
-				get_num_on_top(&tmp, tmp->index, gap);
-				ft_push(st_a, st_b, 'b');
-				(tmp->size)--;
+				ft_rotate(&tmp, 'a');
+				ft_index(tmp);
+				printf("Sorter 2 : tmp->number = %d, tmp->stay = %d\n", tmp->number, tmp->stay);
+				break ;
 			}
 		}
-		// tmp = tmp->next;
+		if (done_push_in_b(tmp))
+			break ;
 	}
-	printf("Now push back numbers in stack_b back instack_a\n");
-	// push numbers from b back to a, in a most optimited way =>caculate_b(st_a,); 
 }
+
+
+// void	sorter(t_stack **st_a, t_stack **st_b)
+// {
+// 	t_stack		*tmp;
+// 	int			gap;
+
+// 	tmp = (*st_a);
+// 	ft_index(*st_a);
+// 	init_sorter(&tmp);
+// 	while (tmp)
+// 	{
+// 		while (tmp->size > tmp->nb_team)
+// 		{
+// 			gap = ft_min_steps((tmp), tmp->index);
+// 			if (tmp && !tmp->stay && gap == 0)
+// 			{
+// 				printf("case _1 in sorter\n");
+// 				ft_push(st_a, st_b, 'b');
+// 				(tmp->size)--;
+// 				ft_index(tmp);
+				
+// 			}
+// 			else if (tmp && tmp->stay && gap == 0)
+// 			{
+// 				printf("case _2 in sorter\n");
+// 				ft_rotate(&tmp, 'a');
+// 					break ;
+// 				ft_index(tmp);
+// 				break;
+// 			}
+// 			else if (tmp && tmp->stay && gap != 0)
+// 			{
+// 				printf("case _3 in sorter\n");
+// 				get_num_on_top(&tmp, tmp->index, gap);
+			
+// 				ft_push(st_a, st_b, 'b');
+// 				(tmp->size)--;
+// 				ft_index(tmp);
+// 			}
+// 			// tmp = tmp->next;
+// 		}
+// 		// tmp = tmp->next;
+// 	}
+// 	printf("Now push back numbers in stack_b back instack_a\n");
+// 	// push numbers from b back to a, in a most optimited way =>caculate_b(st_a,); 
+// }
 
 
 // // to  bring him on top and push every time ->reset index and min_step
