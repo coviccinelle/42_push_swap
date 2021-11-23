@@ -269,7 +269,18 @@ int		done_push_in_b(t_stack *st)
 
 // void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 // {
-// 	t_stack		*tmp;
+// 	t_stack		*tmp2_a;
+// 	t_stack		*tmp_b;
+// 	int			gap_a;
+// 	int			gap_b;
+
+// 	tmp_b = (*st_b);
+// 	while (tmp_b)
+// 	{
+// 		tmp2_a = ft_sandwich(tmp_b, st_a);
+// 		gap_a = ft_min_steps()
+// 	}
+
 
 // }
 
@@ -304,7 +315,21 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 	// ft_sorter_p2(t_stack **st_a, t_stack **st_b);
 }
 
+// TODO:
+// 1. Find tmp < number && number < tmp2 in stack_a
+// 2. int gap = ft_min_steps(tmp2 on top) + ft_min_steps(number on top b) + 1;
+// 3. Compare all number->gap in st_b and push_back in b
 
+// TODO:
+// - Step to push back in st_a:
+// 1. ft_sandwich(tmp_b, tmp_a, tmp2_a); => return pointer on tmp2;
+// 2. => get_num_on_top (tmp_b);
+// 3. => get_num_on_top (tmp2_a);
+// 4. => ft_psuh(tmp_b on top of a);
+
+
+
+// => I can do this in 1 hour!!! Come on you can do this.
 
 // // to  bring him on top and push every time ->reset index and min_step
 
