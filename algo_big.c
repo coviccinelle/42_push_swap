@@ -261,28 +261,84 @@ int		done_push_in_b(t_stack *st)
 
 
 
+t_stack	*ft_sandwich(t_stack *tmp_b, t_stack **st_a)
+{
+	t_stack		*tmp_a;
+	t_stack		*tmp2_a;
+
+	tmp_a = (*st_a);
+	tmp2_a = tmp_a->next;
+	while (tmp_a)
+	{
+		if (tmp_a->number < tmp_b->number && tmp_b->number < tmp2_a->number)
+			return (tmp2_a);
+		tmp_a = tmp_a->next;
+	}
+	return (NULL);
+}
 
 
+int	ft_compare_b_int(t_stack **st_b)
+{
+	t_stack	*tmp;
+	int		min;
+
+	min = 999;
+	tmp = (*st_b);
+	while (tmp)
+	{
+		if (tmp->gap < min)
+			min = tmp->gap;
+		tmp = tmp->next;
+	}
+	return (min);
+}
+
+t_stack	*ft_compare_b(t_stack **st_b)
+{
+	int		min;
+	t_stack	*tmp;
+
+	tmp = (*st_b);
+	min = ft_compare_b_int(st_b);
+	while (tmp)
+	{
+		if (tmp->gap == min)
+			return(tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
 
 
+void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
+{
+	t_stack		*tmp2_a;
+	t_stack		*tmp_b;
+	int			gap_a;
+	int			gap_b;
+	t_stack		*min_b;
 
-
-// void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
-// {
-// 	t_stack		*tmp2_a;
-// 	t_stack		*tmp_b;
-// 	int			gap_a;
-// 	int			gap_b;
-
-// 	tmp_b = (*st_b);
-// 	while (tmp_b)
-// 	{
-// 		tmp2_a = ft_sandwich(tmp_b, st_a);
-// 		gap_a = ft_min_steps()
-// 	}
-
-
-// }
+	tmp_b = (*st_b);
+	printf("ok here 1\n");
+	while (tmp_b)
+	{
+		printf("ok here 2\n");
+		tmp2_a = ft_sandwich(tmp_b, st_a);
+		printf("ok here 3\n");
+		// printf("tmp2_a = %d, tmp_b = %d\n", tmp2_a->number, tmp_b->number);
+		gap_a = ft_min_steps(tmp2_a, tmp2_a->index);// tmp2_a on top;
+		printf("ok here 3\n");
+		gap_b = ft_min_steps(tmp_b, tmp_b->index);// tmp_b on top;
+		tmp_b->gap = gap_a + gap_b + 1;
+		min_b = ft_compare_b(st_b);
+		get_num_on_top(&min_b, min_b->index, gap_b);
+		get_num_on_top(&tmp2_a, tmp2_a->index, gap_a);
+		ft_push(st_b, st_a, 'a');
+	
+		tmp_b = tmp_b->next;
+	}
+}
 
 void	sorter(t_stack **st_a, t_stack **st_b)
 {
@@ -312,7 +368,7 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 			break ;
 	}
 	printf("ALGO_2 : => Now calculate and push back numbers in b to a\n");
-	// ft_sorter_p2(t_stack **st_a, t_stack **st_b);
+	ft_sorter_p2(st_a, st_b);
 }
 
 // TODO:

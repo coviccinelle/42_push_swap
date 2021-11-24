@@ -25,6 +25,7 @@ typedef struct	s_stack
 	int				index;
 	int				stay;
 	int				nb_team;
+	int				gap;
 	int				size;
 }				t_stack;
 
