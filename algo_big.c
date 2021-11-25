@@ -125,6 +125,20 @@ t_stack	*get_head_stay(t_stack **st_a)
 	return (NULL);
 }
 
+t_stack	*get_p_number(t_stack **st_a, int n)
+{
+	t_stack		*tmp;
+
+	tmp = (*st_a);
+	while (tmp)
+	{
+		if ((tmp->nb_team) == n)
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}
+
 void	show_stay(t_stack **st)
 {
 	t_stack	*tmp;
@@ -216,7 +230,6 @@ int		ft_min_steps(t_stack *stack, int index)
 	int			step;
 
 	step = 0;
-	printf("index here = %d, size_stack here is %d\n", index, ft_size_stack(&stack));
 	if (index <= (ft_size_stack(&stack) / 2))
 		step = index;
 	else if (index > (ft_size_stack(&stack) / 2))
@@ -246,6 +259,19 @@ void	init_sorter(t_stack **st_a)
 	printf("size stack here %d\n", (*st_a)->size);
 }
 
+
+
+// void	init_sorter_2(t_stack **st_a, **st_b)
+// {
+// 	t_stack		*tmp_a;
+// 	t_stack		*tmp_b;
+// 	int			gap_b;
+// 	int			gap_a;
+// 	int			gap;
+
+// }
+
+
 int		done_push_in_b(t_stack *st)
 {
 	t_stack	*tmp;
@@ -261,28 +287,31 @@ int		done_push_in_b(t_stack *st)
 }
 
 
-
-t_stack	*ft_sandwich(t_stack *tmp_b, t_stack **st_a)
+// return a number after tmp_b = The one should be on top of stack_a
+int	ft_sandwich(t_stack *tmp_b, t_stack **st_a)
 {
 	t_stack		*tmp_a;
 	t_stack		*tmp2_a;
 	t_stack		*min_a;
 	t_stack		*max_a;
 
+	  
 	tmp_a = (*st_a);
-	min_a = ft_min(*st_a);
-	max_a = ft_max(*st_a);
+	
 	while (tmp_a)
 	{
+		min_a = ft_min(tmp_a);
+		max_a = ft_max(tmp_a);
+
 		if (tmp_b->number < min_a->number)
 		{
-			return (ft_min(*st_a));
-			printf("SANDWICH here :  tmp2_a = %p, tmp2_a->number = %d\n", tmp2_a, tmp2_a->number);
+			return (min_a->number);
+			printf("\n\n\n ------ SANDWICH here :  tmp2_a = %p, tmp2_a = %d\n", tmp2_a, min_a->number);
 		}
 		if (tmp_b->number > max_a->number)
-			return  (ft_max(*st_a));
+			return  (max_a->number);
 		// TODO: Incase it's bigger than all numbers in stack_a
-		
+
 		tmp2_a = tmp_a->next;
 		printf("tmp_a->number = %d, tmp_b->number = %d, tmp2_a->number = %d\n", 
 		tmp_a->number, tmp_b->number, tmp2_a->number);
@@ -290,14 +319,62 @@ t_stack	*ft_sandwich(t_stack *tmp_b, t_stack **st_a)
 			tmp2_a = (*st_a);
 		if (tmp_a->number < tmp_b->number && tmp_b->number < tmp2_a->number)
 		{
-			return (tmp2_a);
-			printf("SANDWICH here: tmp2_a = %p, tmp2_a->number = %d\n", tmp2_a, tmp2_a->number);
+			printf("\n\n\n SANDWICH\n");
+			printf("\n\n ------ SANDWICH here: tmp2_a = %p, tmp2_a->number = %d\n", tmp2_a, tmp2_a->number);
+			return (tmp2_a->number);
+			printf("\n\n ------ SANDWICH here: tmp2_a = %p, tmp2_a->number = %d\n", tmp2_a, tmp2_a->number);
 		}
 		
 		tmp_a = tmp_a->next;
 	}
-	return (NULL);
+	return (-999);
 }
+
+
+// to calculate steps for each number in st_b
+void	set_gap_b(t_stack **st_a, t_stack **st_b)
+{
+	t_stack	*tmp_b;
+	t_stack	*tmp_a;
+	t_stack	*p_top_a;
+	int		gap_a;
+	int		gap_b;
+	int		gap;
+	int		top_a;
+
+	tmp_b = (*st_b);
+	tmp_a = (*st_a);
+	ft_index(tmp_b);
+	
+	while (tmp_b)
+	{
+		ft_index(tmp_a);
+		tmp_b->gap = 0;
+		top_a = ft_sandwich(tmp_b, &tmp_a);
+
+		p_top_a = get_p_number(st_a, top_a);
+		printf("top_a (the number should be on top of a) = %d, pointer top a = %d\n", top_a, p_top_a->number);
+		
+
+		// Probem in here
+		gap_a = ft_min_steps(tmp_a, p_top_a->index);
+
+
+		printf("gap_a (minimun steps to put top_a on top) = %d, p_top_a->index = %d, size_stack %d\n",
+		gap_a, p_top_a->index, ft_size_stack(&tmp_a));
+		gap_b = ft_min_steps(tmp_b, tmp_b->index);
+		printf("gap_b (number of steps to put b on top) is  = %d, size_stack_b = %d\n", gap_b, ft_size_stack(&tmp_b));
+		gap = gap_a + gap_b + 1;
+
+		tmp_b->gap = gap;
+		printf("Total number of gap for this number in b is GAP = %d (= gap a:%d + gap_b: %d + 1)\n", gap, gap_a, gap_b);
+
+		// break ;
+		tmp_b = tmp_b->next;
+	}
+}
+
+
 
 int	ft_compare_b_int(t_stack **st_b)
 {
@@ -334,44 +411,43 @@ t_stack	*ft_compare_b(t_stack **st_b)
 
 void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 {
-	t_stack		*tmp2_a;
+	t_stack		*tmp_a;
 	t_stack		*tmp_b;
-	int			gap_a;
-	int			gap_b;
+
 	t_stack		*min_b;
 
 	printf("Let's take a look in stack_a\n\n");
 	ft_display_stack(*st_a);
-	tmp_b = (*st_b);
-	printf("ok here 1\n");
+	tmp_a = *(st_a);
+	tmp_b = *(st_b);
+
 	while (tmp_b)
 	{
-		tmp_b->gap = 0;
-		ft_index(*st_a);
-		printf("Let's take a look in stack_a\n\n");
-		ft_display_stack(*st_a);
-		ft_index(*st_b);
+		set_gap_b(&tmp_a, &tmp_b);
 
-		tmp2_a = ft_sandwich(tmp_b, st_a);
-		printf("ok here 2\n tmp2_a->number = %d\n", tmp2_a->number);
+		// top_a = ft_sandwich(tmp_b, &tmp_a); // number under tmp_b in stack a
+		// printf("\n\n\nOk here 2 sandwich\n tmp2_a->number (top_a) = %d\n", top_a);
+		// tmp2_a = get_p_number(&tmp_a, top_a);
+		
+		// gap_a = ft_min_steps(tmp2_a, tmp2_a->index);// tmp2_a on top;
+		// printf("Let's take a look in stack_a\n");
+		// ft_display_stack(tmp_a);
 
-		gap_a = ft_min_steps(tmp2_a, tmp2_a->index);// tmp2_a on top;
-		printf("Let's take a look in stack_a\n");
-		ft_display_stack(*st_a);
-
-		printf("Let's take a look in tmp2_a\n");
-		ft_display_stack(tmp2_a);
+		// printf("Let's take a look in tmp2_a\n");
+		// ft_display_stack(tmp2_a);
 
 
-		printf("ok here 3 => gap_a to bring number on top is %d\n", gap_a);
-		gap_b = ft_min_steps(tmp_b, tmp_b->index);// tmp_b on top;
-		tmp_b->gap = gap_a + gap_b + 1;
-		min_b = ft_compare_b(st_b);
-		get_num_on_top(&min_b, min_b->index, gap_b);
-		get_num_on_top(&tmp2_a, tmp2_a->index, gap_a);
-		ft_push(st_b, st_a, 'a');
+		// gap_b = ft_min_steps(tmp_b, tmp_b->index);// tmp_b on top;
+		// tmp_b->gap = gap_a + gap_b + 1;
+		min_b = ft_compare_b(&tmp_b);
+		printf("min_b->number(the smallest steps in b) is = %d\n", min_b->number);
+		// get_num_on_top(&min_b, min_b->index, gap_b);
+		// get_num_on_top(&tmp2_a, tmp2_a->index, gap_a);
+		// ft_push(&tmp_b, &tmp_a, 'a');
 	
-		tmp_b = tmp_b->next;
+		printf("AUKAYYY : get 2 numbers on top and push\n");
+		break ;
+		tmp_b = tmp_b->next; // not yet
 	}
 }
 
@@ -402,7 +478,7 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 		if (done_push_in_b(tmp))
 			break ;
 	}
-	printf("\nALGO_2 : => Now calculate and push back numbers in b to a\n");
+	printf("\n\n\n ------------ ALGO_2  ------------- \n\n => Now calculate and push back numbers in b to a\n");
 	ft_sorter_p2(&tmp, st_b);
 }
 
