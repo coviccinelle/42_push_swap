@@ -294,8 +294,7 @@ int	ft_sandwich(t_stack *tmp_b, t_stack **st_a)
 	t_stack		*tmp2_a;
 	t_stack		*min_a;
 	t_stack		*max_a;
-
-	  
+	
 	tmp_a = (*st_a);
 	
 	while (tmp_a)
@@ -320,11 +319,12 @@ int	ft_sandwich(t_stack *tmp_b, t_stack **st_a)
 		if (tmp_a->number < tmp_b->number && tmp_b->number < tmp2_a->number)
 		{
 			printf("\n\n\n SANDWICH\n");
-			printf("\n\n ------ SANDWICH here: tmp2_a = %p, tmp2_a->number = %d\n", tmp2_a, tmp2_a->number);
+			printf("\n\n ------ SANDWICH here: tmp2_a->number = %d\n", tmp2_a->number);
 			return (tmp2_a->number);
-			printf("\n\n ------ SANDWICH here: tmp2_a = %p, tmp2_a->number = %d\n", tmp2_a, tmp2_a->number);
+			printf("here\n\n\n\n");
+			break ;
 		}
-		
+		printf("here\n\n\n\n");
 		tmp_a = tmp_a->next;
 	}
 	return (-999);
