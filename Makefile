@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:09:08 by thi-phng          #+#    #+#              #
-#    Updated: 2021/11/05 17:06:37 by thi-phng         ###   ########.fr        #
+#    Updated: 2021/11/26 17:10:23 by thi-phng         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,8 @@ CC			=	clang
 SRCS		=	push_swap.c \
 				parsing.c \
 				utils.c \
+				utils_2.c \
+				utils_algo_1.c \
 				algo_principale.c \
 				algo_big.c \
 

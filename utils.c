@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:48:26 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/06 18:05:18 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/26 17:04:41 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@ int	ft_all_blank(char *str)
 	return (1);
 }
 
-
 int	ft_atoi_1(char *str)
 {
 	int				i;
@@ -76,41 +75,6 @@ int	ft_atoi_1(char *str)
 	return (res * neg);
 }
 
-
-int	ft_strlen(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-int	ft_invalid_char(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (!str[i])
-		return (1);
-	while (str[i])
-	{
-		if (!(find_me(str[i], "- 0123456789")))
-			return (1);
-		i++;
-	}
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '-' && !(find_me(str[i + 1], "0123456789")))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-
 int	ft_2nb_stick(char *str)
 {
 	int	i;
@@ -121,25 +85,11 @@ int	ft_2nb_stick(char *str)
 		while (find_me(str[i], "- 0123456789"))
 		{
 			if (find_me(str[i], "0123456789") && str[i + 1] == ' '
-						&& ft_int_exist(&str[i + 1]))
+				&& ft_int_exist(&str[i + 1]))
 				return (1);
 			i++;
 		}
 		i++;
 	}
 	return (0);
-}
-
-int	ft_smaller(int a, int b)
-{
-	if (a < b)
-		return (a);
-	return (b);
-}
-
-int	ft_bigger(int a, int b)
-{
-	if (a > b)
-		return (a);
-	return (b);
 }

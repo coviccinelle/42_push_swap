@@ -57,7 +57,7 @@ void	ft_algo_3(t_stack **st)
 			ft_swap(st, 'a');
 		else if ((*st)->number > nd && nd > rd && rd < (*st)->number)
 		{
-			ft_swap(st, 'a');//-> 3 5 2
+			ft_swap(st, 'a');
 			ft_reverse_rotate(st, 'a');
 		}
 		else if ((*st)->number > nd && nd < rd && rd < (*st)->number)
@@ -71,12 +71,6 @@ void	ft_algo_3(t_stack **st)
 			ft_reverse_rotate(st, 'a');
 	}
 }
-
-
-//TODO: ft_right_place(t_stack** stack_a, t_stack **stack_b) //compare 2 pointers in stack_a
-// 						to find a place to stuck first element of stack_b in   
-//				=> return an int = number of operations needed to get there
-
 
 void	ft_algo_4(t_stack **stack_a, t_stack **stack_b)
 {
