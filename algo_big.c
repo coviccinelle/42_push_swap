@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/26 17:44:05 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/26 17:57:35 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,26 +114,22 @@ int	ft_sandwich(t_stack *tmp_b, t_stack **st_a)
 void	set_gap_b(t_stack **st_a, t_stack **st_b)
 {
 	t_stack	*tmp_b;
-	t_stack	*tmp_a;
 	t_stack	*p_top_a;
 	int		gap_a;
 	int		gap_b;
 	int		top_a;
 
 	tmp_b = (*st_b);
-	tmp_a = (*st_a);
 	ft_index(tmp_b);
-	
 	while (tmp_b)
 	{
-		ft_index(tmp_a);
+		ft_index(*st_a);
 		tmp_b->gap = 0;
-		top_a = ft_sandwich(tmp_b, &tmp_a);
+		top_a = ft_sandwich(tmp_b, st_a);
 		p_top_a = get_p_number(st_a, top_a);
-		gap_a = ft_min_steps(tmp_a, p_top_a->index);
+		gap_a = ft_min_steps(*st_a, p_top_a->index);
 		gap_b = ft_min_steps(*st_b, tmp_b->index);
 		tmp_b->gap = gap_a + gap_b + 1;
-		// break ;
 		tmp_b = tmp_b->next;
 	}
 }
@@ -163,9 +159,9 @@ t_stack	*ft_compare_b(t_stack **st_b)
 	min = ft_compare_b_int(st_b);
 	while (tmp)
 	{
-	if (tmp->gap == min)
-		return(tmp);
-	tmp = tmp->next;
+		if (tmp->gap == min)
+			return (tmp);
+		tmp = tmp->next;
 	}
 	return (NULL);
 }
@@ -179,17 +175,14 @@ void	ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack *min_b)
 
 	ft_index(*tmp_a);
 	ft_index(*tmp_b);
-
 	top_a = ft_sandwich(min_b, tmp_a);
 	top_a_to_be = get_p_number(tmp_a, top_a);
 	printf("top_a_to_be->number = %d, index = %d\n", top_a_to_be->number, top_a_to_be->index);
 	gap_a = ft_min_steps(*tmp_a, top_a_to_be->index);
 	gap_b = ft_min_steps(*tmp_b, min_b->index);
-
 	printf("gap_a = %d, gap_b = %d\n", gap_a, gap_b);
 	get_num_on_top(tmp_a, top_a_to_be->index, gap_a);
 	get_num_on_top(tmp_b, min_b->index, gap_b);
-
 	ft_push(tmp_b, tmp_a, 'a');
 }
 
@@ -199,12 +192,11 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 	t_stack		*tmp_b;
 	t_stack		*min;
 	int			gap_min;
-
 	t_stack		*min_b;
+
 	tmp_a = *(st_a);
 	tmp_b = *(st_b);
-	printf("\n\n\n(1) Stack___AAAA\n");
-	ft_display_stack(tmp_a);
+
 	while (tmp_b)
 	{
 		set_gap_b(&tmp_a, &tmp_b);
@@ -223,12 +215,33 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 	*st_b = tmp_b;
 }
 
+// int		swapable(t_stack *stack)
+// {
+// 	int		w1_i;
+// 	int		w2_i;
+// 	t_stack	w1;
+// 	t_stack	w2;
+
+// 	w1.next = &w2;
+// 	w1.index = stack->next->index;
+// 	w2.next = stack->next->next;
+// 	w2.index = stack->index;
+// 	w1_i = init_max_sorted(&stack);
+// 	w2_i = init_max_sorted(&(w1));
+// 	// printf("w1_i = %d\n, w2_i = %d\n", w1_i, w2_i);
+// 	if (w2_i > w1_i)
+// 		return (1);
+// 	return (0);
+// }
+
 void	sorter(t_stack **st_a, t_stack **st_b)
 {
 	t_stack	*tmp;
 
 	tmp = (*st_a);
 	init_sorter(&tmp);
+	// if (swapable(tmp))
+	// 	ft_swap(&tmp, 'a');
 	while (tmp)
 	{
 		while (tmp)
@@ -251,7 +264,6 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 	ft_display_stack(tmp);
 	printf("Conclution => End of part 1: stack_b is \n");
 	ft_display_stack(*st_b);
-	
 	ft_sorter_p2(&tmp, st_b);
 	*st_a = tmp;
 }
