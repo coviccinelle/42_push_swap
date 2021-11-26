@@ -132,7 +132,7 @@ t_stack	*get_p_number(t_stack **st_a, int n)
 	tmp = (*st_a);
 	while (tmp)
 	{
-		if ((tmp->nb_team) == n)
+		if ((tmp->number) == n)
 			return (tmp);
 		tmp = tmp->next;
 	}
@@ -305,7 +305,7 @@ int	ft_sandwich(t_stack *tmp_b, t_stack **st_a)
 		if (tmp_b->number < min_a->number)
 		{
 			return (min_a->number);
-			printf("\n\n\n ------ SANDWICH here :  tmp2_a = %p, tmp2_a = %d\n", tmp2_a, min_a->number);
+			printf("------ SANDWICH here :  tmp2_a = %p, tmp2_a = %d\n", tmp2_a, min_a->number);
 		}
 		if (tmp_b->number > max_a->number)
 			return  (max_a->number);
@@ -318,13 +318,9 @@ int	ft_sandwich(t_stack *tmp_b, t_stack **st_a)
 			tmp2_a = (*st_a);
 		if (tmp_a->number < tmp_b->number && tmp_b->number < tmp2_a->number)
 		{
-			printf("\n\n\n SANDWICH\n");
-			printf("\n\n ------ SANDWICH here: tmp2_a->number = %d\n", tmp2_a->number);
+			printf("----- SANDWICH here: tmp2_a->number = %d\n", tmp2_a->number);
 			return (tmp2_a->number);
-			printf("here\n\n\n\n");
-			break ;
 		}
-		printf("here\n\n\n\n");
 		tmp_a = tmp_a->next;
 	}
 	return (-999);
@@ -350,24 +346,23 @@ void	set_gap_b(t_stack **st_a, t_stack **st_b)
 	{
 		ft_index(tmp_a);
 		tmp_b->gap = 0;
+		printf("\n--------Next number in st_b is %d\n", tmp_b->number);
 		top_a = ft_sandwich(tmp_b, &tmp_a);
+		printf("\nRETURN OF SANDWICH IS : %d\n", top_a);
 
 		p_top_a = get_p_number(st_a, top_a);
 		printf("top_a (the number should be on top of a) = %d, pointer top a = %d\n", top_a, p_top_a->number);
 		
 
-		// Probem in here
 		gap_a = ft_min_steps(tmp_a, p_top_a->index);
-
-
-		printf("gap_a (minimun steps to put top_a on top) = %d, p_top_a->index = %d, size_stack %d\n",
+		printf("gap_a (min steps to put top_a on top) = %d, p_top_a->index = %d, size_stack %d\n",
 		gap_a, p_top_a->index, ft_size_stack(&tmp_a));
-		gap_b = ft_min_steps(tmp_b, tmp_b->index);
-		printf("gap_b (number of steps to put b on top) is  = %d, size_stack_b = %d\n", gap_b, ft_size_stack(&tmp_b));
+		gap_b = ft_min_steps(*st_b, tmp_b->index);
+		printf("gap_b (min steps to put b on top) is  = %d, size_stack_b = %d\n", gap_b, ft_size_stack(st_b));
 		gap = gap_a + gap_b + 1;
 
 		tmp_b->gap = gap;
-		printf("Total number of gap for this number in b is GAP = %d (= gap a:%d + gap_b: %d + 1)\n", gap, gap_a, gap_b);
+		printf("\nTOTAL GAP for this number in b is GAP = %d (= gap a:%d + gap_b: %d + 1)\n\n", gap, gap_a, gap_b);
 
 		// break ;
 		tmp_b = tmp_b->next;
@@ -401,13 +396,25 @@ t_stack	*ft_compare_b(t_stack **st_b)
 	min = ft_compare_b_int(st_b);
 	while (tmp)
 	{
-		if (tmp->gap == min)
-			return(tmp);
-		tmp = tmp->next;
+	if (tmp->gap == min)
+		return(tmp);
+	tmp = tmp->next;
 	}
 	return (NULL);
 }
 
+// ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack min_b)
+// {
+// 	t_stack	
+
+// 	ft_index(tmp_b);
+// 	ft_index(tmp_a);
+// 	if (min_b != (*tmp_b))
+// 		get_num_on_top(tmp_b, min_b->index);
+// 	if (top_a_to_be != (*tmp_a))
+// 		get_num_on_top(tmp_a, top_a_to_be->index);
+// 	ft_push(tmp_b, tmp_a, 'a');
+// }
 
 void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 {
@@ -424,25 +431,9 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 	while (tmp_b)
 	{
 		set_gap_b(&tmp_a, &tmp_b);
-
-		// top_a = ft_sandwich(tmp_b, &tmp_a); // number under tmp_b in stack a
-		// printf("\n\n\nOk here 2 sandwich\n tmp2_a->number (top_a) = %d\n", top_a);
-		// tmp2_a = get_p_number(&tmp_a, top_a);
-		
-		// gap_a = ft_min_steps(tmp2_a, tmp2_a->index);// tmp2_a on top;
-		// printf("Let's take a look in stack_a\n");
-		// ft_display_stack(tmp_a);
-
-		// printf("Let's take a look in tmp2_a\n");
-		// ft_display_stack(tmp2_a);
-
-
-		// gap_b = ft_min_steps(tmp_b, tmp_b->index);// tmp_b on top;
-		// tmp_b->gap = gap_a + gap_b + 1;
 		min_b = ft_compare_b(&tmp_b);
-		printf("min_b->number(the smallest steps in b) is = %d\n", min_b->number);
-		// get_num_on_top(&min_b, min_b->index, gap_b);
-		// get_num_on_top(&tmp2_a, tmp2_a->index, gap_a);
+		printf("min_b->number(the min steps needed in b) is = %d\n", min_b->number);
+		// ft_push_b_back(tmp_b, tmp_a, min_b);
 		// ft_push(&tmp_b, &tmp_a, 'a');
 	
 		printf("AUKAYYY : get 2 numbers on top and push\n");
