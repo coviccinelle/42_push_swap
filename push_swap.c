@@ -185,7 +185,6 @@ int	ft_rr(t_stack **stack_a, t_stack **stack_b)
 		tmp1->next = NULL;
 	}
 	printf("rr\n");
-	// ft_display_2_stacks(*stack_a, *stack_b);
 	return (1);
 }
 
@@ -267,7 +266,6 @@ int	ft_push(t_stack **st_t, t_stack **st_r, char c)
 	ft_display_stack(*st_t);
 	printf("----------\n");
 	ft_display_stack(*st_r);
-	// ft_display_2_stacks(*st_t, *st_r);
 	return (0);
 }
 

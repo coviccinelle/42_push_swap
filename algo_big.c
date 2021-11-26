@@ -57,7 +57,7 @@ void		ft_index(t_stack *stack_a)
 	}
 }
 
-int	init_max_sorted(t_stack **first)
+void	init_max_sorted(t_stack **first)
 {
 	t_stack	*tmp;
 	t_stack	*tmp2;
@@ -76,7 +76,6 @@ int	init_max_sorted(t_stack **first)
 			if (n < tmp2->number)
 			{
 				tmp->nb_team++;
-				// printf("number = %d, tmp2->number = %d, NB_TEAM = %d\n", tmp->number, tmp2->number, tmp->nb_team);
 				n = tmp2->number;
 			}
 			tmp2 = tmp2->next;
@@ -85,10 +84,7 @@ int	init_max_sorted(t_stack **first)
 		}
 		tmp = tmp->next;
 	}
-// 	printf("\n\n\ntmp->number = %d\n", tmp->number);
-	return (0);
 }
-
 
 int	get_max_nb_team(t_stack **stack)
 {
@@ -303,24 +299,14 @@ int	ft_sandwich(t_stack *tmp_b, t_stack **st_a)
 		max_a = ft_max(tmp_a);
 
 		if (tmp_b->number < min_a->number)
-		{
 			return (min_a->number);
-			printf("------ SANDWICH here :  tmp2_a = %p, tmp2_a = %d\n", tmp2_a, min_a->number);
-		}
 		if (tmp_b->number > max_a->number)
 			return  (max_a->number);
-		// TODO: Incase it's bigger than all numbers in stack_a
-
 		tmp2_a = tmp_a->next;
-		printf("tmp_a->number = %d, tmp_b->number = %d, tmp2_a->number = %d\n", 
-		tmp_a->number, tmp_b->number, tmp2_a->number);
 		if (!tmp2_a)
 			tmp2_a = (*st_a);
 		if (tmp_a->number < tmp_b->number && tmp_b->number < tmp2_a->number)
-		{
-			printf("----- SANDWICH here: tmp2_a->number = %d\n", tmp2_a->number);
 			return (tmp2_a->number);
-		}
 		tmp_a = tmp_a->next;
 	}
 	return (-999);
