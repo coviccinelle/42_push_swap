@@ -90,12 +90,13 @@ int	main()
 
 	str = "5 6 7  66 77 22";
 	if (ft_invalid_double(str))
-		printf("Error\nthere's a double int\n");
+		printf("Error\nthere's a double int free here\n");
 	if (ft_invalid_char(str))
-		printf("Error\nthere's a outsider\n");
+		printf("Error\nthere's a outsider \n");
 	if (!ft_invalid_char(str))
 		printf("Green light! Please pass :>\n");
 	printf("n = ft_atoi_1(str) = %d\n", ft_atoi_1(str));
+	printf("free apres avoir fini!!!\n");
 	return (0);
 }
 

@@ -403,18 +403,31 @@ t_stack	*ft_compare_b(t_stack **st_b)
 	return (NULL);
 }
 
-// ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack min_b)
-// {
-// 	t_stack	
+void	ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack *min_b)
+{
+	t_stack	*top_a_to_be;
+	int		top_a;
+	int		gap_a;
+	int		gap_b;
+	// t_stack	*tmp_aa;
+	// t_stack	*tmp_bb;
 
-// 	ft_index(tmp_b);
-// 	ft_index(tmp_a);
-// 	if (min_b != (*tmp_b))
-// 		get_num_on_top(tmp_b, min_b->index);
-// 	if (top_a_to_be != (*tmp_a))
-// 		get_num_on_top(tmp_a, top_a_to_be->index);
-// 	ft_push(tmp_b, tmp_a, 'a');
-// }
+
+	printf("\n\n\nLAST PART : ft_push_b_back\n");
+	ft_index(*tmp_b);
+	ft_index(*tmp_a);
+	top_a = ft_sandwich(min_b, tmp_a);
+	top_a_to_be = get_p_number(tmp_a, top_a);
+	printf("top_a_to_be->number = %d\n", top_a_to_be->number);
+	gap_a = ft_min_steps(*tmp_a, top_a_to_be->index);
+	printf("top_a_to_be->index = %d\n", top_a_to_be->index);
+	gap_b = ft_min_steps(*tmp_b, min_b->index);
+
+	printf("gap_a = %d, gap_b = %d\n", gap_a, gap_b);
+	get_num_on_top(tmp_b, min_b->index, gap_b);
+	get_num_on_top(tmp_a, top_a_to_be->index, gap_a);
+	ft_push(tmp_b, tmp_a, 'a');
+}
 
 void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 {
@@ -433,18 +446,22 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 		set_gap_b(&tmp_a, &tmp_b);
 		min_b = ft_compare_b(&tmp_b);
 		printf("min_b->number(the min steps needed in b) is = %d\n", min_b->number);
-		// ft_push_b_back(tmp_b, tmp_a, min_b);
-		// ft_push(&tmp_b, &tmp_a, 'a');
-	
+		ft_push_b_back(&tmp_b, &tmp_a, min_b);
 		printf("AUKAYYY : get 2 numbers on top and push\n");
-		break ;
+		// break ;
 		// tmp_b = tmp_b->next; // not yet
 	}
+	printf("here\n");
+	ft_display_stack(tmp_a);
+	printf("\n---\n");
+	ft_display_stack(tmp_b);
 }
 
 void	sorter(t_stack **st_a, t_stack **st_b)
 {
 	t_stack	*tmp;
+	// t_stack	*min;
+	// int		gap_min;
 
 	tmp = (*st_a);
 	init_sorter(&tmp);
@@ -471,6 +488,9 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 	}
 	printf("\n\n\n ------------ ALGO_2  ------------- \n\n => Now calculate and push back numbers in b to a\n");
 	ft_sorter_p2(&tmp, st_b);
+
+
+	printf("here 2\n");
 }
 
 // TODO:

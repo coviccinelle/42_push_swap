@@ -200,6 +200,7 @@ void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 	t_stack *max;
 	t_stack *min;
 	t_stack *last;
+	// int		gap_min;
 
 	if (!ft_sorted(st_a))
 	{
@@ -210,19 +211,23 @@ void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 		min = ft_min(*st_a);
 		printf("minn_element in stack_a is %d\n", min->number);
 		sorter(st_a, st_b);
+		printf("here 3\n");
+		// ft_display_stack(*st_a);
+		// printf("\n---\n");
+		// ft_display_stack(*st_b);
 
-	// if (ft_sorted(stack_a) == 1)
-	// 	printf("Sorted hihi 11 11 \n");
-	// else
-	// {
-	// // ft_diff(stack_a); // find "ecart" -> the diff
-	// // ft_find_pivot(stack_a); //Find the biggest ecart to be the reference
-	// // ft_not_sorted(stack_a); // Find numbers to push in stack_b
-	// // ft_index(stack_a); // define index for elements -> reference = 0, under len/2 = -index
-	// // ft_adap_index(stack_a); // change index, for under len/2, after reference = - index...
-	// // ft_push_in_b(stack_a, stack_b); // push not_sorted in stack_b
-	// // ft_reset_index(stack_a); // reset index in stack_a
-	// 
+
+		// min = ft_min(*st_a);
+		// printf("minn_element in stack_a is %d\n", min->number);
+		// if (!ft_sorted(st_a))
+		// {
+		// 	printf("are you in here?\n");
+		// 	ft_index(*st_a);
+		// 	min = ft_min(*st_a);
+		// 	gap_min = ft_min_steps(*st_a, min->index);
+		// 	get_num_on_top(st_a, min->index, gap_min);
+		// }
 	}
+	
 	printf("ft_algo_big is in construction\nPlease come back later\n");
 }
