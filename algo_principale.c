@@ -174,6 +174,7 @@ void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 		printf("minn_element in stack_a is %d\n", min->number);
 		sorter(&tmp, &tmp_b);
 		
+		//Problem is here 
 		printf("\nFINAL\nStack_a is : \n");
 		ft_display_stack(tmp);
 		printf("\n--At the end, stack_b is :-\n");

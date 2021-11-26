@@ -207,7 +207,7 @@ int	ft_reverse_rotate(t_stack **stack, char c)
 		(*stack)->next = tmp1;
 	}
 	printf("rr%c\n", c);
-	// ft_display_stack(*stack);
+	ft_display_stack(*stack);
 	return (1);
 }
 

@@ -390,6 +390,13 @@ void	ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack *min_b)
 	// tmp_bb = (*tmp_b);
 	ft_index(*tmp_a);
 	ft_index(*tmp_b);
+
+	printf("\nALERT : Stack_a before\n");
+	ft_display_stack(*tmp_a);
+	printf("\nALERT : Stack_b before\n");
+	ft_display_stack(*tmp_b);
+
+
 	top_a = ft_sandwich(min_b, tmp_a);
 	top_a_to_be = get_p_number(tmp_a, top_a);
 	printf("top_a_to_be->number = %d, index = %d\n", top_a_to_be->number, top_a_to_be->index);
@@ -400,7 +407,17 @@ void	ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack *min_b)
 	get_num_on_top(tmp_a, top_a_to_be->index, gap_a);
 	get_num_on_top(tmp_b, min_b->index, gap_b);
 
+	printf("\nALERT 2 : Stack_a after get num on top\n");
+	ft_display_stack(*tmp_a);
+	printf("\nALERT 2 : Stack_b after get num on top\n");
+	ft_display_stack(*tmp_b);
+
 	ft_push(tmp_b, tmp_a, 'a');
+
+	printf("\nALERT 3 : Stack_a after push b back in a\n");
+	ft_display_stack(*tmp_a);
+	printf("\nALERT 3 : Stack_b after push b back in a\n");
+	ft_display_stack(*tmp_b);
 }
 
 void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
@@ -424,6 +441,10 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 	}
 	printf("\n\n\n after Stack___AAAA\n");
 	ft_display_stack(tmp_a);
+	printf("\n\n\n after Stack___BBBB\n");
+	ft_display_stack(tmp_b);
+	printf("\n------ Done -----\n");
+	
 
 	if (!ft_sorted(&tmp_a))
 	{
@@ -431,7 +452,16 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 		min = ft_min(tmp_a);
 		gap_min = ft_min_steps(tmp_a, min->index);
 		get_num_on_top(&tmp_a, min->index, gap_min);
+
+
+		printf("\n\n\n STEP 3: Stack___AAAA\n");
+		ft_display_stack(tmp_a);
+		printf("\n\n\n STEP 3: Stack___BBBB\n");
+		ft_display_stack(tmp_b);
+		printf("\n------ Done STEP 3 -----\n");
 	}
+	*st_a = tmp_a;
+	*st_b = tmp_b;
 }
 
 void	sorter(t_stack **st_a, t_stack **st_b)
@@ -462,9 +492,9 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 	}
 	printf("Conclution => End of part 1: stack_a (tmp) is \n");
 	ft_display_stack(tmp);
-	// printf("\n\nConclution => End of part 1: stack_a (st_a) is \n");
-	// ft_display_stack(*st_a);
+
 	printf("Conclution => End of part 2: stack_b is \n");
 	ft_display_stack(*st_b);
 	ft_sorter_p2(&tmp, st_b);
+	*st_a = tmp;
 }
