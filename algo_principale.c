@@ -160,8 +160,10 @@ void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 	t_stack *min;
 	t_stack *last;
 	t_stack	*tmp;
+	t_stack	*tmp_b;
 
 	tmp = (*st_a);
+	tmp_b = (*st_b);
 	if (!ft_sorted(&tmp))
 	{
 		max = ft_max(tmp);
@@ -170,11 +172,13 @@ void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 		printf("maxx_element in stack_a is %d\n", max->number);
 		min = ft_min(tmp);
 		printf("minn_element in stack_a is %d\n", min->number);
-		sorter(&tmp, st_b);
+		sorter(&tmp, &tmp_b);
+		
+		printf("\nFINAL\nStack_a is : \n");
+		ft_display_stack(tmp);
+		printf("\n--At the end, stack_b is :-\n");
+		ft_display_stack(tmp_b);
+		printf("ft_algo_big is DONE, Duh!\n");
 	}
-	printf("\nFINAL\nStack_a is : \n");
-	ft_display_stack(tmp);
-	printf("\n--At the end, stack_b is :-\n");
-	ft_display_stack(*st_b);
-	printf("ft_algo_big is DONE, Duh!\n");
+	
 }
