@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/26 17:57:35 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/26 18:15:59 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,8 +226,8 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 // 	w1.index = stack->next->index;
 // 	w2.next = stack->next->next;
 // 	w2.index = stack->index;
-// 	w1_i = init_max_sorted(&stack);
-// 	w2_i = init_max_sorted(&(w1));
+// 	w1_i = get_max_nb_team(&stack);
+// 	w2_i = get_max_nb_team(&(w1));
 // 	// printf("w1_i = %d\n, w2_i = %d\n", w1_i, w2_i);
 // 	if (w2_i > w1_i)
 // 		return (1);

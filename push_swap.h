@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/26 17:27:52 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/26 18:24:13 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct	s_env
 {
 	t_stack		*stack_a;
 	t_stack		*stack_b;
-
 }				t_env;
 
 // UTILS //

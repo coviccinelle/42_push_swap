@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:38:27 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/06 18:31:04 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/26 18:14:46 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ int	ft_parsing_1(char *str, t_stack **stack_a)
 		i++;
 	}
 	if (ft_doublons(*stack_a))
+	// FREEEEEE
 		return (0);
 	return (1);
 }
