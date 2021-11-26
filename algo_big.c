@@ -433,6 +433,8 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 {
 	t_stack		*tmp_a;
 	t_stack		*tmp_b;
+	t_stack		*min;
+	int			gap_min;
 
 	t_stack		*min_b;
 
@@ -451,19 +453,35 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 		// break ;
 		// tmp_b = tmp_b->next; // not yet
 	}
-	printf("here\n");
+	printf("stack_a is \n");
 	ft_display_stack(tmp_a);
 	printf("\n---\n");
 	ft_display_stack(tmp_b);
+
+	// min = ft_min(tmp_a);
+	// printf("minn_element in stack_a is %d\n", min->number);
+	if (!ft_sorted(&tmp_a))
+	{
+		printf("are you in here?\n");
+		printf("\n--Yess-\n");
+		ft_index(tmp_a);
+		min = ft_min(tmp_a);
+		gap_min = ft_min_steps(tmp_a, min->index);
+		get_num_on_top(&tmp_a, min->index, gap_min);
+		printf("\n");
+		printf("\n---\n");
+	}
 }
 
 void	sorter(t_stack **st_a, t_stack **st_b)
 {
 	t_stack	*tmp;
+	// t_stack	*tmp_b;
 	// t_stack	*min;
 	// int		gap_min;
 
 	tmp = (*st_a);
+	// tmp_b = (*st_b);
 	init_sorter(&tmp);
 	while (tmp)
 	{
@@ -488,9 +506,6 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 	}
 	printf("\n\n\n ------------ ALGO_2  ------------- \n\n => Now calculate and push back numbers in b to a\n");
 	ft_sorter_p2(&tmp, st_b);
-
-
-	printf("here 2\n");
 }
 
 // TODO:

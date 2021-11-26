@@ -200,7 +200,6 @@ void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 	t_stack *max;
 	t_stack *min;
 	t_stack *last;
-	// int		gap_min;
 
 	if (!ft_sorted(st_a))
 	{
@@ -212,22 +211,10 @@ void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 		printf("minn_element in stack_a is %d\n", min->number);
 		sorter(st_a, st_b);
 		printf("here 3\n");
-		// ft_display_stack(*st_a);
-		// printf("\n---\n");
-		// ft_display_stack(*st_b);
-
-
-		// min = ft_min(*st_a);
-		// printf("minn_element in stack_a is %d\n", min->number);
-		// if (!ft_sorted(st_a))
-		// {
-		// 	printf("are you in here?\n");
-		// 	ft_index(*st_a);
-		// 	min = ft_min(*st_a);
-		// 	gap_min = ft_min_steps(*st_a, min->index);
-		// 	get_num_on_top(st_a, min->index, gap_min);
-		// }
+		printf("FINAL\n");
+		ft_display_stack(*st_a);
+		printf("\n--stack_b is :-\n");
+		ft_display_stack(*st_b);
 	}
-	
-	printf("ft_algo_big is in construction\nPlease come back later\n");
+	printf("ft_algo_big is DONE, Duh!\n");
 }
