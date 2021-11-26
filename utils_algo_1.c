@@ -6,24 +6,11 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:06:45 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/26 17:14:28 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/26 17:40:08 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	ft_index(t_stack *stack_a)
-{
-	int	i;
-
-	i = 0;
-	while (stack_a)
-	{
-		stack_a->index = i;
-		stack_a = stack_a->next;
-		i++;
-	}
-}
 
 void	init_max_sorted(t_stack **first)
 {

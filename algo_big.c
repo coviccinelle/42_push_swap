@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/26 17:09:42 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/26 17:44:05 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,8 @@ void	get_stay(t_stack **st, t_stack *first)
 	}
 }
 
-
-
 // minimum steps to move number to top of stack
-int		ft_min_steps(t_stack *stack, int index)
+int	ft_min_steps(t_stack *stack, int index)
 {
 	int			step;
 
@@ -71,20 +69,7 @@ void	init_sorter(t_stack **st_a)
 	printf("size stack here %d\n", (*st_a)->size);
 }
 
-
-
-// void	init_sorter_2(t_stack **st_a, **st_b)
-// {
-// 	t_stack		*tmp_a;
-// 	t_stack		*tmp_b;
-// 	int			gap_b;
-// 	int			gap_a;
-// 	int			gap;
-
-// }
-
-
-int		done_push_in_b(t_stack *st)
+int	done_push_in_b(t_stack *st)
 {
 	t_stack	*tmp;
 
@@ -98,7 +83,6 @@ int		done_push_in_b(t_stack *st)
 	return (1);
 }
 
-
 // return a number after tmp_b = The one should be on top of stack_a
 int	ft_sandwich(t_stack *tmp_b, t_stack **st_a)
 {
@@ -106,18 +90,16 @@ int	ft_sandwich(t_stack *tmp_b, t_stack **st_a)
 	t_stack		*tmp2_a;
 	t_stack		*min_a;
 	t_stack		*max_a;
-	
+
 	tmp_a = (*st_a);
-	
 	while (tmp_a)
 	{
 		min_a = ft_min(tmp_a);
 		max_a = ft_max(tmp_a);
-
 		if (tmp_b->number < min_a->number)
 			return (min_a->number);
 		if (tmp_b->number > max_a->number)
-			return  (max_a->number);
+			return (max_a->number);
 		tmp2_a = tmp_a->next;
 		if (!tmp2_a)
 			tmp2_a = (*st_a);
@@ -127,7 +109,6 @@ int	ft_sandwich(t_stack *tmp_b, t_stack **st_a)
 	}
 	return (-999);
 }
-
 
 // to calculate steps for each number in st_b
 void	set_gap_b(t_stack **st_a, t_stack **st_b)
@@ -156,8 +137,6 @@ void	set_gap_b(t_stack **st_a, t_stack **st_b)
 		tmp_b = tmp_b->next;
 	}
 }
-
-
 
 int	ft_compare_b_int(t_stack **st_b)
 {
@@ -197,21 +176,9 @@ void	ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack *min_b)
 	int		top_a;
 	int		gap_a;
 	int		gap_b;
-	// t_stack	*tmp_aa;
-	// t_stack	*tmp_bb;
 
-
-	printf("\n\n\nLAST PART : ft_push_b_back\n");
-	// tmp_aa = (*tmp_a);
-	// tmp_bb = (*tmp_b);
 	ft_index(*tmp_a);
 	ft_index(*tmp_b);
-
-	printf("\nALERT : Stack_a before\n");
-	ft_display_stack(*tmp_a);
-	printf("\nALERT : Stack_b before\n");
-	ft_display_stack(*tmp_b);
-
 
 	top_a = ft_sandwich(min_b, tmp_a);
 	top_a_to_be = get_p_number(tmp_a, top_a);
@@ -223,17 +190,7 @@ void	ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack *min_b)
 	get_num_on_top(tmp_a, top_a_to_be->index, gap_a);
 	get_num_on_top(tmp_b, min_b->index, gap_b);
 
-	printf("\nALERT 2 : Stack_a after get num on top\n");
-	ft_display_stack(*tmp_a);
-	printf("\nALERT 2 : Stack_b after get num on top\n");
-	ft_display_stack(*tmp_b);
-
 	ft_push(tmp_b, tmp_a, 'a');
-
-	printf("\nALERT 3 : Stack_a after push b back in a\n");
-	ft_display_stack(*tmp_a);
-	printf("\nALERT 3 : Stack_b after push b back in a\n");
-	ft_display_stack(*tmp_b);
 }
 
 void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
@@ -255,26 +212,12 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 		printf("min_b->number(the min steps needed in b) is = %d\n", min_b->number);
 		ft_push_b_back(&tmp_b, &tmp_a, min_b);
 	}
-	printf("\n\n\n after Stack___AAAA\n");
-	ft_display_stack(tmp_a);
-	printf("\n\n\n after Stack___BBBB\n");
-	ft_display_stack(tmp_b);
-	printf("\n------ Done -----\n");
-	
-
 	if (!ft_sorted(&tmp_a))
 	{
 		ft_index(tmp_a);
 		min = ft_min(tmp_a);
 		gap_min = ft_min_steps(tmp_a, min->index);
 		get_num_on_top(&tmp_a, min->index, gap_min);
-
-
-		printf("\n\n\n STEP 3: Stack___AAAA\n");
-		ft_display_stack(tmp_a);
-		printf("\n\n\n STEP 3: Stack___BBBB\n");
-		ft_display_stack(tmp_b);
-		printf("\n------ Done STEP 3 -----\n");
 	}
 	*st_a = tmp_a;
 	*st_b = tmp_b;
@@ -283,9 +226,7 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 void	sorter(t_stack **st_a, t_stack **st_b)
 {
 	t_stack	*tmp;
-	// t_stack	*tmp_b;
 
-	//tmp_b = (*st_b);
 	tmp = (*st_a);
 	init_sorter(&tmp);
 	while (tmp)
@@ -308,9 +249,9 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 	}
 	printf("Conclution => End of part 1: stack_a (tmp) is \n");
 	ft_display_stack(tmp);
-
-	printf("Conclution => End of part 2: stack_b is \n");
+	printf("Conclution => End of part 1: stack_b is \n");
 	ft_display_stack(*st_b);
+	
 	ft_sorter_p2(&tmp, st_b);
 	*st_a = tmp;
 }

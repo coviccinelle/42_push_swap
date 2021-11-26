@@ -6,7 +6,7 @@
 #    By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:09:08 by thi-phng          #+#    #+#              #
-#    Updated: 2021/11/26 17:10:23 by thi-phng         ###   ########.fr        #
+#    Updated: 2021/11/26 17:30:32 by thi-phng         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,9 @@ SRCS		=	push_swap.c \
 				utils_algo_1.c \
 				algo_principale.c \
 				algo_big.c \
-
+				operations_no.c \
+				operations_utils.c \
+				main.c \
 
 
 

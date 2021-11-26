@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/26 17:10:57 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/26 17:27:52 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ int		ft_sorted(t_stack **stack_a);
 int		get_i_max(t_stack *stack, int max);
 int		ft_min_steps(t_stack *stack, int index);
 int		get_num_on_top(t_stack **stack_a, int index, int min_steps);
+
+void	ft_init(t_env *f);
 
 void	init_max_sorted(t_stack **first);
 void	show_stay(t_stack **st);
