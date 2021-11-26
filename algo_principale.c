@@ -121,7 +121,6 @@ int	get_num_on_top(t_stack **stack_a, int index, int min_steps)
 			i--;
 		}
 	}
-	ft_display_stack(*stack_a);
 	printf("done get_num_on_top\n");
 	return (0);
 }
@@ -160,21 +159,22 @@ void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 	t_stack *max;
 	t_stack *min;
 	t_stack *last;
+	t_stack	*tmp;
 
-	if (!ft_sorted(st_a))
+	tmp = (*st_a);
+	if (!ft_sorted(&tmp))
 	{
-		max = ft_max(*st_a);
-		last = get_last(*st_a);
+		max = ft_max(tmp);
+		last = get_last(tmp);
 		printf("last_element in stack_a is %d\n", last->number);
 		printf("maxx_element in stack_a is %d\n", max->number);
-		min = ft_min(*st_a);
+		min = ft_min(tmp);
 		printf("minn_element in stack_a is %d\n", min->number);
-		sorter(st_a, st_b);
-		printf("here 3\n");
-		printf("FINAL\n");
-		ft_display_stack(*st_a);
-		printf("\n--stack_b is :-\n");
-		ft_display_stack(*st_b);
+		sorter(&tmp, st_b);
 	}
+	printf("\nFINAL\nStack_a is : \n");
+	ft_display_stack(tmp);
+	printf("\n--At the end, stack_b is :-\n");
+	ft_display_stack(*st_b);
 	printf("ft_algo_big is DONE, Duh!\n");
 }
