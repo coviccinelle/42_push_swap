@@ -438,7 +438,7 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 	
 		printf("AUKAYYY : get 2 numbers on top and push\n");
 		break ;
-		tmp_b = tmp_b->next; // not yet
+		// tmp_b = tmp_b->next; // not yet
 	}
 }
 
