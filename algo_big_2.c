@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 17:06:32 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/27 17:09:22 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 17:58:24 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,14 @@ int	ft_sandwich(t_stack *tmp_b, t_stack **st_a)
 	t_stack		*max_a;
 
 	tmp_a = (*st_a);
+	min_a = ft_min(tmp_a);
+	max_a = ft_max(tmp_a);
+	if (tmp_b->number < min_a->number)
+		return (min_a->number);
+	if (tmp_b->number > max_a->number)
+		return (max_a->number);
 	while (tmp_a)
 	{
-		min_a = ft_min(tmp_a);
-		max_a = ft_max(tmp_a);
-		if (tmp_b->number < min_a->number)
-			return (min_a->number);
-		if (tmp_b->number > max_a->number)
-			return (max_a->number);
 		tmp2_a = tmp_a->next;
 		if (!tmp2_a)
 			tmp2_a = (*st_a);
