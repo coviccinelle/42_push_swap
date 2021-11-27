@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/27 16:33:04 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:03:41 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ typedef struct	s_env
 {
 	t_stack		*stack_a;
 	t_stack		*stack_b;
-
 }				t_env;
 
 // UTILS //
@@ -73,7 +72,10 @@ int		get_i_max(t_stack *stack, int max);
 int		ft_min_steps(t_stack *stack, int index);
 int		get_num_on_top(t_stack **stack_a, int index, int min_steps);
 
+void	ft_init(t_env *f);
+
 void	init_max_sorted(t_stack **first);
+void	show_stay(t_stack **st);
 int		get_max_nb_team(t_stack **stack);
 t_stack	*get_head_stay(t_stack **st_a);
 t_stack	*get_p_number(t_stack **st_a, int n);
@@ -83,16 +85,16 @@ int		swapable(t_stack *stack);
 void	sorter(t_stack **st_a, t_stack **st_b);
 
 
+// big_algo_1
 
-// algo_big_1 
+void	get_stay(t_stack **st, t_stack *first);
+int	done_push_in_b(t_stack *st);
+
+// big_algo_2
 void	set_gap_b(t_stack **st_a, t_stack **st_b);
-void	init_sorter(t_stack **st_a);
-int		done_push_in_b(t_stack *st);
-
-// algo_big_2
-int	ft_compare_b_int(t_stack **st_b);
 t_stack	*ft_compare_b(t_stack **st_b);
 void	ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack *min_b);
+
 
 //       -----  OPERATIONS FUNCTIONS -----       //
 void	ft_swap(t_stack **stack, char c);

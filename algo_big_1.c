@@ -5,14 +5,26 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/27 16:23:02 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/27 16:28:07 by thi-phng         ###   ########.fr       */
+/*   Created: 2021/11/27 17:03:24 by thi-phng          #+#    #+#             */
+/*   Updated: 2021/11/27 18:03:18 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h" 
+#include "push_swap.h"
 
 
+// minimum steps to move number to top of stack
+int	ft_min_steps(t_stack *stack, int index)
+{
+	int			step;
+
+	step = 0;
+	if (index <= (ft_size_stack(&stack) / 2))
+		step = index;
+	else if (index > (ft_size_stack(&stack) / 2))
+		step = ft_size_stack(&stack) - index;
+	return (step);
+}
 
 
 int	get_num_on_top(t_stack **stack_a, int index, int min_steps)
@@ -22,6 +34,7 @@ int	get_num_on_top(t_stack **stack_a, int index, int min_steps)
 	i = min_steps;
 	if (index > i)
 	{
+		printf(" ---- max or min->index = %d\n", index);
 		while (i > 0)
 		{
 			ft_reverse_rotate(stack_a, 'a');
@@ -41,109 +54,46 @@ int	get_num_on_top(t_stack **stack_a, int index, int min_steps)
 }
 
 
-
-void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
-{
-	t_stack		*tmp_a;
-	t_stack		*tmp_b;
-	t_stack		*min;
-	int			gap_min;
-
-	t_stack		*min_b;
-	tmp_a = *(st_a);
-	tmp_b = *(st_b);
-	printf("\n\n\n(1) Stack___AAAA\n");
-	ft_display_stack(tmp_a);
-	while (tmp_b)
-	{
-		set_gap_b(&tmp_a, &tmp_b);
-		min_b = ft_compare_b(&tmp_b);
-		printf("min_b->number(the min steps needed in b) is = %d\n", min_b->number);
-		ft_push_b_back(&tmp_b, &tmp_a, min_b);
-	}
-	printf("\n\n\n after Stack___AAAA\n");
-	ft_display_stack(tmp_a);
-	printf("\n\n\n after Stack___BBBB\n");
-	ft_display_stack(tmp_b);
-	printf("\n------ Done -----\n");
-	
-
-	if (!ft_sorted(&tmp_a))
-	{
-		ft_index(tmp_a);
-		min = ft_min(tmp_a);
-		gap_min = ft_min_steps(tmp_a, min->index);
-		get_num_on_top(&tmp_a, min->index, gap_min);
-
-
-		printf("\n\n\n STEP 3: Stack___AAAA\n");
-		ft_display_stack(tmp_a);
-		printf("\n\n\n STEP 3: Stack___BBBB\n");
-		ft_display_stack(tmp_b);
-		printf("\n------ Done STEP 3 -----\n");
-	}
-	*st_a = tmp_a;
-	*st_b = tmp_b;
-}
-
-void	sorter(t_stack **st_a, t_stack **st_b)
+void	get_stay(t_stack **st, t_stack *first)
 {
 	t_stack	*tmp;
-	// t_stack	*tmp_b;
+	t_stack	*tmp2;
+	int		n;
 
-	//tmp_b = (*st_b);
-	tmp = (*st_a);
-	init_sorter(&tmp);
+	tmp = first;
+	while (tmp == first)
+	{
+		tmp2 = tmp->next;
+		n = tmp->number;
+		if (!tmp2)
+			tmp2 = (*st);
+		while (tmp2->number != tmp->number)
+		{
+			if (n < tmp2->number)
+			{
+				tmp2->stay = 1;
+				printf("Get_stay : tmp->number = %d, tmp2->number = %d, tmp->stay = %d\n\n", tmp->number, tmp2->number, tmp->stay);
+				n = tmp2->number;
+			}
+			tmp2 = tmp2->next;
+			if (!tmp2)
+				tmp2 = (*st);
+		}
+		tmp = tmp->next;
+	}
+}
+
+int	done_push_in_b(t_stack *st)
+{
+	t_stack	*tmp;
+
+	tmp = st;
 	while (tmp)
 	{
-		while (tmp)
-		{
-			if (tmp->stay == 0)
-			{
-				ft_push(&tmp, st_b, 'b');
-				break ;
-			}
-			else if (tmp->stay == 1)
-			{
-				ft_rotate(&tmp, 'a');
-				break ;
-			}
-		}
-		if (done_push_in_b(tmp))
-			break ;
+		if (tmp->stay == 0)
+			return (0);
+		tmp = tmp->next;
 	}
-	printf("Conclution => End of part 1: stack_a (tmp) is \n");
-	ft_display_stack(tmp);
-
-	printf("Conclution => End of part 2: stack_b is \n");
-	ft_display_stack(*st_b);
-	ft_sorter_p2(&tmp, st_b);
-	*st_a = tmp;
+	return (1);
 }
 
-void	ft_algo_big(t_stack **st_a, t_stack **st_b)
-{
-	t_stack     *max;
-	t_stack     *min;
-	t_stack     *last;
-	t_stack     *tmp;
-	t_stack     *tmp_b;
-
-	tmp = (*st_a);
-	tmp_b = (*st_b);
-	if (!ft_sorted(&tmp))
-	{
-		max = ft_max(tmp);
-		last = get_last(tmp);
-		printf("last_element in stack_a is %d\n", last->number);
-		printf("maxx_element in stack_a is %d\n", max->number);
-		min = ft_min(tmp);
-		printf("minn_element in stack_a is %d\n", min->number);
-		sorter(&tmp, &tmp_b);
-		printf("\nFINAL\nStack_a is : \n");
-		ft_display_stack(tmp);
-		printf("\n--At the end, stack_b is :-\n");
-		ft_display_stack(tmp_b);
-		printf("ft_algo_big is DONE, Duh!\n");
-	}
-}
