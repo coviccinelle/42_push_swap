@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/27 17:31:49 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:56:25 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	sorter(t_stack **st_a, t_stack **st_b);
 
 
 // big_algo_1
-
+void	init_stay(t_stack **st);
 void	get_stay(t_stack **st, t_stack *first);
 int	done_push_in_b(t_stack *st);
 

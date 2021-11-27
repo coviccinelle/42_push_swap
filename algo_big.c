@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/27 18:13:21 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:56:02 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,6 +136,7 @@ void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 	tmp_b = (*st_b);
 	if (!ft_sorted(&tmp))
 	{
+		init_stay(st_a);
 		max = ft_max(tmp);
 		last = get_last(tmp);
 		printf("last_element in stack_a is %d\n", last->number);

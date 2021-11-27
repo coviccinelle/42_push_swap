@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:06:45 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/27 18:24:05 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:54:38 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ void	init_stay(t_stack **st)
 	while (tmp)
 	{
 		tmp->stay = 0;
+		printf("INIT STAY HERE : \n tmp->number = %d, tmp->stay = %d\n", tmp->number, tmp->stay);
 		tmp = tmp->next;
 	}
 }
