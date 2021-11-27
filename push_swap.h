@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/05 17:58:02 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 16:33:04 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,17 @@ int		swapable(t_stack *stack);
 
 void	sorter(t_stack **st_a, t_stack **st_b);
 
+
+
+// algo_big_1 
+void	set_gap_b(t_stack **st_a, t_stack **st_b);
+void	init_sorter(t_stack **st_a);
+int		done_push_in_b(t_stack *st);
+
+// algo_big_2
+int	ft_compare_b_int(t_stack **st_b);
+t_stack	*ft_compare_b(t_stack **st_b);
+void	ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack *min_b);
 
 //       -----  OPERATIONS FUNCTIONS -----       //
 void	ft_swap(t_stack **stack, char c);

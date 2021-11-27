@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:09:08 by thi-phng          #+#    #+#              #
-#    Updated: 2021/11/05 17:06:37 by thi-phng         ###   ########.fr        #
+#    Updated: 2021/11/27 16:24:22 by thi-phng         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,9 @@ SRCS		=	push_swap.c \
 				parsing.c \
 				utils.c \
 				algo_principale.c \
+				algo_2_to_5.c \
 				algo_big.c \
+				algo_big_1.c \
 
 
 
