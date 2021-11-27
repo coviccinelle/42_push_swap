@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/26 18:24:13 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 17:31:49 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,17 @@ int		loop_stack(t_stack *stack, t_stack *start, int trig);
 int		swapable(t_stack *stack);
 
 void	sorter(t_stack **st_a, t_stack **st_b);
+
+
+// big_algo_1
+
+void	get_stay(t_stack **st, t_stack *first);
+int	done_push_in_b(t_stack *st);
+
+// big_algo_2
+void	set_gap_b(t_stack **st_a, t_stack **st_b);
+t_stack	*ft_compare_b(t_stack **st_b);
+void	ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack *min_b);
 
 
 //       -----  OPERATIONS FUNCTIONS -----       //

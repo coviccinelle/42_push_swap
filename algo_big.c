@@ -6,53 +6,12 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/27 17:01:56 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 17:36:08 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	get_stay(t_stack **st, t_stack *first)
-{
-	t_stack	*tmp;
-	t_stack	*tmp2;
-	int		n;
-
-	tmp = first;
-	while (tmp == first)
-	{
-		tmp2 = tmp->next;
-		n = tmp->number;
-		if (!tmp2)
-			tmp2 = (*st);
-		while (tmp2->number != tmp->number)
-		{
-			if (n < tmp2->number)
-			{
-				tmp2->stay = 1;
-				printf("Get_stay : tmp->number = %d, tmp2->number = %d, tmp->stay = %d\n\n", tmp->number, tmp2->number, tmp->stay);
-				n = tmp2->number;
-			}
-			tmp2 = tmp2->next;
-			if (!tmp2)
-				tmp2 = (*st);
-		}
-		tmp = tmp->next;
-	}
-}
-
-// minimum steps to move number to top of stack
-int	ft_min_steps(t_stack *stack, int index)
-{
-	int			step;
-
-	step = 0;
-	if (index <= (ft_size_stack(&stack) / 2))
-		step = index;
-	else if (index > (ft_size_stack(&stack) / 2))
-		step = ft_size_stack(&stack) - index;
-	return (step);
-}
 
 void	init_sorter(t_stack **st_a)
 {
@@ -69,122 +28,44 @@ void	init_sorter(t_stack **st_a)
 	printf("size stack here %d\n", (*st_a)->size);
 }
 
-int	done_push_in_b(t_stack *st)
-{
-	t_stack	*tmp;
+// int		swapable(t_stack *stack)
+// {
+// 	int		w1_i;
+// 	int		w2_i;
+// 	t_stack	w1;
+// 	t_stack	w2;
 
-	tmp = st;
-	while (tmp)
-	{
-		if (tmp->stay == 0)
-			return (0);
-		tmp = tmp->next;
-	}
-	return (1);
-}
+// 	w1.next = &w2;
+// 	w1.index = stack->next->index;
+// 	w2.next = stack->next->next;
+// 	w2.index = stack->index;
+// 	w1_i = get_max_nb_team(&stack);
+// 	w2_i = get_max_nb_team(&(*w1));
+// 	printf("w1_i = %d\n, w2_i = %d\n", w1_i, w2_i);
+// 	if (w2_i > w1_i)
+// 		return (1);
+// 	return (0);
+// }
 
-// return a number after tmp_b = The one should be on top of stack_a
-int	ft_sandwich(t_stack *tmp_b, t_stack **st_a)
-{
-	t_stack		*tmp_a;
-	t_stack		*tmp2_a;
-	t_stack		*min_a;
-	t_stack		*max_a;
+// int		swapable(t_stack **stack)
+// {
+// 	int		nb_st_1;
+// 	int		nb_st_2;
+// 	t_stack	*s1;
+// 	t_stack	*s2;
 
-	tmp_a = (*st_a);
-	while (tmp_a)
-	{
-		min_a = ft_min(tmp_a);
-		max_a = ft_max(tmp_a);
-		if (tmp_b->number < min_a->number)
-			return (min_a->number);
-		if (tmp_b->number > max_a->number)
-			return (max_a->number);
-		tmp2_a = tmp_a->next;
-		if (!tmp2_a)
-			tmp2_a = (*st_a);
-		if (tmp_a->number < tmp_b->number && tmp_b->number < tmp2_a->number)
-			return (tmp2_a->number);
-		tmp_a = tmp_a->next;
-	}
-	return (-999);
-}
-
-// to calculate steps for each number in st_b
-void	set_gap_b(t_stack **st_a, t_stack **st_b)
-{
-	t_stack	*tmp_b;
-	t_stack	*p_top_a;
-	int		gap_a;
-	int		gap_b;
-	int		top_a;
-
-	tmp_b = (*st_b);
-	ft_index(tmp_b);
-	while (tmp_b)
-	{
-		ft_index(*st_a);
-		tmp_b->gap = 0;
-		top_a = ft_sandwich(tmp_b, st_a);
-		p_top_a = get_p_number(st_a, top_a);
-		gap_a = ft_min_steps(*st_a, p_top_a->index);
-		gap_b = ft_min_steps(*st_b, tmp_b->index);
-		tmp_b->gap = gap_a + gap_b + 1;
-		tmp_b = tmp_b->next;
-	}
-}
-
-int	ft_compare_b_int(t_stack **st_b)
-{
-	t_stack	*tmp;
-	int		min;
-
-	min = 999;
-	tmp = (*st_b);
-	while (tmp)
-	{
-		if (tmp->gap < min)
-			min = tmp->gap;
-		tmp = tmp->next;
-	}
-	return (min);
-}
-
-t_stack	*ft_compare_b(t_stack **st_b)
-{
-	int		min;
-	t_stack	*tmp;
-
-	tmp = (*st_b);
-	min = ft_compare_b_int(st_b);
-	while (tmp)
-	{
-		if (tmp->gap == min)
-			return (tmp);
-		tmp = tmp->next;
-	}
-	return (NULL);
-}
-
-void	ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack *min_b)
-{
-	t_stack	*top_a_to_be;
-	int		top_a;
-	int		gap_a;
-	int		gap_b;
-
-	ft_index(*tmp_a);
-	ft_index(*tmp_b);
-	top_a = ft_sandwich(min_b, tmp_a);
-	top_a_to_be = get_p_number(tmp_a, top_a);
-	printf("top_a_to_be->number = %d, index = %d\n", top_a_to_be->number, top_a_to_be->index);
-	gap_a = ft_min_steps(*tmp_a, top_a_to_be->index);
-	gap_b = ft_min_steps(*tmp_b, min_b->index);
-	printf("gap_a = %d, gap_b = %d\n", gap_a, gap_b);
-	get_num_on_top(tmp_a, top_a_to_be->index, gap_a);
-	get_num_on_top(tmp_b, min_b->index, gap_b);
-	ft_push(tmp_b, tmp_a, 'a');
-}
+// 	s1 = (*stack);
+// 	s2 = (*stack)->next;
+// 	// s1->index = (*stack)->next->index;
+// 	s2->next = (*stack)->next;
+// 	// s2->index = (*stack)->index;
+// 	w1_i = get_max_nb_team(stack);
+// 	w2_i = get_max_nb_team(&s2);
+// 	printf("\n\n\nSWAPABLE : w1_i = %d\n, w2_i = %d\n", w1_i, w2_i);
+// 	if (w2_i > w1_i)
+// 		return (1);
+// 	return (0);
+// }
 
 void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 {
@@ -215,33 +96,13 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 	*st_b = tmp_b;
 }
 
-// int		swapable(t_stack *stack)
-// {
-// 	int		w1_i;
-// 	int		w2_i;
-// 	t_stack	w1;
-// 	t_stack	w2;
-
-// 	w1.next = &w2;
-// 	w1.index = stack->next->index;
-// 	w2.next = stack->next->next;
-// 	w2.index = stack->index;
-// 	w1_i = get_max_nb_team(&stack);
-// 	w2_i = get_max_nb_team(&(w1));
-// 	// printf("w1_i = %d\n, w2_i = %d\n", w1_i, w2_i);
-// 	if (w2_i > w1_i)
-// 		return (1);
-// 	return (0);
-// }
-
 void	sorter(t_stack **st_a, t_stack **st_b)
 {
 	t_stack	*tmp;
 
 	tmp = (*st_a);
 	init_sorter(&tmp);
-	
-	// if (swapable(tmp))
+	// if (swapable(&tmp))
 	// 	ft_swap(&tmp, 'a');
 	while (tmp)
 	{
@@ -261,10 +122,33 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 		if (done_push_in_b(tmp))
 			break ;
 	}
-	printf("Conclution => End of part 1: stack_a (tmp) is \n");
-	ft_display_stack(tmp);
-	printf("Conclution => End of part 1: stack_b is \n");
-	ft_display_stack(*st_b);
 	ft_sorter_p2(&tmp, st_b);
 	*st_a = tmp;
+}
+
+void	ft_algo_big(t_stack **st_a, t_stack **st_b)
+{
+	t_stack *max;
+	t_stack *min;
+	t_stack *last;
+	t_stack	*tmp;
+	t_stack	*tmp_b;
+
+	tmp = (*st_a);
+	tmp_b = (*st_b);
+	if (!ft_sorted(&tmp))
+	{
+		max = ft_max(tmp);
+		last = get_last(tmp);
+		printf("last_element in stack_a is %d\n", last->number);
+		printf("maxx_element in stack_a is %d\n", max->number);
+		min = ft_min(tmp);
+		printf("minn_element in stack_a is %d\n", min->number);
+		sorter(&tmp, &tmp_b);
+		printf("\nFINAL\nStack_a is : \n");
+		ft_display_stack(tmp);
+		printf("\n--At the end, stack_b is :-\n");
+		ft_display_stack(tmp_b);
+		printf("ft_algo_big is DONE, Duh!\n");
+	}
 }
