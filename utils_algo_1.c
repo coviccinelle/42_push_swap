@@ -6,40 +6,11 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:06:45 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/26 17:40:08 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:20:13 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	init_max_sorted(t_stack **first)
-{
-	t_stack	*tmp;
-	t_stack	*tmp2;
-	int		n;
-
-	tmp = (*first);
-	while (tmp)
-	{
-		tmp->nb_team = 1;
-		tmp2 = tmp->next;
-		n = tmp->number;
-		if (!tmp2)
-			tmp2 = (*first);
-		while (tmp2->number != tmp->number)
-		{
-			if (n < tmp2->number)
-			{
-				tmp->nb_team++;
-				n = tmp2->number;
-			}
-			tmp2 = tmp2->next;
-			if (!tmp2)
-				tmp2 = (*first);
-		}
-		tmp = tmp->next;
-	}
-}
 
 int	get_max_nb_team(t_stack **stack)
 {

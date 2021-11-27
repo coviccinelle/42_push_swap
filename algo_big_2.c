@@ -6,13 +6,11 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 17:06:32 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/27 17:58:24 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:11:02 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
 
 // return a number after tmp_b = The one should be on top of stack_a
 int	ft_sandwich(t_stack *tmp_b, t_stack **st_a)
@@ -40,7 +38,6 @@ int	ft_sandwich(t_stack *tmp_b, t_stack **st_a)
 	}
 	return (-999);
 }
-
 
 // to calculate steps for each number in st_b
 void	set_gap_b(t_stack **st_a, t_stack **st_b)

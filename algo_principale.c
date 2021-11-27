@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:29:13 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/27 17:06:52 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:14:48 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	ft_algo_3(t_stack **st)
 void	ft_algo_4(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack		*min;
-	int 		min_steps;
+	int			min_steps;
 
 	if (!ft_sorted(stack_a))
 	{
@@ -98,7 +98,7 @@ void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 	t_stack		*min;
 	t_stack		*min_2;
 	t_stack		*tmp;
-	int 		min_steps;
+	int			min_steps;
 
 	if (!ft_sorted(stack_a))
 	{

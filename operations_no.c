@@ -6,13 +6,13 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:20:13 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/26 17:23:49 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:16:29 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		ft_display_stack(t_stack *stack)
+void	ft_display_stack(t_stack *stack)
 {
 	t_stack		*tmp;
 
@@ -47,7 +47,6 @@ void	ft_ss(t_stack **stack_a, t_stack **stack_b)
 	}
 	printf("ss\n");
 }
-
 
 int	ft_rr(t_stack **stack_a, t_stack **stack_b)
 {
@@ -86,7 +85,6 @@ int	ft_rr_ro(t_stack **stack)
 	if (!(*stack))
 		return (0);
 	else
-//	if (stack)
 	{
 		tmp1 = *stack;
 		while ((*stack)->next)
@@ -97,8 +95,6 @@ int	ft_rr_ro(t_stack **stack)
 		tmp_run->next = NULL;
 		(*stack)->next = tmp1;
 	}
-	// printf("stack reverse rotated = \n");
-	ft_display_stack(*stack);
 	return (1);
 }
 

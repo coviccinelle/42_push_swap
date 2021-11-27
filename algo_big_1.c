@@ -6,12 +6,40 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 17:03:24 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/27 17:14:31 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:19:59 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+void	init_max_sorted(t_stack **first)
+{
+	t_stack	*tmp;
+	t_stack	*tmp2;
+	int		n;
+
+	tmp = (*first);
+	while (tmp)
+	{
+		tmp->nb_team = 1;
+		tmp2 = tmp->next;
+		n = tmp->number;
+		if (!tmp2)
+			tmp2 = (*first);
+		while (tmp2->number != tmp->number)
+		{
+			if (n < tmp2->number)
+			{
+				tmp->nb_team++;
+				n = tmp2->number;
+			}
+			tmp2 = tmp2->next;
+			if (!tmp2)
+				tmp2 = (*first);
+		}
+		tmp = tmp->next;
+	}
+}
 
 // minimum steps to move number to top of stack
 int	ft_min_steps(t_stack *stack, int index)
@@ -26,10 +54,9 @@ int	ft_min_steps(t_stack *stack, int index)
 	return (step);
 }
 
-
 int	get_num_on_top(t_stack **stack_a, int index, int min_steps)
 {
-	int i;
+	int	i;
 
 	i = min_steps;
 	if (index > i)
@@ -52,7 +79,6 @@ int	get_num_on_top(t_stack **stack_a, int index, int min_steps)
 	printf("done get_num_on_top\n");
 	return (0);
 }
-
 
 void	get_stay(t_stack **st, t_stack *first)
 {
@@ -96,4 +122,3 @@ int	done_push_in_b(t_stack *st)
 	}
 	return (1);
 }
-

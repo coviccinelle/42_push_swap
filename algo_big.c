@@ -6,12 +6,11 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/27 17:36:08 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:13:21 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 void	init_sorter(t_stack **st_a)
 {
@@ -77,7 +76,6 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 
 	tmp_a = *(st_a);
 	tmp_b = *(st_b);
-
 	while (tmp_b)
 	{
 		set_gap_b(&tmp_a, &tmp_b);
@@ -96,14 +94,14 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 	*st_b = tmp_b;
 }
 
+	// if (swapable(&tmp))
+	// 	ft_swap(&tmp, 'a');
 void	sorter(t_stack **st_a, t_stack **st_b)
 {
 	t_stack	*tmp;
 
 	tmp = (*st_a);
 	init_sorter(&tmp);
-	// if (swapable(&tmp))
-	// 	ft_swap(&tmp, 'a');
 	while (tmp)
 	{
 		while (tmp)
@@ -128,9 +126,9 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 
 void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 {
-	t_stack *max;
-	t_stack *min;
-	t_stack *last;
+	t_stack	*max;
+	t_stack	*min;
+	t_stack	*last;
 	t_stack	*tmp;
 	t_stack	*tmp_b;
 

@@ -6,13 +6,13 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:24:17 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/26 17:28:53 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 18:17:22 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_stack		*get_last(t_stack *last)
+t_stack	*get_last(t_stack *last)
 {
 	if (last == NULL)
 		return (NULL);
@@ -43,14 +43,14 @@ int	ft_doublons(t_stack *stack)
 			tmp2 = tmp2->next;
 		}
 		tmp1 = tmp1->next;
-		if (tmp1->next == NULL) // ???
-			break;
+		if (tmp1->next == NULL)
+			break ;
 		tmp2 = tmp1->next;
 	}
 	return (0);
 }
 
-int		ft_size_stack(t_stack **stack)
+int	ft_size_stack(t_stack **stack)
 {
 	t_stack	*tmp;
 	int		i;
