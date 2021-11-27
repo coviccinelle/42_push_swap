@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/26 18:51:04 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/27 17:01:56 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,6 +240,7 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 
 	tmp = (*st_a);
 	init_sorter(&tmp);
+	
 	// if (swapable(tmp))
 	// 	ft_swap(&tmp, 'a');
 	while (tmp)
