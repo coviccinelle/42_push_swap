@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:29:13 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 12:42:41 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/29 13:52:36 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,10 @@ void	ft_algo(t_stack **stack_a, t_stack **stack_b)
 	if (ft_size_stack(stack_a) == 2)
 	{
 		ft_algo_2(stack_a);
-		// printf("Done algo _2\n");
 	}
 	if (ft_size_stack(stack_a) == 3)
 	{
 		ft_algo_3(stack_a);
-		// printf("Done algo _3\n");
 	}
 	if (ft_size_stack(stack_a) == 4)
 		ft_algo_4(stack_a, stack_b);
@@ -82,7 +80,7 @@ void	ft_algo_4(t_stack **stack_a, t_stack **stack_b)
 		min = ft_min(*stack_a);
 		ft_index(*stack_a);
 		min_steps = ft_min_steps(*stack_a, min->index);
-		get_num_on_top(stack_a, min->index, min_steps);
+		get_num_on_top(stack_a, min->index, min_steps, 'a');
 		ft_push(stack_a, stack_b, 'b');
 		ft_algo_3(stack_a);
 		ft_push(stack_b, stack_a, 'b');
@@ -105,18 +103,18 @@ void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 		min = ft_min(*stack_a);
 		ft_index(*stack_a);
 		min_steps = ft_min_steps(*stack_a, min->index);
-		get_num_on_top(stack_a, min->index, min_steps);
+		get_num_on_top(stack_a, min->index, min_steps, 'a');
 		ft_push(stack_a, stack_b, 'b');
 		min_2 = ft_min(*stack_a);
 		ft_index(*stack_a);
 		tmp = (*stack_a);
 		min_steps = ft_min_steps(*stack_a, min_2->index);
-		get_num_on_top(stack_a, min_2->index, min_steps);
+		get_num_on_top(stack_a, min_2->index, min_steps, 'a');
 		ft_push(stack_a, stack_b, 'b');
 		ft_algo_3(stack_a);
 		ft_push(stack_b, stack_a, 'a');
 		ft_push(stack_b, stack_a, 'a');
 	}
 	// printf("------ final algo _5 -----\n");
-	ft_display_stack(*stack_a);
+	// ft_display_stack(*stack_a);
 }

@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 09:40:31 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/29 13:49:03 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	init_max_sorted(t_stack **first);
 int		get_max_nb_team(t_stack **stack);
 t_stack	*get_head_stay(t_stack **st_a);
 t_stack	*get_p_number(t_stack **st_a, int n);
-int		get_num_on_top(t_stack **stack_a, int index, int min_steps);
+int		get_num_on_top(t_stack **stack_a, int index, int min_steps, char c);
 int		ft_min_steps(t_stack *stack, int index);
 int		done_push_in_b(t_stack *st);
 

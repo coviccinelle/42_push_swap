@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 12:42:13 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/29 13:54:27 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 		ft_index(tmp_a);
 		min = ft_min(tmp_a);
 		gap_min = ft_min_steps(tmp_a, min->index);
-		get_num_on_top(&tmp_a, min->index, gap_min);
+		get_num_on_top(&tmp_a, min->index, gap_min, 'a');
 	}
 	*st_a = tmp_a;
 	*st_b = tmp_b;
@@ -119,6 +119,7 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 		}
 		if (done_push_in_b(tmp))
 			break ;
+		
 	}
 	ft_sorter_p2(&tmp, st_b);
 	*st_a = tmp;
@@ -127,7 +128,7 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 {
 	t_stack	*max;
-	t_stack	*min;
+	// t_stack	*min;
 	// t_stack	*last;
 	t_stack	*tmp;
 	t_stack	*tmp_b;
@@ -141,7 +142,7 @@ void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 		// last = get_last(tmp);
 		// printf("last_element in stack_a is %d\n", last->number);
 		// printf("maxx_element in stack_a is %d\n", max->number);
-		min = ft_min(tmp);
+		// min = ft_min(tmp);
 		// printf("minn_element in stack_a is %d\n", min->number);
 		sorter(&tmp, &tmp_b);
 		// printf("\nFINAL\nStack_a is : \n");

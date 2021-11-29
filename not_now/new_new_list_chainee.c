@@ -72,7 +72,7 @@ int main ()
 	ft_new_element(&Stack, 15);
 	ft_new_element(&Stack, 17);
 	
-	printf("size Stack =  %d\n", ft_size_stack(Stack));
-	ft_display_stack(Stack);
+	// printf("size Stack =  %d\n", ft_size_stack(Stack));
+	// ft_display_stack(Stack);
 	return (0);
 }
