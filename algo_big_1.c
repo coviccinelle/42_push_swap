@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 17:03:24 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/27 18:19:59 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/29 09:43:13 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	get_num_on_top(t_stack **stack_a, int index, int min_steps)
 	i = min_steps;
 	if (index > i)
 	{
-		printf(" ---- max or min->index = %d\n", index);
+		////printf(" ---- max or min->index = %d\n", index);
 		while (i > 0)
 		{
 			ft_reverse_rotate(stack_a, 'a');
@@ -76,7 +76,7 @@ int	get_num_on_top(t_stack **stack_a, int index, int min_steps)
 			i--;
 		}
 	}
-	printf("done get_num_on_top\n");
+	////printf("done get_num_on_top\n");
 	return (0);
 }
 
@@ -98,7 +98,7 @@ void	get_stay(t_stack **st, t_stack *first)
 			if (n < tmp2->number)
 			{
 				tmp2->stay = 1;
-				printf("Get_stay : tmp->number = %d, tmp2->number = %d, tmp->stay = %d\n\n", tmp->number, tmp2->number, tmp->stay);
+				//printf("Get_stay : tmp->number = %d, tmp2->number = %d, tmp->stay = %d\n\n", tmp->number, tmp2->number, tmp->stay);
 				n = tmp2->number;
 			}
 			tmp2 = tmp2->next;

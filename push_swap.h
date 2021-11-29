@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/27 18:56:25 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/29 09:40:31 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int	ft_2nb_stick(char *str);
 int	ft_parsing_1(char *str, t_stack **stack_a);
 int	ft_parsing_multi_2(int ac, char **av, t_stack **stack_a);
 
+// Free functions
 void	ft_free_ck(t_stack **list_a);
 int		ft_check_double(t_stack **list_a);
 
@@ -58,42 +59,14 @@ int		ft_check_double(t_stack **list_a);
 void	ft_new_element(t_stack	**stack, int n);
 int		ft_size_stack(t_stack **stack);
 void	ft_display_stack(t_stack *stack);
-void	ft_display_2_stacks(t_stack *stack_a, t_stack *stack_b);
 int		ft_doublons(t_stack *stack);
 
 // tools in algo
-void	ft_index(t_stack *stack_a);
-t_stack	*get_last(t_stack *last);
-int		get_max_sorted_list(t_stack *stack, t_stack *start);
-t_stack	*ft_max(t_stack *stack);
-t_stack	*ft_min(t_stack *stack);
-int		ft_sorted(t_stack **stack_a);
-int		get_i_max(t_stack *stack, int max);
-int		ft_min_steps(t_stack *stack, int index);
-int		get_num_on_top(t_stack **stack_a, int index, int min_steps);
+
+// t_stack	*get_last(t_stack *last);
 
 void	ft_init(t_env *f);
-
-void	init_max_sorted(t_stack **first);
 void	show_stay(t_stack **st);
-int		get_max_nb_team(t_stack **stack);
-t_stack	*get_head_stay(t_stack **st_a);
-t_stack	*get_p_number(t_stack **st_a, int n);
-int		loop_stack(t_stack *stack, t_stack *start, int trig);
-int		swapable(t_stack *stack);
-
-void	sorter(t_stack **st_a, t_stack **st_b);
-
-
-// big_algo_1
-void	init_stay(t_stack **st);
-void	get_stay(t_stack **st, t_stack *first);
-int	done_push_in_b(t_stack *st);
-
-// big_algo_2
-void	set_gap_b(t_stack **st_a, t_stack **st_b);
-t_stack	*ft_compare_b(t_stack **st_b);
-void	ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack *min_b);
 
 
 //       -----  OPERATIONS FUNCTIONS -----       //
@@ -101,8 +74,6 @@ void	ft_swap(t_stack **stack, char c);
 int		ft_push(t_stack	**st_t, t_stack	**st_r, char c);
 int		ft_rotate(t_stack **stack, char c);
 int		ft_reverse_rotate(t_stack **stack, char c);
-//int		ft_list_len(t_stack **list);
-
 void	ft_ss(t_stack **stack_a, t_stack **stack_b);
 // Swap a and b
 int		ft_rr(t_stack **stack_a, t_stack **stack_b);
@@ -111,6 +82,29 @@ int		ft_rr_ro(t_stack **stack);
 void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
 // Reverse Rotate a and b
 
+
+// big_algo_1
+int		ft_sorted(t_stack **stack_a);
+void	ft_index(t_stack *stack_a);
+void	sorter(t_stack **st_a, t_stack **st_b);
+void	init_stay(t_stack **st);
+void	get_stay(t_stack **st, t_stack *first);
+void	init_max_sorted(t_stack **first);
+int		get_max_nb_team(t_stack **stack);
+t_stack	*get_head_stay(t_stack **st_a);
+t_stack	*get_p_number(t_stack **st_a, int n);
+int		get_num_on_top(t_stack **stack_a, int index, int min_steps);
+int		ft_min_steps(t_stack *stack, int index);
+int		done_push_in_b(t_stack *st);
+
+
+// big_algo_2
+t_stack	*ft_max(t_stack *stack);
+t_stack	*ft_min(t_stack *stack);
+void	set_gap_b(t_stack **st_a, t_stack **st_b);
+int		swapable(t_stack *stack);
+t_stack	*ft_compare_b(t_stack **st_b);
+void	ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack *min_b);
 
 //       -----  ALGORYTHME FUNCTIONS -----       //
 void	ft_algo(t_stack **stack_a, t_stack **stack_b);
