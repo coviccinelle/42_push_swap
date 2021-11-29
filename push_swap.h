@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 13:49:03 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:50:25 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,11 @@ int	ft_parsing_1(char *str, t_stack **stack_a);
 int	ft_parsing_multi_2(int ac, char **av, t_stack **stack_a);
 
 // Free functions
-void	ft_free_ck(t_stack **list_a);
-int		ft_check_double(t_stack **list_a);
+void	ft_free_1st(t_stack **st, int n);
+void	ft_free(t_stack **st, int n);
+// void    ft_error(t_stack **st_a, t_stack **st_b, int n);
+// void	ft_error()
+// int		ft_check_double(t_stack **list_a);
 
 
 // LISTE CHAINEE starts here //

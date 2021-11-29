@@ -6,7 +6,7 @@
 #    By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/26 17:09:08 by thi-phng          #+#    #+#              #
-#    Updated: 2021/11/27 17:03:10 by thi-phng         ###   ########.fr        #
+#    Updated: 2021/11/29 14:50:49 by thi-phng         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS		=	push_swap.c \
 				algo_big_2.c \
 				operations_no.c \
 				operations_utils.c \
+				free.c \
 				main.c \
 
 
@@ -66,9 +67,6 @@ all:			$(NAME)
 
 $(NAME) :		$(OBJS)
 						$(CC) $(CLAGS) $(OBJS) -o $(NAME)
-
-test:
-				$(CC) $(CFLAGS) push_swap.c && ./a.out
 
 clean:
 				$(RM) $(OBJS)

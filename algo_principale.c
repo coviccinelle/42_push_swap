@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:29:13 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 13:52:36 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/29 14:43:05 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,6 @@ void	ft_algo_4(t_stack **stack_a, t_stack **stack_b)
 		ft_algo_3(stack_a);
 		ft_push(stack_b, stack_a, 'b');
 	}
-	// printf("----- \n");
-	// ft_display_stack(*stack_a);
-	// printf("---stack_b-- \n");
-	// ft_display_stack(*stack_b);
 }
 
 void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
