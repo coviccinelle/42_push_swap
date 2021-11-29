@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 09:42:21 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:15:36 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	ft_rotate(t_stack **stack, char c)
 		tmp_curs->next = tmp1;
 		tmp1->next = NULL;
 	}
-	printf("\nr%c\n", c);
+	printf("r%c\n", c);
 	// //ft_display_stack(*stack);
 	return (1);
 }
@@ -119,9 +119,9 @@ int	ft_push(t_stack **st_t, t_stack **st_r, char c)
 		*st_r = tmp1;
 		tmp1->next = tmp2;
 	}
-	printf("\np%c\n", c);
+	printf("p%c\n", c);
 	//ft_display_stack(*st_t);
-	printf("----------\n");
+	// printf("----------\n");
 	//ft_display_stack(*st_r);
 	return (0);
 }

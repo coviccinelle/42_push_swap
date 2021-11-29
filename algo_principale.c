@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:29:13 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/27 18:14:48 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:14:02 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,16 @@
 
 void	ft_algo(t_stack **stack_a, t_stack **stack_b)
 {
-	ft_display_stack(*stack_a);
+	// ft_display_stack(*stack_a);
 	if (ft_size_stack(stack_a) == 1)
 		return ;
 	if (ft_size_stack(stack_a) == 2)
 	{
 		ft_algo_2(stack_a);
-		printf("Done algo _2\n");
 	}
 	if (ft_size_stack(stack_a) == 3)
 	{
 		ft_algo_3(stack_a);
-		printf("Done algo _3\n");
 	}
 	if (ft_size_stack(stack_a) == 4)
 		ft_algo_4(stack_a, stack_b);
@@ -87,10 +85,10 @@ void	ft_algo_4(t_stack **stack_a, t_stack **stack_b)
 		ft_algo_3(stack_a);
 		ft_push(stack_b, stack_a, 'b');
 	}
-	printf("----- \n");
-	ft_display_stack(*stack_a);
-	printf("---stack_b-- \n");
-	ft_display_stack(*stack_b);
+	// printf("----- \n");
+	// ft_display_stack(*stack_a);
+	// printf("---stack_b-- \n");
+	// ft_display_stack(*stack_b);
 }
 
 void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
