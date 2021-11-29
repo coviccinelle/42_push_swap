@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 13:53:47 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/29 16:53:54 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ void	ft_new_element(t_stack	**stack, int n)
 
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (!new)
+	{
+		ft_free_1st(stack, 0);
 		return ;
+	}
 	//Free tout si jamais il arrive pas a allouer tout //
 	if ((*stack) == NULL)
 	{
