@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_test.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thi-phng <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/16 14:58:27 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/16 15:52:43 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:41:27 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,9 @@ int	main()
 	if (ft_invalid_char(str))
 		printf("Error\nthere's a outsider \n");
 	if (!ft_invalid_char(str))
-		printf("Green light! Please pass :>\n");
-	printf("n = ft_atoi_1(str) = %d\n", ft_atoi_1(str));
-	printf("free apres avoir fini!!!\n");
+		// printf("Green light! Please pass :>\n");
+	// printf("n = ft_atoi_1(str) = %d\n", ft_atoi_1(str));
+	// printf("free apres avoir fini!!!\n");
 	return (0);
 }
 

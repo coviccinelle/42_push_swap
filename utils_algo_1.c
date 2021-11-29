@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:06:45 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 09:43:55 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:40:20 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,7 @@ void	show_stay(t_stack **st)
 	tmp = (*st);
 	while (tmp)
 	{
-		printf("Show stay : tmp->number = %d, tmp->index = %d, tmp->stay = %d\n", tmp->number, tmp->index, tmp->stay);
+		// printf("Show stay : tmp->number = %d, tmp->index = %d, tmp->stay = %d\n", tmp->number, tmp->index, tmp->stay);
 		tmp = tmp->next;
 	}
 }

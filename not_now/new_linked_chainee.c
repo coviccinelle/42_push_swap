@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 11:13:05 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/10/13 13:54:20 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/11/29 12:41:44 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int main ()
 	ft_new_element(&Stack, 17);
 	
 	//temp = Stack;
-	printf("Pass here\n");
+	// printf("Pass here\n");
 	
 	printf("%d\n", ft_size_stack(Stack));
 	ft_display_stack(Stack);
