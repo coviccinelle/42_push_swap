@@ -12,15 +12,6 @@
 
 #include "push_swap.h"
 
-// t_stack	*get_last(t_stack *last)
-// {
-// 	if (last == NULL)
-// 		return (NULL);
-// 	while (last->next)
-// 		last = last->next;
-// 	return (last);
-// }
-
 // DOUBLONS PART //
 int	ft_doublons(t_stack *stack)
 {
@@ -36,10 +27,7 @@ int	ft_doublons(t_stack *stack)
 		while (tmp2)
 		{
 			if (tmp1->number == tmp2->number)
-			{
-				printf("Error\nDouble number\n");
 				return (1);
-			}
 			tmp2 = tmp2->next;
 		}
 		tmp1 = tmp1->next;
@@ -65,7 +53,6 @@ int	ft_size_stack(t_stack **stack)
 	return (i);
 }
 
-// PARSING PART //
 void	ft_init(t_env *f)
 {
 	f->stack_a = NULL;

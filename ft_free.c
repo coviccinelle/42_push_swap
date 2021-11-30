@@ -12,87 +12,45 @@
 
 #include "push_swap.h"
 
-
-void	ft_free_1st(t_stack **st, int n)
+void	simple_free(t_stack **st)
 {
 	t_stack	*tmp;
 
+	while ((*st))
+		{
+			tmp = (*st);
+			(*st) = (*st)->next;
+			free(tmp);
+		}
+}
+
+void	ft_free_1st(t_stack **st, int n)
+{
     if (n == 1)
 	{
 		printf("Error\nFREE 1stack\n");
-		while ((*st))
-		{
-			tmp = (*st);
-			(*st) = (*st)->next;
-			free(tmp);
-		}
-	}
-     
+		simple_free(st);
+	} 
 	else
-	{
-		while ((*st))
-		{
-			tmp = (*st);
-			(*st) = (*st)->next;
-			free(tmp);
-		}
-	}
+		simple_free(st);
 }
 
 
 void	ft_free(t_stack **st_a, t_stack **st_b, int n)
 {
-	t_stack	*tmp;
-
     if (n == 1)
 	{
 		printf("Error\nFREE 2 stacks\n");
-		while ((*st_a))
-		{
-			tmp = (*st_a);
-			(*st_a) = (*st_a)->next;
-			free (tmp);
-		}
-		while ((*st_b))
-		{
-			tmp = (*st_b);
-			(*st_b) = (*st_b)->next;
-			free (tmp);
-		}
+		if ((*st_a))
+			simple_free(st_a);
+		if ((*st_b))
+			simple_free(st_b);
 	}
 	else
 	{
-		while ((*st_a))
-		{
-			tmp = (*st_a);
-			(*st_a) = (*st_a)->next;
-			free (tmp);
-		}
-		while ((*st_b))
-		{
-			tmp = (*st_b);
-			(*st_b) = (*st_b)->next;
-			free (tmp);
-		}
+		if ((*st_a))
+			simple_free(st_a);
+		if ((*st_b))
+			simple_free(st_b);
 	}
 }
-
-// void    ft_error(t_stack **st_a, t_stack **st_b, int n)
-// {
-//     if (n == 1)
-//     {
-//         printf("Error\n");
-//         ft_free(st_a, st_b);
-//     }
-//     else if (n == 0)
-//         ft_free(st_a, st_a);
-//     else if (n == 2)
-//     {
-//         printf("Error\n");
-//         ft_free(st_a);
-//     }
-//     else if (n == 3)
-//     {
-//         ft_free(st_a);
-//     }
-// }

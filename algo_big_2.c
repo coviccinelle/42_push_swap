@@ -106,12 +106,9 @@ void	ft_push_b_back(t_stack **tmp_b, t_stack **tmp_a, t_stack *min_b)
 	ft_index(*tmp_b);
 	top_a = ft_sandwich(min_b, tmp_a);
 	top_a_to_be = get_p_number(tmp_a, top_a);
-	//printf("top_a_to_be->number = %d, index = %d\n", top_a_to_be->number, top_a_to_be->index);
 	gap_a = ft_min_steps(*tmp_a, top_a_to_be->index);
 	gap_b = ft_min_steps(*tmp_b, min_b->index);
-	//printf("gap_a = %d, gap_b = %d\n", gap_a, gap_b);
 	get_num_on_top(tmp_a, top_a_to_be->index, gap_a, 'a');
-	//printf("ici\n");
 	get_num_on_top(tmp_b, min_b->index, gap_b, 'b');
 	ft_push(tmp_b, tmp_a, 'a');
 }

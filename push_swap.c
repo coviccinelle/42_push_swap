@@ -12,7 +12,6 @@
 
 #include "push_swap.h"
 
-// LISTE CHAINEE starts here //
 void	ft_new_element(t_stack	**stack, int n)
 {
 	t_stack	*tmp;
@@ -24,7 +23,6 @@ void	ft_new_element(t_stack	**stack, int n)
 		ft_free_1st(stack, 0);
 		return ;
 	}
-	//Free tout si jamais il arrive pas a allouer tout //
 	if ((*stack) == NULL)
 	{
 		(*stack) = new;
@@ -42,7 +40,6 @@ void	ft_new_element(t_stack	**stack, int n)
 	}
 }
 
-//       -----  OPERATIONS FUNCTIONS -----       //
 void	ft_swap(t_stack **stack, char c)
 {
 	t_stack	*tmp1;
@@ -57,7 +54,6 @@ void	ft_swap(t_stack **stack, char c)
 		tmp1->next = tmp2;
 	}
 	printf("s%c\n", c);
-	//ft_display_stack(*stack);
 }
 
 int	ft_rotate(t_stack **stack, char c)
@@ -78,7 +74,6 @@ int	ft_rotate(t_stack **stack, char c)
 		tmp1->next = NULL;
 	}
 	printf("r%c\n", c);
-	// ft_display_stack(*stack);
 	return (1);
 }
 
@@ -101,7 +96,6 @@ int	ft_reverse_rotate(t_stack **stack, char c)
 		(*stack)->next = tmp1;
 	}
 	printf("rr%c\n", c);
-	// ft_display_stack(*stack);
 	return (1);
 }
 
@@ -123,8 +117,5 @@ int	ft_push(t_stack **st_t, t_stack **st_r, char c)
 		tmp1->next = tmp2;
 	}
 	printf("p%c\n", c);
-	// ft_display_stack(*st_t);
-	// printf("----------\n");
-	// ft_display_stack(*st_r);
 	return (0);
 }
