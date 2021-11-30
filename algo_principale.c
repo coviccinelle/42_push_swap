@@ -14,17 +14,12 @@
 
 void	ft_algo(t_stack **stack_a, t_stack **stack_b)
 {
-	// ft_display_stack(*stack_a);
 	if (ft_size_stack(stack_a) == 1)
 		return ;
 	if (ft_size_stack(stack_a) == 2)
-	{
 		ft_algo_2(stack_a);
-	}
 	if (ft_size_stack(stack_a) == 3)
-	{
 		ft_algo_3(stack_a);
-	}
 	if (ft_size_stack(stack_a) == 4)
 		ft_algo_4(stack_a, stack_b);
 	if (ft_size_stack(stack_a) == 5)
@@ -111,6 +106,4 @@ void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 		ft_push(stack_b, stack_a, 'a');
 		ft_push(stack_b, stack_a, 'a');
 	}
-	// printf("------ final algo _5 -----\n");
-	// ft_display_stack(*stack_a);
 }

@@ -12,14 +12,14 @@
 
 #include "push_swap.h"
 
-t_stack	*get_last(t_stack *last)
-{
-	if (last == NULL)
-		return (NULL);
-	while (last->next)
-		last = last->next;
-	return (last);
-}
+// t_stack	*get_last(t_stack *last)
+// {
+// 	if (last == NULL)
+// 		return (NULL);
+// 	while (last->next)
+// 		last = last->next;
+// 	return (last);
+// }
 
 // DOUBLONS PART //
 int	ft_doublons(t_stack *stack)

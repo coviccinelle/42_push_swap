@@ -17,17 +17,14 @@ void	init_sorter(t_stack **st_a)
 	t_stack	*tmp;
 
 	init_max_sorted(st_a);
-	// printf("max_number_team ecart here %d\n", get_max_nb_team(st_a));
 	tmp = get_head_stay(st_a);
-	// printf("Head of list stay is = %d\n", tmp->number);
 	get_stay(&(*st_a), tmp);
 	ft_index(*st_a);
 	show_stay(st_a);
 	(*st_a)->size = ft_size_stack(st_a);
-	// printf("size stack here %d\n", (*st_a)->size);
 }
 
-// int		swapable(t_stack *stack)
+// int		swapable(t_stack *stack) 
 // {
 // 	int		w1_i;
 // 	int		w2_i;
@@ -80,7 +77,6 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 	{
 		set_gap_b(&tmp_a, &tmp_b);
 		min_b = ft_compare_b(&tmp_b);
-		//printf("min_b->number(the min steps needed in b) is = %d\n", min_b->number);
 		ft_push_b_back(&tmp_b, &tmp_a, min_b);
 	}
 	if (!ft_sorted(&tmp_a))

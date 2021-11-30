@@ -33,9 +33,7 @@ SRCS		=	push_swap.c \
 				main.c \
 
 
-
 OBJS		=	$(SRCS:.c=.o)
-
 
 .SILENT:
 CRED 	= \033[0;31m
@@ -58,7 +56,6 @@ TITLE:
 	printf "${CRED}  \__|${CORANGE}|_||_|${CYELLOW}|_|${CGREEN}     ${CCYAN}| .__/ ${CBLUE}|_||_|${CPURPLE}|_||_|${CRED}\\__, |\n"
 	printf "${CRED}      ${CORANGE}      ${CYELLOW}   ${CGREEN}     ${CCYAN}|_|     ${CBLUE}     ${CPURPLE}      ${CRED}|___/ \n"
 	printf "${CYELLOW} \n"
-
 
 %.o : %.c
 				$(CC) -c $(CFLAGS) -o $@ $<
