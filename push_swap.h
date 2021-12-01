@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 16:47:37 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/01 16:17:49 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,11 @@ void	ft_free(t_stack **st_a, t_stack **st_b, int n);
 
 
 // LISTE CHAINEE starts here //
-void	ft_new_element(t_stack	**stack, int n);
+int		ft_new_element(t_stack	**stack, int n);
 int		ft_size_stack(t_stack **stack);
 void	ft_display_stack(t_stack *stack);
 int		ft_doublons(t_stack *stack);
+void	ft_init_elem(t_stack *new);
 
 // tools in algo
 
@@ -90,7 +91,7 @@ void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
 int		ft_sorted(t_stack **stack_a);
 void	ft_index(t_stack *stack_a);
 void	sorter(t_stack **st_a, t_stack **st_b);
-void	init_stay(t_stack **st);
+// void	init_stay(t_stack **st);
 void	get_stay(t_stack **st, t_stack *first);
 void	init_max_sorted(t_stack **first);
 int		get_max_nb_team(t_stack **stack);

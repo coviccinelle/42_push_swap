@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 14:21:11 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/01 16:55:06 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	init_sorter(t_stack **st_a)
 	tmp = get_head_stay(st_a);
 	get_stay(&(*st_a), tmp);
 	ft_index(*st_a);
-	show_stay(st_a);
 	(*st_a)->size = ft_size_stack(st_a);
 }
 
@@ -92,7 +91,7 @@ void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 	tmp_b = (*st_b);
 	if (!ft_sorted(&tmp))
 	{
-		init_stay(st_a);
+		// init_stay(st_a);
 		max = ft_max(tmp);
 		sorter(&tmp, &tmp_b);
 	}

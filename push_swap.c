@@ -6,28 +6,29 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 16:53:54 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/01 16:41:43 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_new_element(t_stack	**stack, int n)
+int	ft_new_element(t_stack	**stack, int n)
 {
 	t_stack	*tmp;
 	t_stack	*new;
 
 	new = (t_stack *)malloc(sizeof(t_stack));
-	if (!new)
+	if (new == NULL)
 	{
 		ft_free_1st(stack, 0);
-		return ;
+		return (0);
 	}
 	if ((*stack) == NULL)
 	{
 		(*stack) = new;
 		new->next = NULL;
 		new->number = n;
+		ft_init_elem(new);
 	}
 	else
 	{
@@ -37,7 +38,9 @@ void	ft_new_element(t_stack	**stack, int n)
 		tmp->next = new;
 		new->next = NULL;
 		new->number = n;
+		ft_init_elem(new);
 	}
+	return (1);
 }
 
 void	ft_swap(t_stack **stack, char c)

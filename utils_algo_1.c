@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:06:45 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 13:54:03 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/01 15:49:44 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,27 +61,34 @@ t_stack	*get_p_number(t_stack **st_a, int n)
 	return (NULL);
 }
 
-void	show_stay(t_stack **st)
+void	ft_init_elem(t_stack *new)
 {
-	t_stack	*tmp;
-
-	tmp = (*st);
-	while (tmp)
-	{
-		// printf("Show stay : tmp->number = %d, tmp->index = %d, tmp->stay = %d\n", tmp->number, tmp->index, tmp->stay);
-		tmp = tmp->next;
-	}
+	new->stay = 0;
+	new->nb_team = 1;
+	new->index = 0;
 }
 
-void	init_stay(t_stack **st)
-{
-	t_stack	*tmp;
+// void	show_stay(t_stack **st)
+// {
+// 	t_stack	*tmp;
 
-	tmp = (*st);
-	while (tmp)
-	{
-		tmp->stay = 0;
-		//printf("INIT STAY HERE : \n tmp->number = %d, tmp->stay = %d\n", tmp->number, tmp->stay);
-		tmp = tmp->next;
-	}
-}
+// 	tmp = (*st);
+// 	while (tmp)
+// 	{
+// 		// printf("Show stay : tmp->number = %d, tmp->index = %d, tmp->stay = %d\n", tmp->number, tmp->index, tmp->stay);
+// 		tmp = tmp->next;
+// 	}
+// }
+
+// void	init_stay(t_stack **st)
+// {
+// 	t_stack	*tmp;
+
+// 	tmp = (*st);
+// 	while (tmp)
+// 	{
+// 		tmp->stay = 0;
+// 		//printf("INIT STAY HERE : \n tmp->number = %d, tmp->stay = %d\n", tmp->number, tmp->stay);
+// 		tmp = tmp->next;
+// 	}
+// }
