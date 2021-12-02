@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/12/02 11:31:38 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/02 11:48:25 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 		}
 		if (done_push_in_b(tmp))
 			break ;
-		
 	}
 	ft_sorter_p2(&tmp, st_b);
 	*st_a = tmp;
