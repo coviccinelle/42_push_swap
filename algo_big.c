@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/12/02 11:48:25 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:06:33 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,7 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 
 void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 {
-	t_stack	*tmp;
-	t_stack	*tmp_b;
-
-	tmp = (*st_a);
-	tmp_b = (*st_b);
-	if (!ft_sorted(&tmp))
-	{
-		sorter(&tmp, &tmp_b);
-	}
-	ft_free(&tmp, &tmp_b, 0);
+	if (!ft_sorted(st_a))
+		sorter(st_a, st_b);
+	ft_free(st_a, st_b, 0);
 }
