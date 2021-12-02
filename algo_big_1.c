@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/27 17:03:24 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/12/01 15:45:40 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/02 11:31:29 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	init_max_sorted(t_stack **first)
 	tmp = (*first);
 	while (tmp)
 	{
-		// tmp->nb_team = 1;
 		tmp2 = tmp->next;
 		n = tmp->number;
 		if (!tmp2)

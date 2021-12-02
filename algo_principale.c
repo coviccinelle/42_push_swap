@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:29:13 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/12/01 16:12:58 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/02 11:30:57 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	ft_algo_2(t_stack **stack_a)
 	tmp = (*stack_a);
 	if (tmp->number > tmp->next->number)
 		ft_swap(stack_a, 'a');
+	ft_free_1st(stack_a, 0);
 }
 
 void	ft_algo_3(t_stack **st)
@@ -63,6 +64,7 @@ void	ft_algo_3(t_stack **st)
 		else if ((*st)->number < nd && nd > rd && rd < (*st)->number)
 			ft_reverse_rotate(st, 'a');
 	}
+	ft_free_1st(st, 0);
 }
 
 void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
@@ -89,4 +91,5 @@ void	ft_algo_5(t_stack **stack_a, t_stack **stack_b)
 		ft_push(stack_b, stack_a, 'a');
 		ft_push(stack_b, stack_a, 'a');
 	}
+	ft_free(stack_a, stack_b, 0);
 }

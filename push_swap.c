@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/12/01 16:41:43 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/02 11:36:38 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,17 @@ int	ft_new_element(t_stack	**stack, int n)
 		return (0);
 	}
 	if ((*stack) == NULL)
-	{
 		(*stack) = new;
-		new->next = NULL;
-		new->number = n;
-		ft_init_elem(new);
-	}
 	else
 	{
 		tmp = *stack;
 		while (tmp->next)
 			tmp = tmp->next;
 		tmp->next = new;
-		new->next = NULL;
-		new->number = n;
-		ft_init_elem(new);
 	}
+	new->next = NULL;
+	new->number = n;
+	ft_init_elem(new);
 	return (1);
 }
 

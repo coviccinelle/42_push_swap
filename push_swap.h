@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/12/01 16:17:49 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/02 11:32:17 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,9 +53,6 @@ int	ft_parsing_multi_2(int ac, char **av, t_stack **stack_a);
 // Free functions
 void	ft_free_1st(t_stack **st, int n);
 void	ft_free(t_stack **st_a, t_stack **st_b, int n);
-// void    ft_error(t_stack **st_a, t_stack **st_b, int n);
-// void	ft_error()
-// int		ft_check_double(t_stack **list_a);
 
 
 // LISTE CHAINEE starts here //
@@ -66,8 +63,6 @@ int		ft_doublons(t_stack *stack);
 void	ft_init_elem(t_stack *new);
 
 // tools in algo
-
-// t_stack	*get_last(t_stack *last);
 
 void	ft_init(t_env *f);
 void	show_stay(t_stack **st);
@@ -91,7 +86,6 @@ void	ft_rrr(t_stack **stack_a, t_stack **stack_b);
 int		ft_sorted(t_stack **stack_a);
 void	ft_index(t_stack *stack_a);
 void	sorter(t_stack **st_a, t_stack **st_b);
-// void	init_stay(t_stack **st);
 void	get_stay(t_stack **st, t_stack *first);
 void	init_max_sorted(t_stack **first);
 int		get_max_nb_team(t_stack **stack);

@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/12/01 16:55:06 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/02 11:31:38 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,6 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 	*st_b = tmp_b;
 }
 
-	// if (swapable(&tmp))
-	// 	ft_swap(&tmp, 'a');
 void	sorter(t_stack **st_a, t_stack **st_b)
 {
 	t_stack	*tmp;
@@ -83,7 +81,6 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 
 void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 {
-	t_stack	*max;
 	t_stack	*tmp;
 	t_stack	*tmp_b;
 
@@ -91,8 +88,7 @@ void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 	tmp_b = (*st_b);
 	if (!ft_sorted(&tmp))
 	{
-		// init_stay(st_a);
-		max = ft_max(tmp);
 		sorter(&tmp, &tmp_b);
 	}
+	ft_free(&tmp, &tmp_b, 0);
 }

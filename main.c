@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 17:29:52 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/12/01 16:51:16 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/02 11:31:43 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	main(int ac, char **av)
 			if (ft_parsing_multi_2(ac, &*av, &(f.stack_a)))
 				ft_algo(&(f.stack_a), &(f.stack_b));
 		}
-		ft_free(&(f.stack_a), &(f.stack_b), 0);
 	}
 	return (0);
 }
