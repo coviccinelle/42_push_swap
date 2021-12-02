@@ -6,20 +6,28 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:38:27 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/12/02 15:17:30 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/02 17:17:57 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-// int invalid_agr_1()
+int	invalid_min_max_int(long n, t_stack **st_a)
+{
+	if (n == -2147483649)
+	{
+		ft_free_1st(st_a, 1);
+		return (1);
+	}
+	return (0);
+}
 
 // printf("Note : parsing_1_agr\n");
 int	ft_parsing_1(char *str, t_stack **stack_a, int i)
 {
 	long	n;
 
-	if (!ft_int_exist(str) || ft_invalid_char(str))
+	if ((!ft_int_exist(str) && !ft_all_blank(str)) || ft_invalid_char(str))
 	{
 		printf("Error\n");
 		return (0);
@@ -27,14 +35,9 @@ int	ft_parsing_1(char *str, t_stack **stack_a, int i)
 	while (str[i] && (i <= ft_strlen(str)))
 	{
 		n = ft_atoi_1(&str[i]);
-		if (n == -2147483649)
-		{
-			ft_free_1st(stack_a, 1);
+		if (invalid_min_max_int(n, stack_a))
 			return (0);
-		}
 		ft_new_element(stack_a, n);
-		while (str[i] == ' ')
-			i++;
 		while (find_me(str[i], "-0123456789"))
 			i++;
 		if (str[i] == ' ' && !ft_int_exist(&str[i]))
