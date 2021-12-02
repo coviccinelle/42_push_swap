@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:12 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/12/02 11:59:41 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/02 14:29:31 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_env
 int		find_me(char c, const char *str);
 int		ft_int_exist(char *str);
 int		ft_all_blank(char *str);
-int		ft_atoi_1(char *str);
+long	ft_atoi_1(char *str);
 int		ft_strlen(char *str);
 int		ft_invalid_char(char *str);
 int		ft_smaller(int a, int b);

@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/12 17:48:26 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/26 17:04:41 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/02 14:34:19 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,12 @@ int	ft_all_blank(char *str)
 	return (1);
 }
 
-int	ft_atoi_1(char *str)
+long	ft_atoi_1(char *str)
 {
 	int				i;
 	unsigned long	res;
 	int				neg;
+	long			n;
 
 	neg = 1;
 	res = 0;
@@ -72,7 +73,12 @@ int	ft_atoi_1(char *str)
 	}
 	while (find_me(str[i], "0123456789"))
 		res = res * 10 + (str[i++] - '0');
-	return (res * neg);
+	n = res * neg;
+	if (n < -2147483648)
+		return (-2147483649);
+	if (n > 2147483647)
+		return (-2147483649);
+	return (n);
 }
 
 int	ft_2nb_stick(char *str)
