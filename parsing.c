@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:38:27 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/12/02 11:58:43 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/02 13:50:10 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int	ft_parsing_multi_2(int ac, char **av, t_stack **stack_a, int i)
 			|| ft_2nb_stick(av[i]))
 		{
 			printf("Error\nWrong Wroong argruments\n");
+			ft_free_1st(stack_a, 0);
 			return (0);
 		}
 		else
