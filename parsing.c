@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/26 16:38:27 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/12/02 18:27:19 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/02 19:21:09 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,15 @@ int	ft_parsing_1(char *str, t_stack **stack_a, int i)
 		printf("Error\n");
 		return (0);
 	}
-	while (str[i] && (i <= ft_strlen(str)))
+	while (str[i] && !ft_all_blank(str) && (i <= ft_strlen(str)))
 	{
 		n = ft_atoi_1(&str[i]);
 		if (invalid_min_max_int(n, stack_a, 1))
 			return (0);
 		if (!ft_new_element(stack_a, n))
 			return (0);
+		while (str[i] == ' ')
+			i++;
 		while (find_me(str[i], "-0123456789"))
 			i++;
 		if (str[i] == ' ' && !ft_int_exist(&str[i]))
