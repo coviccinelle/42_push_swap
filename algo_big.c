@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/12/03 16:39:01 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/02 18:06:33 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,27 +80,7 @@ void	sorter(t_stack **st_a, t_stack **st_b)
 
 void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 {
-	t_stack *max;
-	t_stack *min;
-	t_stack *last;
-	t_stack	*tmp;
-	t_stack	*tmp_b;
-
-	tmp = (*st_a);
-	tmp_b = (*st_b);
-	if (!ft_sorted(&tmp))
-	{
-		max = ft_max(tmp);
-		last = get_last(tmp);
-		printf("last_element in stack_a is %d\n", last->number);
-		printf("maxx_element in stack_a is %d\n", max->number);
-		min = ft_min(tmp);
-		printf("minn_element in stack_a is %d\n", min->number);
-		sorter(&tmp, &tmp_b);
-		printf("\nFINAL\nStack_a is : \n");
-		ft_display_stack(tmp);
-		printf("\n--At the end, stack_b is :-\n");
-		ft_display_stack(tmp_b);
-		printf("ft_algo_big is DONE, Duh!\n");
-	}
+	if (!ft_sorted(st_a))
+		sorter(st_a, st_b);
+	ft_free(st_a, st_b, 0);
 }
