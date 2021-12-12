@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 12:40:52 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/12 15:46:26 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ int	init_max_sorted(t_stack **first)
 			if (n < tmp2->number)
 			{
 				tmp->nb_team++;
-				// printf("number = %d, tmp2->number = %d, NB_TEAM = %d\n", tmp->number, tmp2->number, tmp->nb_team);
+				printf("number = %d, tmp2->number = %d, NB_TEAM = %d\n", tmp->number, tmp2->number, tmp->nb_team);
 				n = tmp2->number;
 			}
 			tmp2 = tmp2->next;
@@ -140,7 +140,7 @@ int	init_max_sorted(t_stack **first)
 		}
 		tmp = tmp->next;
 	}
-// 	printf("\n\n\ntmp->number = %d\n", tmp->number);
+	printf("\n\n\ntmp->number = %d\n", tmp->number);
 	return (0);
 }
 
@@ -197,7 +197,7 @@ void	get_stay(t_stack **st, t_stack *first)
 			if (n < tmp2->number)
 			{
 				tmp->stay = 1;
-				//printf("tmp->number = %d, tmp2->number = %d, tmp->stay = %d\n\n", tmp->number, tmp2->number, tmp->stay);
+				printf("tmp->number = %d, tmp2->number = %d, tmp->stay = %d\n\n", tmp->number, tmp2->number, tmp->stay);
 				n = tmp2->number;
 			}
 			tmp2 = tmp2->next;
@@ -298,7 +298,7 @@ void	show_stay(t_stack **st)
 	tmp = (*st);
 	while (tmp)
 	{
-		// printf("tmp->number = %d, tmp->stay = %d\n", tmp->number, tmp->stay);
+		printf("tmp->number = %d, tmp->stay = %d\n", tmp->number, tmp->stay);
 		tmp = tmp->next;
 	}
 }
@@ -308,13 +308,13 @@ void	init_sorter(t_stack **st_a)
 	t_stack	*tmp;
 
 	init_max_sorted(st_a);
-	// printf("max_number_team ecart here %d\n", get_max_nb_team(st_a));
+	printf("max_number_team ecart here %d\n", get_max_nb_team(st_a));
 	tmp = get_head_stay(st_a);
-	// printf("Head of list stay is = %d\n", tmp->number);
+	printf("Head of list stay is = %d\n", tmp->number);
 	get_stay(&(*st_a), tmp);
 	show_stay(st_a);
 	(*st_a)->size = ft_size_stack(st_a);
-	// printf("size stack here %d\n", (*st_a)->size);
+	printf("size stack here %d\n", (*st_a)->size);
 }
 
 // Just to clear my mind : 

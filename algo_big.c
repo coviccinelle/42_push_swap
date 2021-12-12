@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/11 12:33:07 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 13:54:27 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/12 15:47:22 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void	init_sorter(t_stack **st_a)
 	t_stack	*tmp;
 
 	init_max_sorted(st_a);
-	// printf("max_number_team ecart here %d\n", get_max_nb_team(st_a));
+	printf("max_number_team ecart here %d\n", get_max_nb_team(st_a));
 	tmp = get_head_stay(st_a);
-	// printf("Head of list stay is = %d\n", tmp->number);
+	printf("Head of list stay is = %d\n", tmp->number);
 	get_stay(&(*st_a), tmp);
 	ft_index(*st_a);
 	show_stay(st_a);
 	(*st_a)->size = ft_size_stack(st_a);
-	// printf("size stack here %d\n", (*st_a)->size);
+	printf("size stack here %d\n", (*st_a)->size);
 }
 
 // int		swapable(t_stack *stack)
@@ -80,7 +80,7 @@ void	ft_sorter_p2(t_stack **st_a, t_stack **st_b)
 	{
 		set_gap_b(&tmp_a, &tmp_b);
 		min_b = ft_compare_b(&tmp_b);
-		//printf("min_b->number(the min steps needed in b) is = %d\n", min_b->number);
+		printf("min_b->number(the min steps needed in b) is = %d\n", min_b->number);
 		ft_push_b_back(&tmp_b, &tmp_a, min_b);
 	}
 	if (!ft_sorted(&tmp_a))
@@ -145,10 +145,10 @@ void	ft_algo_big(t_stack **st_a, t_stack **st_b)
 		// min = ft_min(tmp);
 		// printf("minn_element in stack_a is %d\n", min->number);
 		sorter(&tmp, &tmp_b);
-		// printf("\nFINAL\nStack_a is : \n");
-		// ft_display_stack(tmp);
-		// printf("\n--At the end, stack_b is :-\n");
-		// ft_display_stack(tmp_b);
-		// printf("ft_algo_big is DONE, Duh!\n");
+		printf("\nFINAL\nStack_a is : \n");
+		ft_display_stack(tmp);
+		printf("\n--At the end, stack_b is :-\n");
+		ft_display_stack(tmp_b);
+		printf("ft_algo_big is DONE, Duh!\n");
 	}
 }

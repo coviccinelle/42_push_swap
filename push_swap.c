@@ -6,7 +6,7 @@
 /*   By: thi-phng <thi-phng@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/07 15:09:01 by thi-phng          #+#    #+#             */
-/*   Updated: 2021/11/29 13:53:47 by thi-phng         ###   ########.fr       */
+/*   Updated: 2021/12/12 15:50:42 by thi-phng         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,8 @@ void	ft_swap(t_stack **stack, char c)
 		(*stack)->next = tmp1;
 		tmp1->next = tmp2;
 	}
-	printf("s%c\n", c);
-	//ft_display_stack(*stack);
+	printf("\ns%c\n", c);
+	ft_display_stack(*stack);
 }
 
 int	ft_rotate(t_stack **stack, char c)
@@ -74,8 +74,8 @@ int	ft_rotate(t_stack **stack, char c)
 		tmp_curs->next = tmp1;
 		tmp1->next = NULL;
 	}
-	printf("r%c\n", c);
-	// ft_display_stack(*stack);
+	printf("\nr%c\n", c);
+	ft_display_stack(*stack);
 	return (1);
 }
 
@@ -97,8 +97,8 @@ int	ft_reverse_rotate(t_stack **stack, char c)
 		tmp_run->next = NULL;
 		(*stack)->next = tmp1;
 	}
-	printf("rr%c\n", c);
-	// ft_display_stack(*stack);
+	printf("\nrr%c\n", c);
+	ft_display_stack(*stack);
 	return (1);
 }
 
@@ -119,9 +119,9 @@ int	ft_push(t_stack **st_t, t_stack **st_r, char c)
 		*st_r = tmp1;
 		tmp1->next = tmp2;
 	}
-	printf("p%c\n", c);
-	// ft_display_stack(*st_t);
-	// printf("----------\n");
-	// ft_display_stack(*st_r);
+	printf("\np%c\n", c);
+	ft_display_stack(*st_t);
+	printf("----------\n");
+	ft_display_stack(*st_r);
 	return (0);
 }
