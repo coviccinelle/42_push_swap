@@ -4,7 +4,6 @@
 ## Summary
 This project involves sorting data on two stacks using a limited set of instructions with the goal of achieving the lowest number of actions. The main program, push_swap, must calculate and display the smallest program, consisting of Push_swap language instructions, to sort the integers received as arguments.
 
-visualize
 
 ![til](https://github.com/coviccinelle/42_push_swap/blob/main/push_swap_visualize.gif)
 
